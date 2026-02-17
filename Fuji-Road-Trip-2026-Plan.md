@@ -1,36 +1,38 @@
-# แผนทริปขับรถรอบภูเขาไฟฟูจิ 7 วัน 6 คืน
+# แผนทริปขับรถรอบภูเขาไฟฟูจิ 8 วัน 7 คืน
 
 ## ภาพรวมทริป
 
 | รายการ | รายละเอียด |
 | --- | --- |
-| **วันที่** | 30 ตุลาคม - 5 พฤศจิกายน 2026 (7 วัน / 6 คืน) |
-| **เส้นทาง** | Ikebukuro → Kawaguchiko (1 คืน) → Shizuoka (2 คืน) → Izu West Coast (1 คืน) → Shimoda (1 คืน) → Yamanakako (1 คืน) → Ikebukuro |
+| **วันที่** | 29 ตุลาคม - 5 พฤศจิกายน 2025 (8 วัน / 7 คืน) |
+| **เส้นทาง** | Narita Airport → Kawaguchiko (2 คืน) → Shizuoka (2 คืน) → Izu West Coast (1 คืน) → Shimoda (1 คืน) → Yamanakako (1 คืน) → Narita Airport |
 | **ผู้เดินทาง** | 4 คน |
-| **รถเช่า** | SUV หรือ Minivan (รับ-คืนที่ Ikebukuro) |
+| **รถเช่า** | SUV หรือ Minivan (รับ-คืนที่สนามบิน Narita) |
+| **เวลารับรถ** | 29 ต.ค. 2025 เวลา 13:00 น. |
+| **เวลาคืนรถ** | 5 พ.ย. 2025 เวลา 17:00 น. |
 | **งบที่พัก** | ≤3,000 บาท/คน/คืน (≈ ¥12,000-13,000/คน) |
 | **จุดประสงค์** | ชมจุดชมวิวฟูจิจากทั้ง 4 ทิศ + Fuji Five Lakes + Shizuoka + Izu |
-| **ระยะทางรวม** | ~790 กม. |
+| **ระยะทางรวม** | ~920 กม. |
 
 ---
 
 ## แผนที่เส้นทาง
 
 ```
-Ikebukuro ──(130กม./2.5ชม.)──> Kawaguchiko ──(150กม./3.5ชม.)──> Shizuoka
-  Day 1                            Day 2
-                                                        │
-                                                   (2 คืน Day 2-3)
-                                                        │
-Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5ชม.)── Shimoda <──(60กม./2ชม.)── Izu West Coast <──(100กม./2.5ชม.)──┘
-  Day 7                          Day 6                           Day 5                        Day 4
+Narita Airport ──(180กม./3ชม.)──> Kawaguchiko ──(150กม./3.5ชม.)──> Shizuoka
+     Day 1                          Day 2-3                            Day 4
+                                                                         │
+                                                                    (2 คืน Day 4-5)
+                                                                         │
+Narita <──(160กม./3ชม.)── Yamanakako <──(160กม./3.5ชม.)── Shimoda <──(60กม./2ชม.)── Izu West Coast <──(100กม./2.5ชม.)──┘
+  Day 8                      Day 7                          Day 6                       Day 5
 ```
 
 **ฟูจิ 4 ทิศ:**
-- **เหนือ**: Kawaguchiko, Chureito Pagoda, Oishi Park, Momiji Corridor (Day 1-2)
-- **ตะวันตก**: Asagiri Highland, Lake Tanuki, Heda, Toi (Day 2, 4)
-- **ใต้**: Shiraito Falls, Satta Pass, Nihondaira, Miho no Matsubara (Day 2-3)
-- **ตะวันออก**: Gotemba, Yamanakako, Oshino Hakkai, Panorama Dai (Day 6-7)
+- **เหนือ**: Kawaguchiko, Chureito Pagoda, Oishi Park, Momiji Corridor (Day 1-3)
+- **ตะวันตก**: Asagiri Highland, Lake Tanuki, Heda, Toi (Day 3, 5)
+- **ใต้**: Shiraito Falls, Satta Pass, Nihondaira, Miho no Matsubara (Day 3-5)
+- **ตะวันออก**: Gotemba, Yamanakako, Oshino Hakkai, Panorama Dai (Day 7-8)
 
 ---
 
@@ -242,56 +244,78 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 ## 2. กำหนดการเดินทางรายวัน
 
-### Day 1 (30 ต.ค. ศุกร์): Ikebukuro → Fuji Five Lakes ฝั่งเหนือ
+### Day 1 (29 ต.ค. พุธ): Narita Airport → Kawaguchiko
 
-**ธีม: เดินทางถึงฟูจิ + จุดชมวิวเหนือ + Momiji Corridor ไฟประดับ**
+**ธีม: เดินทางถึงฟูจิ + เช็คอิน + Momiji Corridor ไฟประดับ**
 
 | เวลา | กิจกรรม | รายละเอียด |
 | --- | --- | --- |
-| 09:00 | รับรถที่ Ikebukuro | ยืนยันมี ETC card + GPS navigation |
-| 09:30 | ออกเดินทาง → Fujiyoshida | ~120 กม. via Kan-Etsu → Chuo Expressway (~2-2.5 ชม.) |
-| 12:00 | อาหารกลางวัน: **Yoshida Udon** | ร้าน Tsuruya Shokudo หรือ Miyaki ใน Fujiyoshida |
-| 13:30 | **Chureito Pagoda** ★ | เจดีย์ 5 ชั้น + ฟูจิ (แสงบ่ายยังสวย จะกลับมาตอนเช้าวันที่ 2) |
-| 15:30 | **Oishi Park** ★ | ทางเดินดอกไม้ 350 ม. + วิวฟูจิเปิดโล่งริม Lake Kawaguchiko |
-| 16:30 | Check-in ที่พัก Kawaguchiko | |
-| 17:30 | **Momiji Corridor** ★ ไฟประดับ | เทศกาลใบไม้เปลี่ยนสี (sunset-22:00) |
+| 13:00 | รับรถที่สนามบิน Narita | ยืนยันมี ETC card + GPS navigation |
+| 13:30 | ออกเดินทาง → Kawaguchiko | ~180 กม. via Higashi-Kanto → Chuo Expressway (~2.5-3 ชม.) |
+| 16:00-16:30 | ถึง Kawaguchiko | หยุดพัก Service Area ระหว่างทาง |
+| 16:30 | Check-in ที่พัก Kawaguchiko | วางของ พักผ่อน |
+| 17:00 | **Oishi Park** ★ | วิวฟูจิยามเย็นริม Lake Kawaguchiko (ถ้าอากาศดี) |
+| 17:30 | **Momiji Corridor** ★ ไฟประดับ | เทศกาลใบไม้เปลี่ยนสี Kawaguchiko Autumn Leaves Festival (sunset-22:00) |
 | 19:00 | อาหารเย็น: **Hoto** (บะหมี่โฮโต) | ร้าน Hoto Fudou สาขา Kita-Honten หรือ Sanrokuen |
 
-**ระยะทางรวม:** ~130 กม. | **เวลาขับ:** ~2.5 ชม.
+**ระยะทางรวม:** ~180 กม. | **เวลาขับ:** ~3 ชม.
 
-**Google Maps Route Day 1:** [Ikebukuro → Fujiyoshida → Chureito Pagoda → Oishi Park → Kawaguchiko](https://www.google.com/maps/dir/Ikebukuro+Station/Tsuruya+Shokudo+Fujiyoshida/Chureito+Pagoda/Oishi+Park+Kawaguchiko/Kawaguchiko+Station)
+**Google Maps Route Day 1:** [Narita Airport → Kawaguchiko → Oishi Park → Momiji Corridor](https://www.google.com/maps/dir/Narita+International+Airport/Lake+Kawaguchiko/Oishi+Park+Kawaguchiko/Momiji+Corridor+Kawaguchiko)
 
 ---
 
-### Day 2 (31 ต.ค. เสาร์): Kawaguchiko Sunrise → Five Lakes South/West → Shizuoka
+### Day 2 (30 ต.ค. พฤหัส): Kawaguchiko เต็มวัน — Five Lakes North
 
-**ธีม: ตื่นเช้าสุด = ฟูจิสวยสุด แล้วขับลงใต้ผ่าน highlights เยอะที่สุดในทริป**
-
-> ⚠️ วันนี้เยอะที่สุด ปรับได้ตามสภาพอากาศ ถ้าฟูจิเมฆปิดตอนเช้า ข้ามจุดชมวิวบางจุดแล้วใช้เวลาเที่ยว Fujinomiya เพิ่ม
+**ธีม: ตื่นเช้าชม sunrise + เที่ยวรอบ Five Lakes ฝั่งเหนือ**
 
 | เวลา | กิจกรรม | รายละเอียด |
 | --- | --- | --- |
 | 05:30 | **Sunrise ที่ Kawaguchiko ฝั่งเหนือ** ★ | Oishi Park หรือริมทะเลสาบ ภาพฟูจิสะท้อนน้ำในยามเช้า |
 | 07:00 | อาหารเช้าที่ที่พัก | |
-| 08:00 | **Chureito Pagoda** (เช้า) ★ | กลับมาถ่ายด้วยแสงเช้า = THE shot ที่ไอคอนิกที่สุด |
-| 09:30 | ขับไป **Lake Motosuko** ★ | ~30 นาที วิวธนบัตร ¥1,000 ฝั่ง Nakanoura |
-| 10:30 | ขับผ่าน **Asagiri Highland** ★★ | ทุ่งหญ้าสูง วิวฟูจิจากฝั่งตะวันตก เปิดโล่ง แวะถ่ายรูป |
-| 11:00 | **Lake Tanuki** ★ | "Upside-Down Fuji" (ไม่ใช่ sunrise แต่ถ้าน้ำนิ่งยังสะท้อนสวย) |
-| 11:45 | **Shiraito Falls** ★★ | น้ำตกกว้าง 150 ม. UNESCO (ที่จอด ¥500) |
-| 12:30 | อาหารกลางวัน: **Fujinomiya Yakisoba** | Omiya Yokocho หรือร้านใกล้ Sengen Taisha |
-| 13:30 | **Fujisan Hongu Sengen Taisha** (optional) | ศาลเจ้าหลักของฟูจิ น้ำพุ Wakutama-ike |
-| 14:30 | ขับไป Shizuoka | ~1 ชม. via Shin-Tomei Expressway |
-| 15:30 | Check-in ที่พัก Shizuoka/Shimizu | |
-| 17:00 | สำรวจเมือง / พักผ่อน | วันยาว! |
-| 18:30 | อาหารเย็น: **Shizuoka Oden** | Aoba Yokocho oden street |
+| 08:00 | **Chureito Pagoda** ★ | แสงเช้าส่องหน้าฟูจิ = THE most iconic shot |
+| 10:00 | กลับมา **Lake Kawaguchiko** | เดินเล่นริมทะเลสาบ ถ่ายรูปจากหลายมุม |
+| 11:00 | **(Optional) Kachi Kachi Ropeway** | กระเช้าขึ้นจุดชมวิวเหนือ Kawaguchiko (~¥900) |
+| 12:00 | อาหารกลางวัน: **Yoshida Udon** | ร้าน Tsuruya Shokudo หรือ Miyaki ใน Fujiyoshida |
+| 13:30 | **Lake Saiko / Iyashi no Sato Nenba** ★★ | หมู่บ้านหลังคามุงจาก + ฟูจิ บรรยากาศญี่ปุ่นดั้งเดิม (¥500) |
+| 15:00 | **Lake Motosuko** ★ | วิวธนบัตร ¥1,000 ฝั่ง Nakanoura |
+| 16:00 | กลับที่พัก Kawaguchiko / เวลาอิสระ | |
+| 17:30 | **Momiji Corridor** ไฟประดับ (ครั้งที่ 2) | ถ่ายรูปช่วงไฟประดับอีกครั้ง |
+| 19:00 | อาหารเย็น | ร้านอาหารท้องถิ่นแถว Kawaguchiko |
 
-**ระยะทางรวม:** ~150 กม. | **เวลาขับ:** ~3.5 ชม.
+**ระยะทางรวม:** ~60 กม. | **เวลาขับ:** ~1.5 ชม. (วันสบายๆ)
 
-**Google Maps Route Day 2:** [Kawaguchiko → Chureito Pagoda → Lake Motosu → Asagiri Highland → Lake Tanuki → Shiraito Falls → Fujinomiya → Shizuoka](https://www.google.com/maps/dir/Kawaguchiko+Station/Chureito+Pagoda/Lake+Motosu/Asagiri+Kogen/Lake+Tanuki/Shiraito+Falls+Fujinomiya/Omiya+Yokocho+Fujinomiya/Shizuoka+Station)
+**Google Maps Route Day 2:** [Kawaguchiko → Chureito Pagoda → Fujiyoshida → Lake Saiko → Iyashi no Sato → Lake Motosu → Kawaguchiko](https://www.google.com/maps/dir/Kawaguchiko+Station/Chureito+Pagoda/Tsuruya+Shokudo+Fujiyoshida/Lake+Saiko/Iyashi+no+Sato+Nenba/Lake+Motosu/Kawaguchiko+Station)
 
 ---
 
-### Day 3 (1 พ.ย. อาทิตย์): Shizuoka เต็มวัน — จุดชมวิวฝั่งใต้
+### Day 3 (31 ต.ค. ศุกร์): Kawaguchiko → Five Lakes South/West → Shizuoka
+
+**ธีม: ฟูจิฝั่งตะวันตก-ใต้ แล้วขับลงใต้สู่ Shizuoka**
+
+> ⚠️ วันนี้จุดชมวิวเยอะ ปรับได้ตามสภาพอากาศ
+
+| เวลา | กิจกรรม | รายละเอียด |
+| --- | --- | --- |
+| 06:00 | **Sunrise ครั้งสุดท้ายที่ Kawaguchiko** | วิวเช้าสุดท้ายที่ Oishi Park หรือริมทะเลสาบ |
+| 07:30 | อาหารเช้า + เก็บของ Check-out | |
+| 08:30 | ขับไป **Lake Shojiko** (optional) | ทะเลสาบเล็กสุดใน 5 ทะเลสาบ เงียบสงบ |
+| 09:30 | ขับผ่าน **Asagiri Highland** ★★ | ทุ่งหญ้าสูง วิวฟูจิจากฝั่งตะวันตก แวะถ่ายรูป |
+| 10:00 | **Lake Tanuki** ★ | "Upside-Down Fuji" (น้ำนิ่ง = สะท้อนฟูจิสวย) |
+| 11:00 | **Shiraito Falls** ★★ | น้ำตกกว้าง 150 ม. UNESCO (ที่จอด ¥500) |
+| 12:00 | อาหารกลางวัน: **Fujinomiya Yakisoba** | Omiya Yokocho หรือร้านใกล้ Sengen Taisha |
+| 13:00 | **Fujisan Hongu Sengen Taisha** (optional) | ศาลเจ้าหลักของฟูจิ น้ำพุ Wakutama-ike ใสแจ๋ว |
+| 14:00 | ขับไป Shizuoka | ~1 ชม. via Shin-Tomei Expressway |
+| 15:00 | Check-in ที่พัก Shizuoka/Shimizu | |
+| 16:00 | เวลาอิสระ / สำรวจเมือง Shizuoka | |
+| 18:30 | อาหารเย็น: **Shizuoka Oden** | Aoba Yokocho oden street |
+
+**ระยะทางรวม:** ~140 กม. | **เวลาขับ:** ~3 ชม.
+
+**Google Maps Route Day 3:** [Kawaguchiko → Lake Shojiko → Asagiri Highland → Lake Tanuki → Shiraito Falls → Fujinomiya → Shizuoka](https://www.google.com/maps/dir/Kawaguchiko+Station/Lake+Shojiko/Asagiri+Kogen/Lake+Tanuki/Shiraito+Falls+Fujinomiya/Omiya+Yokocho+Fujinomiya/Shizuoka+Station)
+
+---
+
+### Day 4 (1 พ.ย. เสาร์): Shizuoka เต็มวัน — จุดชมวิวฝั่งใต้
 
 **ธีม: เที่ยว Shizuoka สบายๆ ไม่ต้องย้ายที่พัก = ไม่ต้องรีบ**
 
@@ -311,11 +335,11 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 **ระยะทางรวม:** ~50 กม. | **เวลาขับ:** ~1.5 ชม. (วันสบายๆ)
 
-**Google Maps Route Day 3:** [Shizuoka → Satta Pass → Nihondaira → Miho no Matsubara → Shimizu Port → Shizuoka](https://www.google.com/maps/dir/Shizuoka+Station/Satta+Pass/Nihondaira+Yume+Terrace/Miho+no+Matsubara/Shimizu+Fish+Market/Shizuoka+Station)
+**Google Maps Route Day 4:** [Shizuoka → Satta Pass → Nihondaira → Miho no Matsubara → Shimizu Port → Shizuoka](https://www.google.com/maps/dir/Shizuoka+Station/Satta+Pass/Nihondaira+Yume+Terrace/Miho+no+Matsubara/Shimizu+Fish+Market/Shizuoka+Station)
 
 ---
 
-### Day 4 (2 พ.ย. จันทร์): Shizuoka → Izu West Coast
+### Day 5 (2 พ.ย. อาทิตย์): Shizuoka → Izu West Coast
 
 **ธีม: วิวฟูจิจากทิศตะวันตก (ครบ 4 ทิศ!) + onsen ryokan ริมทะเล**
 
@@ -334,11 +358,11 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 **ระยะทางรวม:** ~100 กม. | **เวลาขับ:** ~2.5 ชม.
 > ⚠️ ทางเลียบชายฝั่ง Izu ค่อนข้างแคบและโค้งเยอะ ขับช้าๆ
 
-**Google Maps Route Day 4:** [Shizuoka → Heda → Toi Onsen → Dogashima](https://www.google.com/maps/dir/Shizuoka+Station/Heda+Port+Numazu/Toi+Onsen/Dogashima+Izu)
+**Google Maps Route Day 5:** [Shizuoka → Heda → Toi Onsen → Dogashima](https://www.google.com/maps/dir/Shizuoka+Station/Heda+Port+Numazu/Toi+Onsen/Dogashima+Izu)
 
 ---
 
-### Day 5 (3 พ.ย. อังคาร - วันหยุด Culture Day): Izu West Coast → Shimoda
+### Day 6 (3 พ.ย. จันทร์ - วันหยุด Culture Day): Izu West Coast → Shimoda
 
 **ธีม: เลียบชายฝั่ง Izu ลงใต้ สู่เมืองท่าประวัติศาสตร์ Shimoda**
 
@@ -359,11 +383,11 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 **ระยะทางรวม:** ~60 กม. | **เวลาขับ:** ~1.5-2 ชม.
 
-**Google Maps Route Day 5:** [Toi → Shimoda → Perry Road → Shirahama Beach](https://www.google.com/maps/dir/Toi+Onsen/Shimoda+Station/Perry+Road+Shimoda/Shirahama+Beach+Shimoda)
+**Google Maps Route Day 6:** [Toi → Shimoda → Perry Road → Shirahama Beach](https://www.google.com/maps/dir/Toi+Onsen/Shimoda+Station/Perry+Road+Shimoda/Shirahama+Beach+Shimoda)
 
 ---
 
-### Day 6 (4 พ.ย. พุธ): Shimoda → Mishima → Numazu → Gotemba → Lake Yamanaka
+### Day 7 (4 พ.ย. อังคาร): Shimoda → Mishima → Numazu → Gotemba → Lake Yamanaka
 
 **ธีม: ขับขึ้นเหนือ แวะจุดเด่นตลอดทาง ถึง Yamanakako เย็น**
 
@@ -383,13 +407,13 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 **ระยะทางรวม:** ~160 กม. | **เวลาขับ:** ~3.5 ชม.
 > **Izu Skyline** (optional): scenic mountain drive + วิวฟูจิจากบนเขา เป็นทางเก็บค่าผ่านทาง
 
-**Google Maps Route Day 6:** [Shimoda → Mishima Skywalk → Numazu Port → Gotemba Outlets → Lake Yamanaka](https://www.google.com/maps/dir/Shimoda+Station/Mishima+Skywalk/Numazu+Port/Gotemba+Premium+Outlets/Lake+Yamanaka)
+**Google Maps Route Day 7:** [Shimoda → Mishima Skywalk → Numazu Port → Gotemba Outlets → Lake Yamanaka](https://www.google.com/maps/dir/Shimoda+Station/Mishima+Skywalk/Numazu+Port/Gotemba+Premium+Outlets/Lake+Yamanaka)
 
 ---
 
-### Day 7 (5 พ.ย. พฤหัสบดี): Lake Yamanaka → Ikebukuro
+### Day 8 (5 พ.ย. พุธ): Lake Yamanaka → Narita Airport
 
-**ธีม: Sunrise สุดท้าย + Oshino Hakkai + กลับบ้าน**
+**ธีม: Sunrise สุดท้าย + Oshino Hakkai + กลับสนามบิน Narita**
 
 | เวลา | กิจกรรม | รายละเอียด |
 | --- | --- | --- |
@@ -397,14 +421,15 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 | 07:30 | อาหารเช้า + เก็บของ | |
 | 08:30 | **Oshino Hakkai** ★★ | บ่อน้ำพุใส 8 บ่อ ~15 นาทีจาก Yamanakako ไปเช้า = คนน้อย |
 | 10:00 | **Panorama Dai** ★★ (ถ้ามีเวลา) | จุดชมวิว 1,090 ม. ที่จอดรถ 8 คันเท่านั้น! |
-| 11:00 | ออกเดินทาง → Ikebukuro | ~130 กม. via Tomei Expressway (~2-2.5 ชม.) |
-| 13:30 | ถึง Ikebukuro | Buffer time |
-| 14:00-16:30 | เวลาอิสระ | เติมน้ำมัน + ช็อปปิ้ง Ikebukuro |
-| 17:00 | **คืนรถ** | |
+| 11:00 | ออกเดินทาง → Narita Airport | ~160 กม. via Chuo → Higashi-Kanto Expressway (~2.5-3 ชม.) |
+| 14:00 | ถึง Narita Airport | Buffer time |
+| 14:30 | เติมน้ำมัน + ทำความสะอาดรถ | ปั๊ม Eneos/Esso ใกล้สนามบิน |
+| 16:00-16:30 | เช็ครถ + เตรียมคืนรถ | ตรวจสอบความเสียหาย |
+| 17:00 | **คืนรถที่สนามบิน Narita** | |
 
-**ระยะทางรวม:** ~140 กม. | **เวลาขับ:** ~2.5 ชม.
+**ระยะทางรวม:** ~160 กม. | **เวลาขับ:** ~3 ชม.
 
-**Google Maps Route Day 7:** [Lake Yamanaka → Oshino Hakkai → Panorama Dai → Ikebukuro](https://www.google.com/maps/dir/Lake+Yamanaka/Oshino+Hakkai/Panorama+Dai+Yamanakako/Ikebukuro+Station)
+**Google Maps Route Day 8:** [Lake Yamanaka → Oshino Hakkai → Panorama Dai → Narita Airport](https://www.google.com/maps/dir/Lake+Yamanaka/Oshino+Hakkai/Panorama+Dai+Yamanakako/Narita+International+Airport)
 
 ---
 
@@ -412,9 +437,9 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 **งบ: ≤3,000 บาท/คน/คืน ≈ ¥12,000-13,000/คน** (4 คน = ¥48,000-52,000 รวม/คืน)
 
-### คืนที่ 1 (30 ต.ค.): Kawaguchiko ฝั่งเหนือ
+### คืนที่ 1-2 (29-30 ต.ค.): Kawaguchiko ฝั่งเหนือ
 
-**เหตุผล:** ใกล้ Momiji Corridor สำหรับไฟประดับตอนค่ำ + ใกล้ Chureito Pagoda สำหรับ sunrise เช้าวันถัดไป
+**เหตุผล:** พัก 2 คืนเพื่อเที่ยว Five Lakes อย่างเต็มที่ ใกล้ Momiji Corridor + Chureito Pagoda + Oishi Park + Lake Motosu
 
 | ตัวเลือก | ประเภท | ราคา/คน | จุดเด่น |
 | --- | --- | --- | --- |
@@ -422,9 +447,9 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 | Hotel New Century | โรงแรมริมทะเลสาบ | ~¥10,000-15,000 | วิวฟูจิจากห้องอาบน้ำ |
 | K's House Mt. Fuji | Hostel/Budget | ~¥5,000-8,000 | Budget friendly บรรยากาศดี |
 
-> **เคล็ดลับ:** เลือกที่พัก **ฝั่งเหนือ** ของทะเลสาบ เพื่อหันหน้าเข้าหาฟูจิ (ฟูจิอยู่ทางทิศใต้ของทะเลสาบ)
+> **เคล็ดลับ:** เลือกที่พัก **ฝั่งเหนือ** ของทะเลสาบ เพื่อหันหน้าเข้าหาฟูจิ (ฟูจิอยู่ทางทิศใต้ของทะเลสาบ) + จอง 2 คืนที่เดียวกันเพื่อไม่ต้องย้ายกระเป๋า
 
-### คืนที่ 2-3 (31 ต.ค. - 1 พ.ย.): Shizuoka/Shimizu
+### คืนที่ 3-4 (31 ต.ค. - 1 พ.ย.): Shizuoka/Shimizu
 
 **เหตุผล:** ฐานสำหรับเที่ยว Shizuoka 2 วัน ใกล้ Nihondaira, Miho, Satta Pass + ตลาดอาหารทะเล Shimizu
 
@@ -436,7 +461,7 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 > **เคล็ดลับ:** Shimizu area สะดวกกว่า Shizuoka city สำหรับคนขับรถ ใกล้ทั้ง viewpoints และตลาดอาหารทะเล
 
-### คืนที่ 4 (2 พ.ย.): Izu West Coast (Toi/Heda) ⭐ คืน Onsen หลัก
+### คืนที่ 5 (2 พ.ย.): Izu West Coast (Toi/Heda) ⭐ คืน Onsen หลัก
 
 **เหตุผล:** Onsen ryokan ริมทะเล + วิวฟูจิข้ามอ่าว Suruga + อาหารทะเลสด = คืนพิเศษของทริป
 
@@ -447,7 +472,7 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 > **เคล็ดลับ:** เลือกแพ็คเกจ **1泊2食** (1 คืน 2 มื้อ รวมเย็น+เช้า) คุ้มกว่าซื้อแยก + ได้กินอาหารทะเลท้องถิ่นจัดเต็ม
 
-### คืนที่ 5 (3 พ.ย.): Shimoda
+### คืนที่ 6 (3 พ.ย.): Shimoda
 
 **เหตุผล:** ทะเลสวย onsen ดี อาหารทะเลสดโดยเฉพาะ kinme-dai ปลาตาทอง
 
@@ -459,7 +484,7 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 > **เคล็ดลับ:** เลือกที่มี onsen + มื้อเย็น kinme-dai (ปลาตาทอง) ท้องถิ่น Shimoda
 
-### คืนที่ 6 (4 พ.ย.): Lake Yamanakako
+### คืนที่ 7 (4 พ.ย.): Lake Yamanakako
 
 **เหตุผล:** วิวฟูจิจากทิศตะวันออก + sunrise โอกาสสุดท้าย + ใกล้ Oshino Hakkai และ Panorama Dai
 
@@ -475,7 +500,7 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 ## 4. ข้อมูลเพิ่มเติม
 
-### สภาพอากาศ (30 ต.ค. - 5 พ.ย.)
+### สภาพอากาศ (29 ต.ค. - 5 พ.ย. 2025)
 
 | รายการ | รายละเอียด |
 | --- | --- |
@@ -551,45 +576,45 @@ Ikebukuro <──(140กม./2.5ชม.)── Yamanakako <──(160กม./3.5
 
 | รายการ | ค่าใช้จ่ายรวม | ต่อคน |
 | --- | --- | --- |
-| เช่า SUV/Minivan (7 วัน) | ~¥70,000-90,000 | ~¥17,500-22,500 |
-| ประกันภัย (CDW + NOC waiver) | ~¥7,000-12,000 | ~¥1,750-3,000 |
-| เช่าบัตร ETC | ~¥330/วัน x 7 = ¥2,310 | ~¥580 |
-| ค่าทางด่วน (ทั้งทริป) | ~¥12,000-15,000 | ~¥3,000-3,750 |
-| ค่าน้ำมัน (~790 กม.) | ~¥13,500 | ~¥3,375 |
+| เช่า SUV/Minivan (8 วัน) | ~¥80,000-100,000 | ~¥20,000-25,000 |
+| ประกันภัย (CDW + NOC waiver) | ~¥8,000-14,000 | ~¥2,000-3,500 |
+| เช่าบัตร ETC | ~¥330/วัน x 8 = ¥2,640 | ~¥660 |
+| ค่าทางด่วน (ทั้งทริป) | ~¥13,000-16,000 | ~¥3,250-4,000 |
+| ค่าน้ำมัน (~920 กม.) | ~¥15,500 | ~¥3,875 |
 
-### ที่พัก (6 คืน)
+### ที่พัก (7 คืน)
 
 | คืน | ที่พัก | ต่อคน |
 | --- | --- | --- |
-| 1 - Kawaguchiko | โรงแรม/เรียวกัง | ~¥8,000-13,000 |
-| 2-3 - Shizuoka (2 คืน) | โรงแรมธุรกิจ | ~¥12,000-20,000 |
-| 4 - Izu west coast | Onsen Ryokan (รวมอาหาร) | ~¥10,000-13,000 |
-| 5 - Shimoda | เรียวกัง/โรงแรม | ~¥8,000-13,000 |
-| 6 - Yamanakako | เรียวกัง | ~¥8,000-14,000 |
-| **รวม** | | **~¥46,000-73,000** |
+| 1-2 - Kawaguchiko (2 คืน) | โรงแรม/เรียวกัง | ~¥16,000-26,000 |
+| 3-4 - Shizuoka (2 คืน) | โรงแรมธุรกิจ | ~¥12,000-20,000 |
+| 5 - Izu west coast | Onsen Ryokan (รวมอาหาร) | ~¥10,000-13,000 |
+| 6 - Shimoda | เรียวกัง/โรงแรม | ~¥8,000-13,000 |
+| 7 - Yamanakako | เรียวกัง | ~¥8,000-14,000 |
+| **รวม** | | **~¥54,000-86,000** |
 
 ### อาหาร (มื้อนอกเรียวกัง)
 
-| มื้อ | ประมาณรวม 7 วัน |
+| มื้อ | ประมาณรวม 8 วัน |
 | --- | --- |
-| อาหารเช้า (วันที่ไม่ได้อยู่เรียวกัง) | ~¥2,000-4,000 |
-| อาหารกลางวัน (7 วัน) | ~¥7,000-14,000 |
-| อาหารเย็น (วันที่ไม่ได้อยู่เรียวกัง) | ~¥8,000-16,000 |
-| ขนม/เครื่องดื่ม | ~¥3,500 |
-| **รวม** | **~¥20,500-37,500** |
+| อาหารเช้า (วันที่ไม่ได้อยู่เรียวกัง) | ~¥2,500-5,000 |
+| อาหารกลางวัน (8 วัน) | ~¥8,000-16,000 |
+| อาหารเย็น (วันที่ไม่ได้อยู่เรียวกัง) | ~¥9,000-18,000 |
+| ขนม/เครื่องดื่ม | ~¥4,000 |
+| **รวม** | **~¥23,500-43,000** |
 
 ### สรุปค่าใช้จ่ายต่อคน
 
 | หมวด | ประมาณต่ำ | ประมาณสูง |
 | --- | --- | --- |
-| รถเช่า + ประกัน + ETC | ¥19,830 | ¥26,080 |
-| ค่าทางด่วน + น้ำมัน | ¥6,375 | ¥7,125 |
-| ที่พัก (6 คืน) | ¥46,000 | ¥73,000 |
-| อาหาร | ¥20,500 | ¥37,500 |
+| รถเช่า + ประกัน + ETC | ¥22,660 | ¥29,160 |
+| ค่าทางด่วน + น้ำมัน | ¥7,125 | ¥7,875 |
+| ที่พัก (7 คืน) | ¥54,000 | ¥86,000 |
+| อาหาร | ¥23,500 | ¥43,000 |
 | ค่าเข้าชม + กิจกรรม | ~¥5,000 | ~¥10,000 |
 | เบ็ดเตล็ด | ¥5,000 | ¥10,000 |
-| **รวมต่อคน** | **~¥102,700** | **~¥163,700** |
-| **เป็นเงินบาท (≈ ¥1 = ฿0.24)** | **~฿24,650** | **~฿39,290** |
+| **รวมต่อคน** | **~¥117,300** | **~¥186,000** |
+| **เป็นเงินบาท (≈ ¥1 = ฿0.24)** | **~฿28,150** | **~฿44,640** |
 
 ---
 
