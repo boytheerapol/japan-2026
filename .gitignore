@@ -5,3 +5,6 @@ source/*.docx
 *.docx
 __pycache__/
 .DS_Store
+
+# uv virtual environment
+.venv/

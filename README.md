@@ -29,20 +29,20 @@ site/                        ตัวเว็บที่ deploy
 และตัดยอดเงินจริงกับคำว่า "คุณ" ออกจากข้อความในชีตอื่น
 
 ## อัปเดตข้อมูลเมื่อแก้ Excel
-ครั้งแรกติดตั้ง library ก่อน:
+โปรเจกต์นี้ใช้ [uv](https://docs.astral.sh/uv/) เป็น Python package manager ครั้งแรกติดตั้ง dependencies ก่อน (uv จะสร้าง virtualenv ให้อัตโนมัติ):
 ```bash
-pip install openpyxl
+uv sync
 ```
 
 **วิธีที่ 1 — ส่ง path ของไฟล์ Excel ไปตรงๆ (แนะนำ ไม่ต้อง copy)**
 ```bash
-python3 scripts/build_data.py "/path/to/Japan Trip 2026 - Itinerary Plan v8.xlsx"
+uv run scripts/build_data.py "/path/to/Japan Trip 2026 - Itinerary Plan v8.xlsx"
 ```
 
 **วิธีที่ 2 — copy มาวางใน `source/` โดยตั้งชื่อว่า `itinerary.xlsx` เท่านั้น**
 ```bash
 cp "/path/to/Japan Trip 2026 - Itinerary Plan v8.xlsx" source/itinerary.xlsx
-python3 scripts/build_data.py
+uv run scripts/build_data.py
 ```
 (ถ้ารันโดยไม่ส่ง path script จะหาไฟล์ที่ `source/itinerary.xlsx` — ชื่ออื่นจะหาไม่เจอ)
 
