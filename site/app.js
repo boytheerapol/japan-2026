@@ -20,6 +20,10 @@
   const safeUrl = (u) => (/^https:\/\//i.test(u || "") ? u : "");
   const stars = (n) => (n ? `<span class="stars" aria-label="${n} ดาว">${"★".repeat(n)}</span>` : "");
   const pad = (n) => String(n).padStart(2, "0");
+  const NEW_TAB = `<span class="sr-only"> (เปิดในแท็บใหม่)</span>`;
+  // Emoji carries meaning visually; screen readers get a Thai label instead.
+  const ico = (emoji, label) => `<span aria-hidden="true">${emoji}</span><span class="sr-only">${label}</span>`;
+  let moreId = 0;
 
   function telLinks(text) {
     // "กระเช้า 0555-75-2929" -> link on the number, dialled as +81
@@ -98,6 +102,8 @@
   function applyTheme(theme) {
     if (theme) document.documentElement.dataset.theme = theme;
     else delete document.documentElement.dataset.theme;
+    const dark = theme ? theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    $("#themeToggle").setAttribute("aria-pressed", String(dark));
   }
 
   /* ---------- rendering: home ---------- */
@@ -182,16 +188,16 @@
         <ol class="daylist">
           ${d.map((day) => `
           <li class="reveal ${day.n >= 9 ? "tokyo" : ""}">
-            <span class="day-bullet">${day.n}</span>
-            <a class="card day-card" href="#/day/${day.n}">
+            <span class="day-bullet" aria-hidden="true">${day.n}</span>
+            <a class="card day-card" href="#/day/${day.n}"><span class="sr-only">Day ${day.n}: </span>
               <div class="d-date">${esc(day.dateLabel.replace(/\(.*\)/, ""))} · ${esc(day.weekday)}</div>
               <h3>${esc(day.title || day.route)}</h3>
               <div class="d-route">${esc(day.subtitle || day.route)}</div>
               <div class="d-meta">
-                <span>🚀 ออก ${esc(day.depart)}</span>
+                <span>${ico("🚀", "")}ออก ${esc(day.depart)}</span>
                 <span>${day.n >= 9 && day.n <= 10 ? "🚇" : day.n === 11 ? "🚌" : "🚗"} ${esc(day.drive)}</span>
-                <span>🌇 ${esc(day.sunset)}</span>
-                ${day.hotel && !day.hotel.startsWith("—") ? `<span>🏨 ${esc(day.hotel.split("—").pop().trim())}</span>` : ""}
+                <span>${ico("🌇", "ตะวันตก")} ${esc(day.sunset)}</span>
+                ${day.hotel && !day.hotel.startsWith("—") ? `<span>${ico("🏨", "ที่พัก")} ${esc(day.hotel.split("—").pop().trim())}</span>` : ""}
               </div>
             </a>
           </li>`).join("")}
@@ -205,9 +211,9 @@
             <span class="badge gold">GOLDEN</span><span class="small muted">จุดชมแสงเย็นของวัน (ตะวันตก 16:39–16:53)</span>
           </div>
           <div class="legend" style="margin-top:8px">
-            <span class="stars">★★★</span><span class="small muted">ห้ามพลาด</span>
-            <span class="stars">★★</span><span class="small muted">คุ้มมาก</span>
-            <span class="stars">★</span><span class="small muted">แวะได้ตามเวลา</span>
+            ${stars(3)}<span class="small muted">ห้ามพลาด</span>
+            ${stars(2)}<span class="small muted">คุ้มมาก</span>
+            ${stars(1)}<span class="small muted">แวะได้ตามเวลา</span>
           </div>
           <div class="legend" style="margin-top:8px">
             <span class="badge blue">ยืดหยุ่น</span><span class="small muted">ตัดได้ถ้าเวลาไม่พอ</span>
@@ -235,7 +241,7 @@
       const dd = Math.floor(s / 86400); s %= 86400;
       const hh = Math.floor(s / 3600); s %= 3600;
       const mm = Math.floor(s / 60); s %= 60;
-      el.innerHTML = `<div class="countdown" aria-label="นับถอยหลังถึงวันเดินทาง">
+      el.innerHTML = `<div class="countdown" role="timer" aria-live="off" aria-label="นับถอยหลังถึงวันเดินทาง: ${dd} วัน ${hh} ชั่วโมง">
         <div><b>${dd}</b><small>วัน</small></div><div><b>${pad(hh)}</b><small>ชั่วโมง</small></div>
         <div><b>${pad(mm)}</b><small>นาที</small></div><div><b>${pad(s)}</b><small>วินาที</small></div></div>
         <p class="countdown-note">✈️ XJ602 ออกจากดอนเมือง 01:40 · 29 ต.ค.</p>`;
@@ -264,8 +270,8 @@
           ${lot.phone ? `<dt>โทร</dt><dd>${telLinks(lot.phone)}</dd>` : ""}
         </dl>
         <div class="btn-row${tel && !alt ? "" : ""}">
-          ${url ? `<a class="btn btn-primary btn-sm" href="${esc(url)}" target="_blank" rel="noopener">🧭 นำทางลานหลัก</a>` : ""}
-          ${alt ? `<a class="btn btn-ghost btn-sm" href="${esc(alt)}" target="_blank" rel="noopener">🔁 ลานสำรอง</a>`
+          ${url ? `<a class="btn btn-primary btn-sm" href="${esc(url)}" target="_blank" rel="noopener">🧭 นำทางลานหลัก${NEW_TAB}</a>` : ""}
+          ${alt ? `<a class="btn btn-ghost btn-sm" href="${esc(alt)}" target="_blank" rel="noopener">🔁 ลานสำรอง${NEW_TAB}</a>`
                 : tel ? `<a class="btn btn-ghost btn-sm" href="${tel}">📞 โทร</a>` : ""}
         </div>
       </div>`;
@@ -299,6 +305,7 @@
 
     const detail = item.detail || [];
     const longDetail = detail.join(" ").length > 160;
+    const did = `detail-${++moreId}`;
     const parkingText = item.parking || [];
     const matched = lots.byItem.get(idx) || [];
 
@@ -311,12 +318,12 @@
         <h3>${esc(item.name)}</h3>
         ${badges ? `<div class="badges">${badges}</div>` : ""}
         <div class="t-info">
-          ${item.hours ? `<div><span>🕘</span><span>${esc(item.hours)}</span></div>` : ""}
-          ${item.limits ? `<div><span>📌</span><span>${esc(item.limits)}</span></div>` : ""}
-          ${item.duration ? `<div><span>⏳</span><span>${esc(item.duration.replace(/^⏱\s*/, ""))}</span></div>` : ""}
+          ${item.hours ? `<div><span>${ico("🕘", "เวลาเปิด:")}</span><span>${esc(item.hours)}</span></div>` : ""}
+          ${item.limits ? `<div><span>${ico("📌", "ข้อจำกัด:")}</span><span>${esc(item.limits)}</span></div>` : ""}
+          ${item.duration ? `<div><span>${ico("⏳", "ระยะเวลา:")}</span><span>${esc(item.duration.replace(/^⏱\s*/, ""))}</span></div>` : ""}
         </div>
-        ${detail.length ? `<div class="t-detail ${longDetail ? "clamp" : ""}">${detail.map((p) => `<p>${telLinks(p)}</p>`).join("")}</div>
-          ${longDetail ? `<button class="more-btn" type="button" data-more>อ่านต่อ ▾</button>` : ""}` : ""}
+        ${detail.length ? `<div class="t-detail ${longDetail ? "clamp" : ""}" id="${did}">${detail.map((p) => `<p>${telLinks(p)}</p>`).join("")}</div>
+          ${longDetail ? `<button class="more-btn" type="button" data-more aria-expanded="false" aria-controls="${did}">อ่านต่อ ▾</button>` : ""}` : ""}
         ${(item.rule || []).map((r) => `<div class="sub rule"><b>⏱ เกณฑ์ตัดสินหน้างาน</b>${esc(r)}</div>`).join("")}
         ${(item.backup || []).map((b) => `<div class="sub backup"><b>🔁 แผนสำรอง</b>${telLinks(b)}</div>`).join("")}
         ${(parkingText.length || matched.length) ? `
@@ -325,8 +332,8 @@
             ${matched.map((lot) => {
               const u = safeUrl(lot.url), a = safeUrl(lot.altUrl);
               return `${matched.length > 1 ? `<span class="lot-label">${esc(lot.place)}</span>` : ""}<div class="btn-row">
-                ${u ? `<a class="btn btn-primary btn-sm" href="${esc(u)}" target="_blank" rel="noopener">🧭 นำทางลานจอด</a>` : ""}
-                ${a ? `<a class="btn btn-ghost btn-sm" href="${esc(a)}" target="_blank" rel="noopener">🔁 ลานสำรอง</a>` : (firstPhone(lot.phone) ? `<a class="btn btn-ghost btn-sm" href="${firstPhone(lot.phone)}">📞 โทร</a>` : "")}
+                ${u ? `<a class="btn btn-primary btn-sm" href="${esc(u)}" target="_blank" rel="noopener">🧭 นำทางลานจอด${NEW_TAB}</a>` : ""}
+                ${a ? `<a class="btn btn-ghost btn-sm" href="${esc(a)}" target="_blank" rel="noopener">🔁 ลานสำรอง${NEW_TAB}</a>` : (firstPhone(lot.phone) ? `<a class="btn btn-ghost btn-sm" href="${firstPhone(lot.phone)}">📞 โทร</a>` : "")}
               </div>`;
             }).join("")}
           </div>` : ""}
@@ -346,7 +353,7 @@
           <div class="stops">${r.stops.map((s, i) => `${i ? "<i>→</i>" : ""}<span>${esc(s)}</span>`).join("")}</div>
           ${r.note ? `<div class="note">${esc(r.note)}</div>` : ""}
           ${safeUrl(r.url) ? `<a class="btn ${r.mode === "drive" ? "btn-primary" : "btn-dark"} btn-block" href="${esc(r.url)}" target="_blank" rel="noopener">
-            ${r.mode === "drive" ? "🚗 เปิดเส้นทางขับรถ" : r.mode === "walk" ? "🚶 เปิดเส้นทางเดิน" : "🚇 เปิดเส้นทาง"}</a>` : ""}
+            ${r.mode === "drive" ? "🚗 เปิดเส้นทางขับรถ" : r.mode === "walk" ? "🚶 เปิดเส้นทางเดิน" : "🚇 เปิดเส้นทาง"}${NEW_TAB}</a>` : ""}
         </div>`).join("")}
     </section>`;
   }
@@ -361,7 +368,7 @@
     main.innerHTML = `
     <div class="view" id="dayView">
       <nav class="daynav" aria-label="เลือกวัน">
-        ${trip.days.map((d) => `<a href="#/day/${d.n}" ${d.n === day.n ? 'aria-current="true"' : ""}><b>${d.n}</b><small>${esc(d.dateLabel.replace(/\s*\(.*\)/, ""))}</small></a>`).join("")}
+        ${trip.days.map((d) => `<a href="#/day/${d.n}" aria-label="Day ${d.n} ${esc(d.dateLabel.replace(/\s*\(.*\)/, ""))}" ${d.n === day.n ? 'aria-current="page"' : ""}><b>${d.n}</b><small>${esc(d.dateLabel.replace(/\s*\(.*\)/, ""))}</small></a>`).join("")}
       </nav>
 
       <header class="day-hero">
@@ -377,7 +384,7 @@
           <div class="card fact"><small>ที่พักคืนนี้</small><b>${esc(hotel || "กลับกรุงเทพ ✈️")}</b></div>
         </div>
         ${day.alerts.map((a) => `
-          <div class="alert"><span class="a-icon">⚠️</span><div><b>${esc(a.name)}</b>
+          <div class="alert"><span class="a-icon" aria-hidden="true">⚠️</span><div><b>${esc(a.name)}</b>
           ${a.limits ? `<span>${esc(a.limits)}</span>` : ""}
           ${a.detail ? `<div class="small">${a.detail.map(esc).join(" ")}</div>` : ""}</div></div>`).join("")}
       </header>
@@ -391,7 +398,7 @@
       ${day.notes.length ? `
       <section class="section">
         <div class="section-head"><h2>หมายเหตุของวัน</h2></div>
-        ${day.notes.map((nt) => `<div class="alert tip reveal"><span class="a-icon">💡</span><div><b>${esc(nt.name)}</b>
+        ${day.notes.map((nt) => `<div class="alert tip reveal"><span class="a-icon" aria-hidden="true">💡</span><div><b>${esc(nt.name)}</b>
           ${nt.hours ? `<div class="small">🕘 ${esc(nt.hours)}</div>` : ""}
           ${nt.limits ? `<div class="small">📌 ${esc(nt.limits)}</div>` : ""}
           ${nt.detail ? `<div class="small">${nt.detail.map(telLinks).join(" ")}</div>` : ""}</div></div>`).join("")}
@@ -513,7 +520,7 @@
       <nav class="seg" aria-label="หมวดคู่มือ">
         ${GUIDES.map(([k, label]) => `<a href="#/guide/${k}" ${k === key ? 'aria-current="page"' : ""}>${esc(label)}</a>`).join("")}
       </nav>
-      <input class="search" type="search" placeholder="ค้นหา เช่น ramen, Kamakura, ปิดวันพุธ" aria-label="ค้นหาในคู่มือ" id="gsearch">
+      <input class="search" type="search" placeholder="ค้นหา เช่น ramen, Kamakura, ปิดวันพุธ" aria-label="ค้นหาในคู่มือ" id="gsearch" enterkeyhint="search" autocomplete="off">
       ${key === "pretrip" && trip.packing.length ? `
         <details class="card group" open>
           <summary>🧳 ของที่ต้องเตรียม <small>${trip.packing.length} รายการ</small></summary>
@@ -615,6 +622,7 @@
     clearInterval(countdownTimer);
     const [, page, arg] = (location.hash || "#/").replace(/^#\/?/, "/").split("/");
     let tab = "home";
+    const first = !route.done; route.done = true;
     if (page === "day") { renderDay(Number(arg) || 1); tab = "day"; }
     else if (page === "parking") { renderParking(arg); tab = "parking"; }
     else if (page === "guide") { renderGuide(arg); tab = "guide"; }
@@ -624,7 +632,21 @@
     $$(".tabbar a").forEach((a) => a.toggleAttribute("aria-current", a.dataset.tab === tab));
     $$(".tabbar a[aria-current]").forEach((a) => a.setAttribute("aria-current", "page"));
     window.scrollTo({ top: 0, behavior: "instant" });
+    const h1 = $("h1", main);
+    document.title = tab === "home" ? "Japan 2026 · 晩秋の旅" : `${h1 ? h1.textContent.trim() : ""} · Japan 2026`;
+    // Announce the new view to screen readers; skip on first load so focus starts at the top.
+    if (!first) main.focus({ preventScroll: true });
+    watchHero();
     observeReveal();
+  }
+
+  let heroIo = null;
+  function watchHero() {
+    heroIo?.disconnect();
+    const hero = $(".hero");
+    if (!hero || !("IntersectionObserver" in window)) return;
+    heroIo = new IntersectionObserver(([en]) => hero.classList.toggle("paused", !en.isIntersecting));
+    heroIo.observe(hero);
   }
 
   let io = null;
@@ -645,6 +667,7 @@
       const d = more.previousElementSibling;
       const open = d.classList.toggle("clamp");
       more.textContent = open ? "อ่านต่อ ▾" : "ย่อ ▴";
+      more.setAttribute("aria-expanded", String(!open));
     }
     const btn = e.target.closest(".btn");
     if (btn) {
@@ -703,8 +726,9 @@
       route();
     })
     .catch(() => {
-      main.innerHTML = `<div class="empty"><p>โหลดข้อมูลไม่สำเร็จ 😢</p><p class="small">ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่</p>
-        <button class="btn btn-primary" style="margin-top:12px" onclick="location.reload()">ลองอีกครั้ง</button></div>`;
+      main.innerHTML = `<div class="empty" role="alert"><p>โหลดข้อมูลไม่สำเร็จ 😢</p><p class="small">ตรวจสอบอินเทอร์เน็ตแล้วลองใหม่</p>
+        <button class="btn btn-primary" style="margin-top:12px" type="button" id="retryBtn">ลองอีกครั้ง</button></div>`;
+      $("#retryBtn").addEventListener("click", () => location.reload());
     });
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
