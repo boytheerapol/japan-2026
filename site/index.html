@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Japan 2026 · 晩秋の旅</title>
+  <meta name="description" content="โปรแกรมทริปญี่ปุ่น 29 ต.ค. – 8 พ.ย. 2026 · ฟูจิ ชิซุโอกะ อิซุ คามาคุระ โตเกียว">
+  <meta name="theme-color" content="#f6f0e4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16120f" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Japan 2026 · 晩秋の旅">
+  <meta property="og:description" content="11 วัน 10 คืน · ฟูจิ ชิซุโอกะ อิซุ คามาคุระ โตเกียว">
+  <meta property="og:image" content="https://boytheerapol.github.io/japan-2026/icons/og.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Japan 2026">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Serif+Thai:wght@600;700&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">ข้ามไปเนื้อหา</a>
+
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#/" aria-label="หน้าแรก">
+      <span class="brand-mark" aria-hidden="true">旅</span>
+      <span class="brand-text">JAPAN <b>2026</b></span>
+    </a>
+    <div class="top-actions">
+      <button class="mode-toggle" id="modeToggle" type="button" aria-pressed="false">
+        <span class="mode-icon" aria-hidden="true">🚗</span>
+        <span class="mode-label">โหมดคนขับ</span>
+      </button>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="สลับธีมสว่าง/มืด">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="offline-pill" id="offlinePill" hidden>ออฟไลน์ · ใช้ข้อมูลที่บันทึกไว้</div>
+
+  <main id="main" tabindex="-1">
+    <div class="loading" id="loading">
+      <div class="loading-fuji" aria-hidden="true"></div>
+      <p>กำลังโหลดโปรแกรม…</p>
+    </div>
+  </main>
+
+  <nav class="tabbar" id="tabbar" aria-label="เมนูหลัก">
+    <a href="#/" data-tab="home"><span aria-hidden="true">⛩️</span><small>หน้าแรก</small></a>
+    <a href="#/day/1" data-tab="day"><span aria-hidden="true">🗓️</span><small>รายวัน</small></a>
+    <a href="#/parking" data-tab="parking" class="driver-only"><span aria-hidden="true">🅿️</span><small>ที่จอด</small></a>
+    <a href="#/guide/food" data-tab="guide"><span aria-hidden="true">🍡</span><small>คู่มือ</small></a>
+    <a href="#/share" data-tab="share"><span aria-hidden="true">📲</span><small>แชร์</small></a>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="leaf" viewBox="0 0 100 100">
+      <path d="M50 4 58 30 79 17 72 41 96 44 76 58 86 76 61 68 53 92 51 99 49 99 47 92 39 68 14 76 24 58 4 44 28 41 21 17 42 30Z"/>
+    </symbol>
+  </svg>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

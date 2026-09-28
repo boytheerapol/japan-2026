@@ -1,0 +1,7 @@
+# Source workbooks hold booking numbers and real spend — never publish them.
+source/*.xlsx
+source/*.docx
+*.xlsx
+*.docx
+__pycache__/
+.DS_Store
