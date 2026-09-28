@@ -2,7 +2,10 @@
 """Convert the trip Excel workbook into site/data/trip.json.
 
 Usage:
-    python3 scripts/build_data.py [path/to/itinerary.xlsx]
+    python3 scripts/build_data.py ["/path/to/any name.xlsx"]
+
+Without an argument the workbook is read from source/itinerary.xlsx.
+The Word itinerary is not read; its text lives in source/day_meta.json.
 
 The workbook itself is NOT committed (it holds booking numbers and real
 spend). Only the sanitized JSON produced here is published. The script
@@ -330,7 +333,9 @@ def read_table(wb, sheet: str, cols: dict[str, str], group_col: str = "A") -> li
 def main() -> None:
     xlsx = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_XLSX
     if not xlsx.exists():
-        fail(f"workbook not found: {xlsx}")
+        fail(f"workbook not found: {xlsx}\n"
+             f"  Either pass the path:  python3 scripts/build_data.py \"/path/to/Itinerary Plan.xlsx\"\n"
+             f"  or copy it to:         {DEFAULT_XLSX.relative_to(ROOT)}")
     wb = openpyxl.load_workbook(xlsx)
     check_layout(wb)
     meta = json.loads(META_JSON.read_text(encoding="utf-8"))
