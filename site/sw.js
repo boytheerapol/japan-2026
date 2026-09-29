@@ -1,5 +1,5 @@
 /* Offline support: app shell is stale-while-revalidate, trip data is network-first. */
-const VERSION = "jp26-v2";
+const VERSION = "jp26-v3";
 const SHELL = [
   "./", "index.html", "styles.css", "app.js", "manifest.webmanifest",
   "data/trip.json", "icons/icon.svg", "icons/icon-192.png", "icons/qr.svg",

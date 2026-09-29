@@ -346,7 +346,7 @@ def main() -> None:
     parking = read_parking(wb, days)
     for n, day in days.items():
         extra = meta["days"].get(str(n), {})
-        day.update({k: extra[k] for k in ("title", "subtitle", "intro") if k in extra})
+        day.update({k: extra[k] for k in ("title", "subtitle", "intro", "photos") if k in extra})
         day["budgetYen"] = sum(i.get("yen", 0) for i in day["items"])
         if not day["items"]:
             fail(f"Day {n} has no checklist items")

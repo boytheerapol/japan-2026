@@ -358,6 +358,57 @@
     </section>`;
   }
 
+  /* ---------- day photos + lightbox ---------- */
+  const GALLERY_MAX = 3; // 1 large + 2 small; any extra photos are reachable in the lightbox
+  let lbPhotos = [], lbIndex = 0;
+
+  function galleryHtml(day) {
+    const photos = day.photos || [];
+    if (!photos.length) return "";
+    const extra = photos.length - GALLERY_MAX;
+    return `
+      <div class="gallery">
+        ${photos.slice(0, GALLERY_MAX).map((p, i) => {
+          const src = esc(p.src);
+          const srcset = `${src}-600.webp 600w, ${src}-1200.webp 1200w`;
+          const attrs = i === 0
+            ? `sizes="(min-width: 560px) 480px, 100vw" fetchpriority="high"`
+            : `sizes="(min-width: 560px) 240px, 50vw" loading="lazy"`;
+          return `<button type="button" class="g-photo" data-photo="${i}">
+            <span class="sr-only">ขยายภาพ: </span>
+            <img src="${src}-${i ? 600 : 1200}.webp" srcset="${srcset}" ${attrs} width="${Number(p.w) || ""}" height="${Number(p.h) || ""}" decoding="async" alt="${esc(p.alt)}">
+            <span class="g-cap" aria-hidden="true">${esc(p.caption)}</span>
+            ${i === GALLERY_MAX - 1 && extra > 0 ? `<span class="g-more">+${extra}</span>` : ""}
+          </button>`;
+        }).join("")}
+      </div>`;
+  }
+
+  function showPhoto(i) {
+    lbIndex = (i + lbPhotos.length) % lbPhotos.length;
+    const p = lbPhotos[lbIndex];
+    const img = $("#lbImg");
+    img.src = `${p.src}-1200.webp`;
+    img.alt = p.alt;
+    // restart the fade-in for each photo
+    img.style.animation = "none"; void img.offsetWidth; img.style.animation = "";
+    $("#lbCap").textContent = p.caption;
+    $("#lbAlt").textContent = p.alt;
+    const credit = $("#lbCredit");
+    credit.textContent = p.credit;
+    if (safeUrl(p.url)) credit.href = p.url; else credit.removeAttribute("href");
+    $("#lbCount").textContent = `${lbIndex + 1} / ${lbPhotos.length}`;
+    $$(".lb-prev, .lb-next").forEach((b) => { b.hidden = lbPhotos.length < 2; });
+  }
+
+  function openLightbox(photos, i) {
+    const dlg = $("#lightbox");
+    if (!photos.length || typeof dlg.showModal !== "function") return;
+    lbPhotos = photos;
+    showPhoto(i);
+    if (!dlg.open) dlg.showModal();
+  }
+
   function renderDay(n) {
     const day = trip.days.find((d) => d.n === n) || trip.days[0];
     store.set("jp26-day", String(day.n));
@@ -377,6 +428,7 @@
         <h1>${esc(day.title || day.route)}</h1>
         <p class="subtitle">${esc(day.subtitle || day.route)}</p>
         ${day.intro ? `<p class="intro">${esc(day.intro)}</p>` : ""}
+        ${galleryHtml(day)}
         <div class="facts">
           <div class="card fact"><small>ออกเดินทาง</small><b>${esc(day.depart)}</b></div>
           <div class="card fact"><small>การเดินทาง</small><b>${esc(day.drive)}</b></div>
@@ -421,6 +473,7 @@
 
     const active = $(".daynav [aria-current]");
     if (active) active.scrollIntoView({ inline: "center", block: "nearest" });
+    $$("[data-photo]").forEach((b) => b.addEventListener("click", () => openLightbox(day.photos, Number(b.dataset.photo))));
     enableSwipe(day.n);
   }
 
@@ -428,7 +481,7 @@
     const view = $("#dayView");
     let x0 = null, y0 = null;
     view.addEventListener("touchstart", (e) => {
-      if (e.target.closest(".daynav, .stops, a, button")) { x0 = null; return; }
+      if (e.target.closest(".daynav, .stops, .gallery, a, button")) { x0 = null; return; }
       x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
     }, { passive: true });
     view.addEventListener("touchend", (e) => {
@@ -620,6 +673,7 @@
   /* ---------- router ---------- */
   function route() {
     clearInterval(countdownTimer);
+    if ($("#lightbox").open) $("#lightbox").close();
     const [, page, arg] = (location.hash || "#/").replace(/^#\/?/, "/").split("/");
     let tab = "home";
     const first = !route.done; route.done = true;
@@ -698,6 +752,28 @@
     applyTheme(next);
     store.set("jp26-theme", next);
   });
+
+  {
+    const dlg = $("#lightbox");
+    dlg.addEventListener("click", (e) => {
+      const b = e.target.closest("[data-lb]");
+      if (b) { if (b.dataset.lb === "close") dlg.close(); else showPhoto(lbIndex + Number(b.dataset.lb)); }
+      else if (e.target === dlg || e.target.tagName === "FIGURE") dlg.close(); // tap outside the photo
+    });
+    dlg.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") showPhoto(lbIndex + 1);
+      else if (e.key === "ArrowLeft") showPhoto(lbIndex - 1);
+    });
+    let x0 = null, y0 = null;
+    dlg.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    dlg.addEventListener("touchend", (e) => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) showPhoto(lbIndex + (dx < 0 ? 1 : -1));
+      else if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.5) dlg.close(); // swipe down to dismiss
+      x0 = null;
+    }, { passive: true });
+  }
 
   window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();

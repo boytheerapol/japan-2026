@@ -12,10 +12,11 @@ Static site บน GitHub Pages — HTML/CSS/JS ล้วน ไม่มีข�
 
 ## โครงสร้าง
 ```
-source/day_meta.json         ชื่อวันภาษาไทย + intro + รายการของที่ต้องเตรียม (อยู่ใน repo แก้ด้วยมือได้)
+source/day_meta.json         ชื่อวันภาษาไทย + intro + รูปไฮไลท์ของแต่ละวัน + รายการของที่ต้องเตรียม (อยู่ใน repo แก้ด้วยมือได้)
 source/itinerary.xlsx        ไฟล์ Excel ของคุณ — ไม่มีใน repo (ดูหัวข้อถัดไป)
 scripts/build_data.py        แปลง Excel → site/data/trip.json (ตัดข้อมูลส่วนตัวออก)
 site/                        ตัวเว็บที่ deploy
+site/img/days/               รูปไฮไลท์รายวัน (WebP 600/1200px) จาก Wikimedia Commons — เครดิตและลิขสิทธิ์อยู่ใน day_meta.json
 .github/workflows/pages.yml  push เข้า main แล้ว deploy อัตโนมัติ
 ```
 

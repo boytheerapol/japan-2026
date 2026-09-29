@@ -60,6 +60,20 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <dialog class="lightbox" id="lightbox" aria-label="ภาพไฮไลท์ของวัน">
+    <span class="lb-count" id="lbCount" aria-live="polite"></span>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption>
+        <b id="lbCap"></b><span id="lbAlt" aria-hidden="true"></span>
+        <small>ภาพ: <a id="lbCredit" target="_blank" rel="noopener"></a></small>
+      </figcaption>
+    </figure>
+    <button class="lb-btn lb-prev" type="button" data-lb="-1" aria-label="ภาพก่อนหน้า">‹</button>
+    <button class="lb-btn lb-next" type="button" data-lb="1" aria-label="ภาพถัดไป">›</button>
+    <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="ปิด">✕</button>
+  </dialog>
+
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="leaf" viewBox="0 0 100 100">
       <path d="M50 4 58 30 79 17 72 41 96 44 76 58 86 76 61 68 53 92 51 99 49 99 47 92 39 68 14 76 24 58 4 44 28 41 21 17 42 30Z"/>

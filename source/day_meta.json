@@ -1,62 +1,117 @@
 {
-  "_comment": "Narrative text for each day, taken from the Word itinerary (v4). Edit by hand; build_data.py merges it into site/data/trip.json.",
+  "_comment": "Narrative text for each day, taken from the Word itinerary (v4). Edit by hand; build_data.py merges it into site/data/trip.json. Each day's photos: src is a path prefix; the site loads <src>-600.webp and <src>-1200.webp. The first photo is the large one.",
   "tagline": "29 ตุลาคม – 8 พฤศจิกายน 2026  ·  11 วัน 10 คืน",
   "overview": "เส้นทางนี้เริ่มจากการขับรถจากนาริตะสู่บริเวณภูเขาไฟฟูจิ ลัดเลาะลงสู่อ่าวซูรูกะและคาบสมุทรอิซุ แวะเมืองวัดเก่าคามาคุระ แล้วปิดท้ายด้วยสามวันในโตเกียว โปรแกรมเน้นวิวธรรมชาติ อาหารท้องถิ่น และจุดชมแสงเช้าหรือแสงเย็นที่เหมาะกับช่วงปลายฤดูใบไม้ร่วง",
   "days": {
     "1": {
       "title": "จากนาริตะสู่ทะเลสาบคาวากุจิ",
       "subtitle": "Narita → Kawaguchiko",
-      "intro": "เริ่มทริปด้วยการรับรถที่นาริตะ แล้วมุ่งสู่เชิงภูเขาไฟฟูจิให้ทันแสงเย็น ก่อนปิดวันด้วยอาหารท้องถิ่นและออนเซ็นริมทะเลสาบ"
+      "intro": "เริ่มทริปด้วยการรับรถที่นาริตะ แล้วมุ่งสู่เชิงภูเขาไฟฟูจิให้ทันแสงเย็น ก่อนปิดวันด้วยอาหารท้องถิ่นและออนเซ็นริมทะเลสาบ",
+      "photos": [
+        {"src": "img/days/d1-kawaguchiko", "w": 1200, "h": 732, "caption": "ทะเลสาบคาวากุจิ", "alt": "ใบเมเปิลสีแดงริมทะเลสาบคาวากุจิ มีภูเขาไฟฟูจิอยู่ด้านหลัง", "credit": "Moyan Brenn from Italy · CC BY 2.0", "url": "https://commons.wikimedia.org/wiki/File:Lake_Kawaguchiko_and_Mount_Fuji_at_sunset_during_the_Momijigari_period.jpg"},
+        {"src": "img/days/d1-ropeway", "w": 1200, "h": 928, "caption": "Mt. Fuji Panoramic Ropeway", "alt": "ทางเดินชมวิวบนยอดเขาเท็นโจ มองลงไปเห็นทะเลสาบคาวากุจิยามเย็น", "credit": "sergejf · CC BY 2.0", "url": "https://commons.wikimedia.org/wiki/File:Mt._Fuji_Panoramic_Ropeway.jpg"},
+        {"src": "img/days/d1-ubuyagasaki", "w": 1200, "h": 798, "caption": "Ubuyagasaki Cape", "alt": "แหลมอุบุยะกะซากิยื่นลงทะเลสาบ มีภูเขาไฟฟูจิอยู่ไกลๆ", "credit": "DimiTalen · CC0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_behind_Ubuyagasaki,_Fujikawaguchiko,_2016.jpg"}
+      ]
     },
     "2": {
       "title": "หนึ่งวันรอบฟูจิทั้งห้าทะเลสาบ",
       "subtitle": "Misaka → Fujiyoshida → Yamanakako",
-      "intro": "วนรอบฟูจิผ่านสันเขามิซากะ เมืองเก่าฟูจิโยชิดะ และทะเลสาบยามานากะ โดยวางจุดชมแสงเย็นไว้ที่ Myojinyama Panorama-dai"
+      "intro": "วนรอบฟูจิผ่านสันเขามิซากะ เมืองเก่าฟูจิโยชิดะ และทะเลสาบยามานากะ โดยวางจุดชมแสงเย็นไว้ที่ Myojinyama Panorama-dai",
+      "photos": [
+        {"src": "img/days/d2-panoramadai", "w": 1200, "h": 801, "caption": "Panorama-dai", "alt": "ป้ายจุดชมวิวพาโนรามาไดกับภูเขาไฟฟูจิและทะเลสาบยามานากะ", "credit": "Alpsdake · CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_panoramadai.jpg"},
+        {"src": "img/days/d2-tenkachaya", "w": 1200, "h": 800, "caption": "วิวจาก Tenka Chaya", "alt": "ภูเขาไฟฟูจิและทะเลสาบคาวากุจิมองจากช่องเขามิซากะ", "credit": "Alpsdake · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Tenkachaya.jpg"},
+        {"src": "img/days/d2-fujiyoshida", "w": 1200, "h": 800, "caption": "ถนนสู่ฟูจิ Fujiyoshida", "alt": "ถนนในเมืองฟูจิโยชิดะที่มีภูเขาไฟฟูจิอยู่ปลายถนน", "credit": "Ximonic (Simo Räsänen) · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Street_towards_Fuji_in_Shimoyoshida_3_in_Fujiyoshida,_Yamanashi,_Japan,_2024_May_-_3.jpg"}
+      ]
     },
     "3": {
       "title": "จากหมู่บ้านหลังคาฟางสู่ไร่ชาแห่งชิซูโอกะ",
       "subtitle": "Kawaguchiko → Saiko → Fujinomiya → Shizuoka",
-      "intro": "เก็บวิวฟูจิจากทะเลสาบฝั่งตะวันตก ก่อนลงใต้สู่ศาลเจ้าใหญ่และไร่ชา Obuchi Sasaba แล้วเข้าพักใจกลางชิซูโอกะ"
+      "intro": "เก็บวิวฟูจิจากทะเลสาบฝั่งตะวันตก ก่อนลงใต้สู่ศาลเจ้าใหญ่และไร่ชา Obuchi Sasaba แล้วเข้าพักใจกลางชิซูโอกะ",
+      "photos": [
+        {"src": "img/days/d3-obuchi", "w": 1200, "h": 800, "caption": "Obuchi Sasaba", "alt": "ไร่ชาเขียวเป็นขั้นบันไดกับภูเขาไฟฟูจิที่โอบุจิซาซาบะ", "credit": "SHori · CC BY 4.0", "url": "https://commons.wikimedia.org/wiki/File:Obuchi_Sasaba_cropped_Obuchi_Sasaba.jpg"},
+        {"src": "img/days/d3-motosu", "w": 1200, "h": 800, "caption": "Lake Motosu", "alt": "ภูเขาไฟฟูจิเหนือทะเลสาบโมโตสึ มีใบไม้สีส้มด้านหน้า", "credit": "Supanut Arunoprayote · CC BY 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Lake_Motosu_20241026.jpg"},
+        {"src": "img/days/d3-nenba", "w": 1200, "h": 800, "caption": "Iyashi-no-Sato Nenba", "alt": "บ้านหลังคาฟางในหมู่บ้านเนมบะกับภูเขาไฟฟูจิ", "credit": "Davide Mauro · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Iyashinosato_village_04.jpg"}
+      ]
     },
     "4": {
       "title": "ทะเล อาหาร และวิวฟูจิแห่งชิซูโอกะ",
       "subtitle": "Shimizu → Satta Pass → Miho → Nihondaira",
-      "intro": "วันแห่งอาหารทะเลและทิวทัศน์คลาสสิกของชิซูโอกะ ตั้งแต่ตลาดท่าเรือ ทางผ่านซัตตะ ชายฝั่งสน และระเบียงชมวิวบน Nihondaira"
+      "intro": "วันแห่งอาหารทะเลและทิวทัศน์คลาสสิกของชิซูโอกะ ตั้งแต่ตลาดท่าเรือ ทางผ่านซัตตะ ชายฝั่งสน และระเบียงชมวิวบน Nihondaira",
+      "photos": [
+        {"src": "img/days/d4-satta", "w": 1200, "h": 797, "caption": "Satta Pass", "alt": "ทางเดินบนช่องเขาซัตตะ มองเห็นอ่าวซุรุกะและภูเขาไฟฟูจิ", "credit": "bluXgraphics · CC BY-SA 2.0", "url": "https://commons.wikimedia.org/wiki/File:Satta_Pass_and_Mount_Fuji_-_Dec_27,_2011.jpg"},
+        {"src": "img/days/d4-miho", "w": 1200, "h": 800, "caption": "Miho no Matsubara", "alt": "ชายหาดมิโฮะที่มีคลื่นซัด กับภูเขาไฟฟูจิด้านหลัง", "credit": "Suicasmo · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_and_Miho_no_Matsubara_20170211.jpg"},
+        {"src": "img/days/d4-nihondaira", "w": 1200, "h": 800, "caption": "Nihondaira", "alt": "ท่าเรือชิมิซุและภูเขาไฟฟูจิมองจากเนินนิฮงไดระ", "credit": "Σ64 · CC BY 3.0", "url": "https://commons.wikimedia.org/wiki/File:Mt.Fuji_from_Nihondaira_02.jpg"}
+      ]
     },
     "5": {
       "title": "จากท่าเรือนุมะซุสู่เมืองออนเซ็นชูเซ็นจิ",
       "subtitle": "Shizuoka → Numazu → Izu Panorama Park → Shuzenji",
-      "intro": "เดินทางเข้าสู่อิซุผ่านจุดชมฟูจิริมทาง ท่าเรือนุมะซุ และกระเช้าสู่ Ao Terrace ก่อนพักในเมืองออนเซ็นเก่าแก่"
+      "intro": "เดินทางเข้าสู่อิซุผ่านจุดชมฟูจิริมทาง ท่าเรือนุมะซุ และกระเช้าสู่ Ao Terrace ก่อนพักในเมืองออนเซ็นเก่าแก่",
+      "photos": [
+        {"src": "img/days/d5-katsuragi", "w": 1200, "h": 800, "caption": "Izu Panorama Park", "alt": "ภูเขาไฟฟูจิมองจากยอดเขาคัตสึรางิ ที่ตั้งของ Izu Panorama Park", "credit": "Alpsdake · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Mount_Katsuragi.jpg"},
+        {"src": "img/days/d5-numazu", "w": 1200, "h": 900, "caption": "ท่าเรือนุมะซุ", "alt": "เรือประมงจอดเรียงกันที่ท่าเรือนุมะซุ", "credit": "Syced · CC0", "url": "https://commons.wikimedia.org/wiki/File:Numazu_port_(75199).jpg"},
+        {"src": "img/days/d5-chikurin", "w": 1200, "h": 900, "caption": "Chikurin no Komichi", "alt": "ทางเดินปูหินผ่านป่าไผ่ในเมืองออนเซ็นชูเซ็นจิ", "credit": "Batholith · Public domain", "url": "https://commons.wikimedia.org/wiki/File:Chikurin-no-komichi_20110919.jpg"}
+      ]
     },
     "6": {
       "title": "เลียบชายฝั่งตะวันตกของอิซุ",
       "subtitle": "Shuzenji → Nishi-Izu → Dogashima → Shimoda",
-      "intro": "ขับเลียบหน้าผาและอ่าวเล็กของ Nishi-Izu แวะจุดชมวิวที่เห็นฟูจิเหนือทะเล ก่อนรอแสงสีทองที่ชายฝั่งและข้ามเขาไปชิโมดะ"
+      "intro": "ขับเลียบหน้าผาและอ่าวเล็กของ Nishi-Izu แวะจุดชมวิวที่เห็นฟูจิเหนือทะเล ก่อนรอแสงสีทองที่ชายฝั่งและข้ามเขาไปชิโมดะ",
+      "photos": [
+        {"src": "img/days/d6-darumayama", "w": 1200, "h": 800, "caption": "Darumayama", "alt": "ภูเขาไฟฟูจิเหนืออ่าวซุรุกะ มองจากที่ราบสูงดารุมะยามะ", "credit": "Alpsdake · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Darumayama_Highland.jpg"},
+        {"src": "img/days/d6-dogashima", "w": 1200, "h": 800, "caption": "Dogashima", "alt": "เกาะหินกลางทะเลสีฟ้าที่โดกาชิมะ", "credit": "Batholith · Public domain", "url": "https://commons.wikimedia.org/wiki/File:Dogashima_20121019.jpg"},
+        {"src": "img/days/d6-kumomi", "w": 1200, "h": 800, "caption": "Kumomi", "alt": "หมู่บ้านชายทะเลคุโมมิท่ามกลางภูเขา", "credit": "Alpsdake · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Kumomi_Onsen_from_Mount_Eboshi.jpg"}
+      ]
     },
     "7": {
       "title": "จากเมืองท่าชิโมดะสู่น้ำตกคาวาซุและคามาคุระ",
       "subtitle": "Shimoda → Kawazu Nanadaru → Kamakura",
-      "intro": "เริ่มเช้าที่หาดชิราฮามะและมุมสูงเหนืออ่าวชิโมดะ จากนั้นขึ้นเขาสู่เส้นทางน้ำตกคาวาซุ ก่อนขับยาวถึงชายฝั่งคามาคุระ"
+      "intro": "เริ่มเช้าที่หาดชิราฮามะและมุมสูงเหนืออ่าวชิโมดะ จากนั้นขึ้นเขาสู่เส้นทางน้ำตกคาวาซุ ก่อนขับยาวถึงชายฝั่งคามาคุระ",
+      "photos": [
+        {"src": "img/days/d7-kawazu", "w": 1200, "h": 800, "caption": "Kawazu Seven Waterfalls", "alt": "น้ำตกโอดารุ น้ำตกใหญ่ที่สุดในเส้นทางน้ำตกทั้งเจ็ดของคาวาซุ", "credit": "Osumi Akari · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Odaru_Fall_in_Kawazu_Seven_Falls.jpg"},
+        {"src": "img/days/d7-shirahama", "w": 1200, "h": 798, "caption": "Shirahama Beach", "alt": "หาดทรายขาวชิราฮามะในชิโมดะ", "credit": "Saigen Jiro · CC0", "url": "https://commons.wikimedia.org/wiki/File:Shirahama-kaigan_(Izu).JPG"},
+        {"src": "img/days/d7-shichirigahama", "w": 1200, "h": 800, "caption": "Shichirigahama", "alt": "ชายหาดทรายดำชิจิริกาฮามะ มองเห็นเกาะเอโนชิมะ", "credit": "663highland · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:230128_At_Shichirigahama_Kamakura_Kanagawa_pref_Japan02s3.jpg"}
+      ]
     },
     "8": {
       "title": "วัดเก่าและถนนคนเดินแห่งคามาคุระ",
       "subtitle": "Kamakura → Ikebukuro → Narita car return",
-      "intro": "ชมพระใหญ่และวัดบนเนินเขา เดินผ่านศาลเจ้าและถนนคนเดิน ก่อนย้ายเข้าโตเกียวและนำรถเช่ากลับไปคืนที่นาริตะ"
+      "intro": "ชมพระใหญ่และวัดบนเนินเขา เดินผ่านศาลเจ้าและถนนคนเดิน ก่อนย้ายเข้าโตเกียวและนำรถเช่ากลับไปคืนที่นาริตะ",
+      "photos": [
+        {"src": "img/days/d8-daibutsu", "w": 1200, "h": 800, "caption": "Kamakura Daibutsu", "alt": "พระพุทธรูปองค์ใหญ่แห่งคามาคุระที่วัดโคโตกุอิน", "credit": "Ray in Manila · CC BY 2.0", "url": "https://commons.wikimedia.org/wiki/File:The_Great_Buddha_of_Kamakura_(Daibutsu).jpg"},
+        {"src": "img/days/d8-hasedera", "w": 1200, "h": 800, "caption": "Hase-dera", "alt": "อาคารวัดฮาเสะเดระกับโคมหิน", "credit": "663highland · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:230128_Hasedera_Kamakura_Kanagawa_pref_Japan04s3.jpg"},
+        {"src": "img/days/d8-tsurugaoka", "w": 1200, "h": 796, "caption": "Tsurugaoka Hachiman-gu", "alt": "บันไดและอาคารสีแดงของศาลเจ้าสึรุงาโอกะฮาจิมังกู", "credit": "Ocdp · CC0", "url": "https://commons.wikimedia.org/wiki/File:Tsurugaoka_Hachimangu_001.jpg"}
+      ]
     },
     "9": {
       "title": "โตเกียวตะวันออก จากตลาดเช้าสู่ดาดฟ้าชิบูยะ",
       "subtitle": "Tsukiji → Ginza → Azabudai → Shibuya → Tsukishima",
-      "intro": "เปลี่ยนจังหวะเข้าสู่โตเกียว เริ่มจากตลาดเช้าและย่านกินซ่า ต่อด้วยศิลปะดิจิทัล ก่อนชมเมืองยามพระอาทิตย์ตกจาก Shibuya Sky"
+      "intro": "เปลี่ยนจังหวะเข้าสู่โตเกียว เริ่มจากตลาดเช้าและย่านกินซ่า ต่อด้วยศิลปะดิจิทัล ก่อนชมเมืองยามพระอาทิตย์ตกจาก Shibuya Sky",
+      "photos": [
+        {"src": "img/days/d9-shibuyasky", "w": 1200, "h": 730, "caption": "Shibuya Sky", "alt": "มุมกระจกบนดาดฟ้า Shibuya Sky มองเห็นเมืองโตเกียว", "credit": "Kakidai · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Shibuya_Scramble_Square_-_SHIBUYA_SKY_10.jpg"},
+        {"src": "img/days/d9-tsukiji", "w": 1200, "h": 900, "caption": "Tsukiji Outer Market", "alt": "แผงอาหารทะเลสดในตลาดนอกซึกิจิ", "credit": "Aw1805 · CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Tsukiji_Outer_Market_2.jpg"},
+        {"src": "img/days/d9-scramble", "w": 1200, "h": 800, "caption": "Shibuya Scramble", "alt": "ทางม้าลายชิบุยะตอนค่ำกับป้ายไฟ", "credit": "Benh LIEU SONG (Flickr) · CC BY-SA 2.0", "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Shibuya_Scramble_Crossing_2018-10-09.jpg"}
+      ]
     },
     "10": {
       "title": "โตเกียวคลาสสิกและแสงสีชินจูกุ",
       "subtitle": "Asakusa → Ueno → Harajuku → Shinjuku",
-      "intro": "ออกเช้าเพื่อพบ Asakusa ก่อนฝูงชน แล้วข้ามเมืองผ่านตลาดและศาลเจ้ากลางป่า ปิดวันด้วยวิวเมืองและแสงไฟแห่งชินจูกุ"
+      "intro": "ออกเช้าเพื่อพบ Asakusa ก่อนฝูงชน แล้วข้ามเมืองผ่านตลาดและศาลเจ้ากลางป่า ปิดวันด้วยวิวเมืองและแสงไฟแห่งชินจูกุ",
+      "photos": [
+        {"src": "img/days/d10-kaminarimon", "w": 1200, "h": 838, "caption": "Senso-ji · Kaminarimon", "alt": "ประตูคามินาริมงของวัดเซนโซจิ มีโคมแดงใหญ่ตรงกลาง", "credit": "Kakidai · CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Asakusa_Sensoji_Kaminarimon_2012.JPG"},
+        {"src": "img/days/d10-tocho", "w": 1200, "h": 900, "caption": "TOKYO Night & Light", "alt": "ภาพฉายแสงสีบนผนังตึกโทโช ศาลาว่าการกรุงโตเกียว", "credit": "Insightwm · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Projection_show_at_the_Tokyo_Metropolitan_Government_Building.jpg"},
+        {"src": "img/days/d10-omoide", "w": 1200, "h": 900, "caption": "Omoide Yokocho", "alt": "ตรอกแคบของโอโมอิเดะโยโกโจ ประดับใบเมเปิลปลอมสีแดง", "credit": "Nesnad · CC BY 4.0", "url": "https://commons.wikimedia.org/wiki/File:Omoide_yokocho_2025_various_01.jpg"}
+      ]
     },
     "11": {
       "title": "เช้าวันกลับ จากอิเคะบุคุโระสู่นาริตะ",
       "subtitle": "Ikebukuro → Narita Terminal 2 → Don Mueang",
-      "intro": "ออกจากโรงแรมตั้งแต่เช้า นั่งรถบัสตรงสู่นาริตะ จัดการเรื่องคืนภาษีและเช็กอินให้เรียบร้อยก่อนบินกลับกรุงเทพฯ"
+      "intro": "ออกจากโรงแรมตั้งแต่เช้า นั่งรถบัสตรงสู่นาริตะ จัดการเรื่องคืนภาษีและเช็กอินให้เรียบร้อยก่อนบินกลับกรุงเทพฯ",
+      "photos": [
+        {"src": "img/days/d11-ikebukuro", "w": 1200, "h": 800, "caption": "Ikebukuro", "alt": "แสงไฟของย่านอิเคะบุคุโระยามค่ำ มองจากที่สูง", "credit": "Morio · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Ikebukuro_night_view_2015_July.jpg"},
+        {"src": "img/days/d11-narita", "w": 1200, "h": 800, "caption": "Narita Terminal 2", "alt": "อาคารผู้โดยสาร 2 ของสนามบินนาริตะ", "credit": "Banbam1029 · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Narita_Airport_Terminal_2_exterior.jpg"},
+        {"src": "img/days/d11-apron", "w": 1200, "h": 675, "caption": "ลานจอดเครื่องบิน Narita", "alt": "เครื่องบินจอดที่อาคาร 2 สนามบินนาริตะ", "credit": "LMP 2001 · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Narita_Terminal_2_main_building_as_seen_from_walkway_2023-06-30.jpg"}
+      ]
     }
   },
   "packing": [
