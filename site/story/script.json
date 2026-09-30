@@ -1,0 +1,679 @@
+{
+  "_comment": "Narration for /story/. Placeholders like {d1.sunset} / {d6.depart} are filled from data/trip.json at runtime. img keys resolve to img/<key>-600.webp and img/<key>-1200.webp. Coordinates are approximate and only drive the illustrative map.",
+  "nights": {
+    "0": [35.772, 140.393, "Narita"],
+    "1": [35.512, 138.76, "Kawaguchiko"],
+    "2": [35.512, 138.76, "Kawaguchiko"],
+    "3": [34.972, 138.389, "Shizuoka"],
+    "4": [34.972, 138.389, "Shizuoka"],
+    "5": [34.97, 138.927, "Shuzenji"],
+    "6": [34.69, 138.975, "Shimoda"],
+    "7": [35.319, 139.55, "Kamakura"],
+    "8": [35.729, 139.719, "Ikebukuro"],
+    "9": [35.729, 139.719, "Ikebukuro"],
+    "10": [35.729, 139.719, "Ikebukuro"],
+    "11": [35.772, 140.393, "Narita"]
+  },
+  "fuji": [35.3606, 138.7274],
+  "lakes": {
+    "Kawaguchiko": [[35.524, 138.715], [35.52, 138.735], [35.513, 138.752], [35.508, 138.772], [35.5, 138.79], [35.497, 138.787], [35.505, 138.768], [35.509, 138.75], [35.514, 138.73], [35.519, 138.714]],
+    "Yamanakako": [[35.432, 138.845], [35.425, 138.87], [35.416, 138.895], [35.402, 138.905], [35.398, 138.898], [35.41, 138.88], [35.417, 138.858], [35.425, 138.842]],
+    "Saiko": [[35.507, 138.655], [35.503, 138.68], [35.497, 138.705], [35.492, 138.703], [35.496, 138.68], [35.5, 138.657]],
+    "Shojiko": [[35.492, 138.6], [35.489, 138.615], [35.483, 138.617], [35.484, 138.603]],
+    "Motosuko": [[35.475, 138.58], [35.47, 138.598], [35.458, 138.6], [35.45, 138.588], [35.455, 138.572], [35.467, 138.57]]
+  },
+  "chapters": [
+    {
+      "id": "fuji",
+      "name": "ภาค 1 · ฟูจิ",
+      "jp": "富士",
+      "days": [1, 2, 3],
+      "color": "#d7372b",
+      "mood": "fuji"
+    },
+    {
+      "id": "suruga",
+      "name": "ภาค 2 · อ่าวซูรูกะ",
+      "jp": "駿河",
+      "days": [4],
+      "color": "#e07b00",
+      "mood": "sea"
+    },
+    {
+      "id": "izu",
+      "name": "ภาค 3 · อิซุ",
+      "jp": "伊豆",
+      "days": [5, 6, 7],
+      "color": "#0e9384",
+      "mood": "sea"
+    },
+    {
+      "id": "kamakura",
+      "name": "ภาค 4 · คามาคุระ",
+      "jp": "鎌倉",
+      "days": [8],
+      "color": "#7b4fc4",
+      "mood": "temple"
+    },
+    {
+      "id": "tokyo",
+      "name": "ภาค 5 · โตเกียว",
+      "jp": "東京",
+      "days": [9, 10, 11],
+      "color": "#2c6fd6",
+      "mood": "city"
+    }
+  ],
+  "intro": [
+    "ปลายตุลาคมนี้ พวกเรา 4 คนจะไปไล่ล่าวิวภูเขาไฟฟูจิกัน",
+    "11 วัน 10 คืน ขับรถเอง 8 วัน แล้วปิดท้ายด้วยโตเกียวอีก 2 วันเต็ม"
+  ],
+  "overview": [
+    "เราจะลงเครื่องที่ Narita รับรถ แล้วขับตรงขึ้นไปนอนริมทะเลสาบ Kawaguchiko",
+    "วนรอบฟูจิสองวัน ลงใต้ไปเจอทะเลที่ Shizuoka แล้ววนคาบสมุทร Izu จนสุดปลายที่ Shimoda",
+    "จากนั้นขึ้นเหนือไปไหว้พระใหญ่ที่ Kamakura คืนรถ แล้วเที่ยวโตเกียวด้วยรถไฟ",
+    "รวมระยะขับราว {km} กิโล และทุกเย็นเราจะมีนัดกับพระอาทิตย์ตก วันละหนึ่งจุด"
+  ],
+  "days": [
+    {
+      "n": 1,
+      "open": "วันแรก ลงเครื่อง 09:45 รับรถตอนเที่ยง แล้วซิ่งขึ้น Chuo Expressway ไปหาฟูจิ",
+      "spots": [
+        {
+          "name": "Mt. Fuji Panoramic Ropeway",
+          "jp": "河口湖天上山公園",
+          "lat": 35.502,
+          "lng": 138.769,
+          "img": "story/d1-ropeway",
+          "lines": [
+            "ถึง Kawaguchiko ก็ขึ้นกระเช้า Tenjo-yama ก่อนเลย",
+            "จากข้างบนจะเห็นฟูจิตั้งอยู่เหนือทะเลสาบเต็มตัว"
+          ]
+        },
+        {
+          "name": "Ubuyagasaki Cape",
+          "jp": "産屋ヶ崎",
+          "lat": 35.512,
+          "lng": 138.748,
+          "img": "story/d1-ubuyagasaki",
+          "golden": true,
+          "lines": [
+            "ลงมาแล้วรีบไปแหลม Ubuyagasaki รอดูฟูจิกลับหัวบนผิวน้ำ",
+            "พระอาทิตย์ตก {d1.sunset} ได้แสง blue hour พอดี"
+          ]
+        },
+        {
+          "name": "Hoto Fudou",
+          "jp": "ほうとう不動",
+          "lat": 35.498,
+          "lng": 138.781,
+          "img": "story/d1-hoto",
+          "lines": [
+            "มื้อเย็นกิน Hoto เส้นแบนหนาในซุปมิโสะฟักทอง ร้อนๆ ในตึกทรงก้อนเมฆ"
+          ]
+        }
+      ],
+      "close": "คืนนี้พักแยกสองโรงแรม Mifujien กับ Route Inn แช่ออนเซ็นแล้วนอนเร็ว เพราะเมื่อคืนแทบไม่ได้นอนบนเครื่อง"
+    },
+    {
+      "n": 2,
+      "open": "วันที่สอง วนรอบฟูจิทั้งวัน นัดรวมพลที่ล็อบบี้ Mifujien {d2.depart}",
+      "spots": [
+        {
+          "name": "Fujiyama Twin Terrace",
+          "jp": "ふじやまツインテラス",
+          "lat": 35.563,
+          "lng": 138.803,
+          "img": "story/d2-twinterrace",
+          "lines": [
+            "เริ่มที่ Fujiyama Twin Terrace ระเบียงไม้บนสันเขา Misaka",
+            "เห็นฟูจิกับทะเลสาบ Kawaguchi ในเฟรมเดียว"
+          ]
+        },
+        {
+          "name": "Tenka Chaya",
+          "jp": "天下茶屋",
+          "lat": 35.543,
+          "lng": 138.788,
+          "img": "days/d2-tenkachaya",
+          "lines": [
+            "แวะจิบชาที่ Tenka Chaya ร้านชาเก่าตั้งแต่ปี 1934",
+            "วิวตรงนี้ถูกยกเป็นหนึ่งในวิวฟูจิที่สวยที่สุดมาตั้งแต่สมัยก่อน"
+          ]
+        },
+        {
+          "name": "Honcho-dori, Fujiyoshida",
+          "jp": "本町通り",
+          "lat": 35.487,
+          "lng": 138.803,
+          "img": "story/d2-honcho",
+          "lines": [
+            "แล้วไปถ่ายรูปถนนเมืองเก่า Fujiyoshida ที่มีฟูจิตั้งอยู่ปลายถนน",
+            "ถ่ายจากเกาะกลางเท่านั้นนะ ห้ามลงไปยืนบนถนน"
+          ]
+        },
+        {
+          "name": "Yoshida Udon",
+          "jp": "吉田のうどん",
+          "lat": 35.482,
+          "lng": 138.806,
+          "img": "story/d2-udon",
+          "lines": [
+            "มื้อกลางวันลอง Yoshida Udon เส้นที่แข็งที่สุดในญี่ปุ่น เขียนชื่อรอคิวหน้าร้าน"
+          ]
+        },
+        {
+          "name": "Myojinyama Panorama-dai",
+          "jp": "明神山パノラマ台",
+          "lat": 35.428,
+          "lng": 138.899,
+          "img": "story/d2-panoramadai",
+          "golden": true,
+          "lines": [
+            "บ่ายเลาะทะเลสาบ Yamanaka แล้วขึ้นเขาไปรอพระอาทิตย์ตกที่ Panorama-dai",
+            "ฟูจิเต็มตัวลอยอยู่เหนือทะเลสาบ ตะวันตก {d2.sunset}"
+          ]
+        }
+      ],
+      "close": "ค่ำนี้กลับไปแช่ออนเซ็น แล้วหาอะไรอร่อยๆ กินในเมือง Kawaguchiko"
+    },
+    {
+      "n": 3,
+      "open": "วันที่สาม บอกลา Kawaguchiko ออก {d3.depart} ไล่เก็บทะเลสาบฝั่งตะวันตก แล้วลงใต้ไป Shizuoka",
+      "spots": [
+        {
+          "name": "Saiko Iyashi-no-Sato Nenba",
+          "jp": "西湖いやしの里根場",
+          "lat": 35.502,
+          "lng": 138.684,
+          "img": "days/d3-nenba",
+          "lines": [
+            "แวะหมู่บ้านหลังคาฟาง Nenba ริมทะเลสาบ Saiko",
+            "บ้านโบราณเรียงกัน มีฟูจิเป็นฉากหลัง คนไทยยังไปกันน้อย"
+          ]
+        },
+        {
+          "name": "Lake Motosu",
+          "jp": "本栖湖",
+          "lat": 35.462,
+          "lng": 138.588,
+          "img": "days/d3-motosu",
+          "lines": [
+            "ต่อที่ทะเลสาบ Motosu มุมเดียวกับฟูจิบนแบงก์ 1,000 เยนรุ่นก่อน",
+            "ใครไหวเดินขึ้น Nakanokura Pass ไปอีกหน่อย วิวจะยิ่งกว้าง"
+          ]
+        },
+        {
+          "name": "Fujisan Hongu Sengen Taisha",
+          "jp": "富士山本宮浅間大社",
+          "lat": 35.227,
+          "lng": 138.609,
+          "img": "story/d3-sengen",
+          "lines": [
+            "ลงมาที่ Fujinomiya กิน yakisoba ประจำเมือง",
+            "แล้วไหว้ศาลเจ้า Sengen Taisha ศาลเจ้าหลักของฟูจิ"
+          ]
+        },
+        {
+          "name": "Obuchi Sasaba",
+          "jp": "大淵笹場",
+          "lat": 35.207,
+          "lng": 138.672,
+          "img": "days/d3-obuchi",
+          "golden": true,
+          "lines": [
+            "เย็นนี้ไปไร่ชา Obuchi Sasaba แถวชาเขียวไล่ขึ้นไปหาฟูจิ",
+            "เป็นภาพที่อยากได้ที่สุดภาพหนึ่งของทริป ตะวันตก {d3.sunset}"
+          ]
+        },
+        {
+          "name": "Aoba Oden Gai",
+          "jp": "青葉おでん街",
+          "lat": 34.975,
+          "lng": 138.385,
+          "img": "story/d3-oden",
+          "lines": [
+            "เข้าเมือง Shizuoka แล้วเดินไปตรอก Aoba Oden Gai",
+            "โอเด้งน้ำซุปดำสไตล์ Shizuoka โรยผงปลากับผงอาโอโนริ"
+          ]
+        }
+      ],
+      "close": "สองคืนต่อจากนี้เราพักที่ Hotel Associa ติดสถานี Shizuoka"
+    },
+    {
+      "n": 4,
+      "open": "วันที่สี่ ฟูจิกับทะเล ออก {d4.depart} ไปตลาดปลา Shimizu ก่อน",
+      "spots": [
+        {
+          "name": "Satta Pass",
+          "jp": "薩埵峠",
+          "lat": 35.072,
+          "lng": 138.555,
+          "img": "story/d4-satta",
+          "lines": [
+            "ไฮไลต์ของวันคือ Satta Pass มุมเดียวกับภาพพิมพ์ของ Hiroshige",
+            "ทะเล ทางด่วน และฟูจิ อยู่ในเฟรมเดียว"
+          ]
+        },
+        {
+          "name": "Kurasawaya, Yui",
+          "jp": "くらさわや",
+          "lat": 35.103,
+          "lng": 138.558,
+          "img": "story/d4-sakuraebi",
+          "lines": [
+            "กลางวันกินกุ้งซากุระที่ Yui อ่าว Suruga เป็นที่เดียวในญี่ปุ่นที่จับกุ้งชนิดนี้ขายได้"
+          ]
+        },
+        {
+          "name": "Miho no Matsubara",
+          "jp": "三保松原",
+          "lat": 34.993,
+          "lng": 138.524,
+          "img": "days/d4-miho",
+          "lines": [
+            "บ่ายเดินชายหาดสนเก่าแก่ Miho no Matsubara",
+            "ที่นี่เป็นมรดกโลกร่วมกับภูเขาไฟฟูจิ"
+          ]
+        },
+        {
+          "name": "Nihondaira Yume Terrace",
+          "jp": "日本平夢テラス",
+          "lat": 34.973,
+          "lng": 138.463,
+          "img": "story/d4-nihondaira",
+          "golden": true,
+          "lines": [
+            "แล้วขึ้น Nihondaira Yume Terrace ระเบียงไม้บนเขา",
+            "มองเห็นอ่าว Suruga กับฟูจิพร้อมกัน ตะวันตก {d4.sunset}"
+          ]
+        },
+        {
+          "name": "Sawayaka",
+          "jp": "さわやか",
+          "lat": 34.972,
+          "lng": 138.389,
+          "img": "story/d4-sawayaka",
+          "lines": [
+            "ค่ำนี้ช็อปปิ้งรอบสถานี แล้วต่อคิวแฮมเบิร์ก Sawayaka ที่คนท้องถิ่นบอกว่าต้องมากินให้ได้"
+          ]
+        }
+      ],
+      "close": "กลับไปนอน Associa อีกคืน พรุ่งนี้เราจะเข้า Izu กันแล้ว"
+    },
+    {
+      "n": 5,
+      "open": "วันที่ห้า เช็คเอาท์ {d5.depart} ขับเลียบอ่าวไปทางตะวันออก สู่คาบสมุทร Izu",
+      "spots": [
+        {
+          "name": "Numazu Port",
+          "jp": "沼津港",
+          "lat": 35.082,
+          "lng": 138.859,
+          "img": "days/d5-numazu",
+          "lines": [
+            "กลางวันที่ท่าเรือ Numazu ขึ้นประตูน้ำ Byuo ดูวิว",
+            "แล้วกินซีฟู้ดสดๆ ที่ Minato Shinsenkan"
+          ]
+        },
+        {
+          "name": "Izu Panorama Park",
+          "jp": "伊豆パノラマパーク",
+          "lat": 35.035,
+          "lng": 138.941,
+          "img": "days/d5-katsuragi",
+          "golden": true,
+          "lines": [
+            "บ่ายขึ้นกระเช้า Izu Panorama Park ไปนั่งเล่นที่ Ao Terrace",
+            "ฟูจิอยู่ข้ามอ่าว Suruga ตรงหน้า อยู่ยาวจนตะวันตก {d5.sunset}"
+          ]
+        },
+        {
+          "name": "Shuzenji Onsen",
+          "jp": "修善寺温泉",
+          "lat": 34.97,
+          "lng": 138.927,
+          "img": "days/d5-chikurin",
+          "lines": [
+            "คืนนี้นอนเรียวกัง Katsuragawa ใน Shuzenji แช่ออนเซ็น แล้วกิน kaiseki เต็มคอร์ส",
+            "หลังอาหารค่อยเดินเล่นป่าไผ่ Chikurin no Komichi ที่เปิดไฟตอนกลางคืน"
+          ]
+        }
+      ],
+      "close": "คืนนี้เข้านอนเร็ว เพราะพรุ่งนี้เป็นวันที่หนักที่สุดของทริป"
+    },
+    {
+      "n": 6,
+      "open": "วันที่หก วันหนักสุดของทริป ออก {d6.depart} ห้ามสาย",
+      "warn": "Culture Day · ถนนเลนเดียวสวนกัน · ขับ ~4.5 ชม.",
+      "spots": [
+        {
+          "name": "Nishi-Izu Skyline / Darumayama",
+          "jp": "西伊豆スカイライン",
+          "lat": 34.942,
+          "lng": 138.837,
+          "img": "days/d6-darumayama",
+          "lines": [
+            "เช้านี้ขับขึ้น Nishi-Izu Skyline ถนนบนสันเขาที่สวยที่สุดเส้นหนึ่งของญี่ปุ่น",
+            "จอดที่ Darumayama มองย้อนกลับไปเห็นฟูจิข้ามทะเล"
+          ]
+        },
+        {
+          "name": "Mihama Cape, Heda",
+          "jp": "御浜岬",
+          "lat": 34.966,
+          "lng": 138.779,
+          "img": "story/d6-mihama",
+          "lines": [
+            "ลงมาที่อ่าว Heda แหลม Mihama น้ำใสมีศาลเจ้าเล็กๆ อยู่ปลายแหลม",
+            "กลางวันกินปลาทะเลลึกของที่นี่"
+          ]
+        },
+        {
+          "name": "Koganezaki",
+          "jp": "黄金崎",
+          "lat": 34.787,
+          "lng": 138.766,
+          "img": "story/d6-koganezaki",
+          "lines": [
+            "ต่อที่หน้าผาสีทอง Koganezaki มีหินรูปร่างเหมือนหัวม้าอยู่ในทะเล"
+          ]
+        },
+        {
+          "name": "Dogashima",
+          "jp": "堂ヶ島",
+          "lat": 34.772,
+          "lng": 138.763,
+          "img": "story/d6-dogashima",
+          "lines": [
+            "แล้วไปดูเกาะหินกลางทะเลที่ Dogashima ฉายา Matsushima ของ Izu"
+          ]
+        },
+        {
+          "name": "Kumomi Omoide Misaki",
+          "jp": "雲見・思い出岬",
+          "lat": 34.723,
+          "lng": 138.775,
+          "img": "days/d6-kumomi",
+          "golden": true,
+          "lines": [
+            "ปิดวันที่แหลม Kumomi ฟูจิลอยอยู่ปลายทะเล",
+            "ถ้าฟ้าเปิด ภาพนี้คือรางวัลของวันที่เหนื่อยที่สุด ตะวันตก {d6.sunset}"
+          ]
+        }
+      ],
+      "close": "จากนั้นขับตัดไปนอน Hotel Izukyu หน้าหาด Shirahama ที่ Shimoda"
+    },
+    {
+      "n": 7,
+      "open": "วันที่เจ็ด ตื่นมาเดินหาดก่อน แล้วออก {d7.depart} ขึ้นเหนือไป Kamakura",
+      "spots": [
+        {
+          "name": "Shirahama Beach",
+          "jp": "白浜海岸",
+          "lat": 34.697,
+          "lng": 138.975,
+          "img": "days/d7-shirahama",
+          "lines": [
+            "เช้าที่หาดทรายขาว Shirahama มีโทริอิสีแดงตั้งอยู่บนโขดหินริมทะเล"
+          ]
+        },
+        {
+          "name": "Shimoda Ropeway",
+          "jp": "下田ロープウェイ",
+          "lat": 34.677,
+          "lng": 138.947,
+          "img": "story/d7-shimoda",
+          "lines": [
+            "ขึ้นกระเช้าเขา Nesugata ดูอ่าว Shimoda จากข้างบน"
+          ]
+        },
+        {
+          "name": "Kawazu Loop Bridge",
+          "jp": "河津七滝ループ橋",
+          "lat": 34.793,
+          "lng": 138.926,
+          "img": "story/d7-loop",
+          "lines": [
+            "ขาขึ้นเหนือจะได้ขับวนสะพานเกลียว Kawazu Loop Bridge สองรอบ"
+          ]
+        },
+        {
+          "name": "Kawazu Nanadaru",
+          "jp": "河津七滝",
+          "lat": 34.786,
+          "lng": 138.935,
+          "img": "days/d7-kawazu",
+          "lines": [
+            "แล้วเดินเลียบลำธารดูน้ำตกเจ็ดชั้น Kawazu Nanadaru",
+            "แวะหมู่บ้านวาซาบิ Amagi ซื้อของฝากก่อนขึ้นเขา"
+          ]
+        },
+        {
+          "name": "Shichirigahama",
+          "jp": "七里ヶ浜",
+          "lat": 35.303,
+          "lng": 139.505,
+          "img": "days/d7-shichirigahama",
+          "golden": true,
+          "lines": [
+            "บ่ายแก่ๆ ถึงชายฝั่ง Shonan รอพระอาทิตย์ตกที่หาด Shichirigahama",
+            "ถ้าฟ้าใส จะเห็นฟูจิอยู่ไกลๆ ข้ามอ่าว ตะวันตก {d7.sunset}"
+          ]
+        },
+        {
+          "name": "Komachi-dori",
+          "jp": "小町通り",
+          "lat": 35.321,
+          "lng": 139.553,
+          "img": "story/d7-komachi",
+          "lines": [
+            "กินข้าวหน้าปลา shirasu แล้วเช็คอินโรงแรม Metropolitan",
+            "ค่ำนี้เดินถนน Komachi-dori ตอนที่คนน้อยแล้ว"
+          ]
+        }
+      ],
+      "close": "นี่คือคืนสุดท้ายที่เรามีรถ"
+    },
+    {
+      "n": 8,
+      "open": "วันที่แปด ออก {d8.depart} เก็บ Kamakura ช่วงเช้าให้ครบ",
+      "spots": [
+        {
+          "name": "Kotoku-in · Kamakura Daibutsu",
+          "jp": "高徳院",
+          "lat": 35.317,
+          "lng": 139.536,
+          "img": "days/d8-daibutsu",
+          "lines": [
+            "เริ่มที่พระใหญ่ Kamakura Daibutsu พระสำริดนั่งกลางแจ้งมาเกือบ 800 ปี"
+          ]
+        },
+        {
+          "name": "Hase-dera",
+          "jp": "長谷寺",
+          "lat": 35.312,
+          "lng": 139.533,
+          "img": "days/d8-hasedera",
+          "lines": [
+            "เดินต่อไปวัด Hase-dera ขึ้นระเบียงไปดูวิวเมืองกับทะเล"
+          ]
+        },
+        {
+          "name": "Tsurugaoka Hachiman-gu",
+          "jp": "鶴岡八幡宮",
+          "lat": 35.326,
+          "lng": 139.556,
+          "img": "days/d8-tsurugaoka",
+          "lines": [
+            "ไหว้ศาลเจ้า Tsurugaoka Hachiman-gu แล้วซื้อของฝากที่ Komachi-dori อีกรอบ"
+          ]
+        }
+      ],
+      "split": [
+        "บ่ายนี้เราแยกกันนิดหนึ่ง ส่งทุกคนกับกระเป๋าที่ Sunshine City Prince ใน Ikebukuro",
+        "จากนั้นรถคันเดียวไปคืนที่ Narita แล้วนั่ง Limousine bus กลับมา",
+        "อีกสามคนระหว่างรอ ขึ้นไปดูวิวที่ Sunshine 60 ได้เลย"
+      ],
+      "spotsAfter": [
+        {
+          "name": "Mutekiya",
+          "jp": "無敵家",
+          "lat": 35.731,
+          "lng": 139.713,
+          "img": "story/d8-ramen",
+          "lines": [
+            "รวมตัวกันครบแล้ว มื้อเย็นไปต่อคิวราเมน tonkotsu ร้าน Mutekiya"
+          ]
+        }
+      ],
+      "close": "สามคืนสุดท้าย เราพักที่ Sunshine City Prince Ikebukuro"
+    },
+    {
+      "n": 9,
+      "open": "วันที่เก้า เปิดตั๋ว Tokyo Subway 48 ชั่วโมง แล้วไปกินมื้อเช้าที่ตลาด Tsukiji",
+      "spots": [
+        {
+          "name": "Tsukiji Outer Market",
+          "jp": "築地場外市場",
+          "lat": 35.665,
+          "lng": 139.77,
+          "img": "days/d9-tsukiji",
+          "lines": [
+            "ตลาด Tsukiji ตอนเช้า เดินกินไข่หวาน หอยเชลล์ย่าง และซูชิ"
+          ]
+        },
+        {
+          "name": "Ginza",
+          "jp": "銀座",
+          "lat": 35.671,
+          "lng": 139.765,
+          "img": "story/d9-ginza",
+          "lines": [
+            "เดินต่อไป Ginza แวะ Itoya GINZA SIX และชั้นอาหารใต้ห้าง Mitsukoshi"
+          ]
+        },
+        {
+          "name": "teamLab Borderless",
+          "jp": "チームラボボーダレス",
+          "lat": 35.66,
+          "lng": 139.74,
+          "img": "story/d9-teamlab",
+          "lines": [
+            "บ่ายเข้า teamLab Borderless ที่ Azabudai Hills",
+            "ห้องแสงที่ไม่มีขอบเขต เดินหลงได้เป็นชั่วโมง"
+          ]
+        },
+        {
+          "name": "Shibuya Sky",
+          "jp": "渋谷スカイ",
+          "lat": 35.658,
+          "lng": 139.702,
+          "img": "days/d9-shibuyasky",
+          "golden": true,
+          "lines": [
+            "แล้วขึ้นดาดฟ้า Shibuya Sky สูง 229 เมตร ดูพระอาทิตย์ตกทั้งเมือง",
+            "วันที่อากาศดีจะเห็นฟูจิอยู่ไกลๆ ตะวันตก {d9.sunset}"
+          ]
+        },
+        {
+          "name": "Tsukishima Monja",
+          "jp": "月島もんじゃ",
+          "lat": 35.663,
+          "lng": 139.784,
+          "img": "story/d9-monja",
+          "lines": [
+            "ลงมาข้าม Scramble Crossing แล้วนั่งรถไฟไปกิน monjayaki ที่ Tsukishima"
+          ]
+        }
+      ],
+      "close": "เป็นวันที่เดินเยอะ ใส่รองเท้าคู่ที่สบายที่สุดไปนะ",
+      "hideDepart": true
+    },
+    {
+      "n": 10,
+      "open": "วันที่สิบ โตเกียวแบบคลาสสิก ออกเช้าหน่อยให้ทันก่อนคนจะเยอะ",
+      "spots": [
+        {
+          "name": "Senso-ji",
+          "jp": "浅草寺",
+          "lat": 35.715,
+          "lng": 139.797,
+          "img": "days/d10-kaminarimon",
+          "lines": [
+            "เช้าตรู่ที่ Senso-ji โคมแดง Kaminarimon ยังไม่มีคนมาบัง",
+            "ตามด้วย melonpan ร้อนๆ กับเจลาโต้มัทฉะ"
+          ]
+        },
+        {
+          "name": "Ueno Ameyoko",
+          "jp": "アメ横",
+          "lat": 35.71,
+          "lng": 139.775,
+          "img": "story/d10-ameyoko",
+          "lines": [
+            "ต่อที่ตลาด Ameyoko ใน Ueno และ dorayaki ร้าน Usagiya"
+          ]
+        },
+        {
+          "name": "Meiji Jingu",
+          "jp": "明治神宮",
+          "lat": 35.676,
+          "lng": 139.699,
+          "img": "story/d10-meiji",
+          "lines": [
+            "บ่ายเดินป่าร่มรื่นเข้าศาลเจ้า Meiji Jingu",
+            "แล้วออกไปฝั่ง Harajuku เดิน Takeshita-dori"
+          ]
+        },
+        {
+          "name": "Tokyo Metropolitan Government Building",
+          "jp": "東京都庁",
+          "lat": 35.69,
+          "lng": 139.692,
+          "img": "days/d10-tocho",
+          "golden": true,
+          "lines": [
+            "เย็นนี้ขึ้นจุดชมวิวตึก Tocho ฟรี ดูพระอาทิตย์ตก {d10.sunset}",
+            "พอฟ้ามืดลงไปดู projection mapping TOKYO Night & Light บนผนังตึก"
+          ]
+        },
+        {
+          "name": "Omoide Yokocho",
+          "jp": "思い出横丁",
+          "lat": 35.693,
+          "lng": 139.699,
+          "img": "days/d10-omoide",
+          "lines": [
+            "มื้อสุดท้ายในญี่ปุ่นกินยากิโทริในตรอก Omoide Yokocho",
+            "แล้วเก็บของฝากรอบสุดท้ายที่ Don Quijote"
+          ]
+        }
+      ],
+      "close": "คืนนี้แพ็คกระเป๋าให้เสร็จก่อนนอน เพราะพรุ่งนี้เช้าตื่นเร็วมาก",
+      "hideDepart": true
+    },
+    {
+      "n": 11,
+      "open": "วันสุดท้าย ตื่นตีห้าครึ่ง เช็คเอาท์ แล้วขึ้น Limousine bus รอบ 06:45 หน้าโรงแรม",
+      "spots": [
+        {
+          "name": "Narita Terminal 2",
+          "jp": "成田空港",
+          "lat": 35.772,
+          "lng": 140.393,
+          "img": "days/d11-narita",
+          "lines": [
+            "ถึง Narita แล้วยื่นขอคืนภาษีที่ตู้ศุลกากรก่อน bag drop อย่าลืม",
+            "XJ603 ออก 11:10 ถึงดอนเมือง 16:50"
+          ]
+        }
+      ],
+      "close": ""
+    }
+  ],
+  "outro": [
+    "ฟูจิแปดมุม ทะเลสองฝั่ง วัดเก่า และเมืองใหญ่",
+    "เตรียมกล้อง เตรียมขา แล้วเจอกันที่ดอนเมือง"
+  ]
+}

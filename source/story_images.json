@@ -1,0 +1,180 @@
+{
+  "_comment": "Photos for /story/ that are not in site/img/days, plus replacements for some that are. Run: uv run scripts/fetch_story_images.py — it downloads new or changed entries, writes site/img/story/<key>-600.webp and -1200.webp, and records the source. Use either 'commons' (a Wikimedia Commons file name) or 'url' (any direct image URL). Change the url and run it again to swap a photo.",
+  "images": [
+    {
+      "key": "d1-hoto",
+      "spot": "Hoto Fudou",
+      "commons": "Houtou.jpg",
+      "author": "No machine-readable author provided. Jungle assumed (based on copyright claims).",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Houtou.jpg",
+      "fetched": "Houtou.jpg"
+    },
+    {
+      "key": "d2-twinterrace",
+      "spot": "Fujiyama Twin Terrace",
+      "fetched": "https://scontent.fbkk22-4.fna.fbcdn.net/v/t39.30808-6/485754428_1062479039244982_9133408573546187303_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1363&ctp=s2048x1363&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFgULbdLKBVtKhV1Seps1i0FIwELBsc6nwUjAQsGxzqfHC4v2Bc1Xb_uj_ivF3GdEI&_nc_ohc=o6sXG51BVCkQ7kNvwE75lHj&_nc_oc=AdqHmTPbcaLxk2vQRd6hPdj7blchq60Idr9-xo3_jhS06yUiQuQ7lg9qVoSs1m-LVhkZhWM6YCUlhcWhrQ-Ql8eq&_nc_zt=23&_nc_ht=scontent.fbkk22-4.fna&_nc_gid=NC3C79cMFZ6qbDoEOzLGSg&_nc_ss=7b2a8&oh=00_AQN068siJdL_6OOTCEBcrUsYas0fzQw0Bjeqr3Qlbs4Vaw&oe=6AC2C7D1",
+      "url": "https://scontent.fbkk22-4.fna.fbcdn.net/v/t39.30808-6/485754428_1062479039244982_9133408573546187303_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1363&ctp=s2048x1363&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFgULbdLKBVtKhV1Seps1i0FIwELBsc6nwUjAQsGxzqfHC4v2Bc1Xb_uj_ivF3GdEI&_nc_ohc=o6sXG51BVCkQ7kNvwE75lHj&_nc_oc=AdqHmTPbcaLxk2vQRd6hPdj7blchq60Idr9-xo3_jhS06yUiQuQ7lg9qVoSs1m-LVhkZhWM6YCUlhcWhrQ-Ql8eq&_nc_zt=23&_nc_ht=scontent.fbkk22-4.fna&_nc_gid=NC3C79cMFZ6qbDoEOzLGSg&_nc_ss=7b2a8&oh=00_AQN068siJdL_6OOTCEBcrUsYas0fzQw0Bjeqr3Qlbs4Vaw&oe=6AC2C7D1",
+      "source": "https://scontent.fbkk22-4.fna.fbcdn.net/v/t39.30808-6/485754428_1062479039244982_9133408573546187303_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1363&ctp=s2048x1363&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFgULbdLKBVtKhV1Seps1i0FIwELBsc6nwUjAQsGxzqfHC4v2Bc1Xb_uj_ivF3GdEI&_nc_ohc=o6sXG51BVCkQ7kNvwE75lHj&_nc_oc=AdqHmTPbcaLxk2vQRd6hPdj7blchq60Idr9-xo3_jhS06yUiQuQ7lg9qVoSs1m-LVhkZhWM6YCUlhcWhrQ-Ql8eq&_nc_zt=23&_nc_ht=scontent.fbkk22-4.fna&_nc_gid=NC3C79cMFZ6qbDoEOzLGSg&_nc_ss=7b2a8&oh=00_AQN068siJdL_6OOTCEBcrUsYas0fzQw0Bjeqr3Qlbs4Vaw&oe=6AC2C7D1"
+    },
+    {
+      "key": "d2-udon",
+      "spot": "Yoshida Udon",
+      "commons": "Yoshida udon by ucb.jpg",
+      "author": "ucb from Fujiyoshida, Yamanashi",
+      "license": "CC BY-SA 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Yoshida_udon_by_ucb.jpg",
+      "fetched": "Yoshida udon by ucb.jpg"
+    },
+    {
+      "key": "d3-sengen",
+      "spot": "Fujisan Hongu Sengen Taisha",
+      "commons": "Fujinomiya Fujisan Hongu Sengen-taisha Hauptschrein 01.jpg",
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Fujinomiya_Fujisan_Hongu_Sengen-taisha_Hauptschrein_01.jpg",
+      "fetched": "Fujinomiya Fujisan Hongu Sengen-taisha Hauptschrein 01.jpg"
+    },
+    {
+      "key": "d3-oden",
+      "spot": "Aoba Oden Gai",
+      "commons": "Shizuoka Oden Yokocho.JPG",
+      "author": "Halowand",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Shizuoka_Oden_Yokocho.JPG",
+      "fetched": "Shizuoka Oden Yokocho.JPG"
+    },
+    {
+      "key": "d4-sakuraebi",
+      "spot": "Kurasawaya, Yui",
+      "commons": "Sakura Shrimp Kakiage Donburi.jpg",
+      "author": "Miyuki Meinaka",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sakura_Shrimp_Kakiage_Donburi.jpg",
+      "fetched": "Sakura Shrimp Kakiage Donburi.jpg"
+    },
+    {
+      "key": "d4-sawayaka",
+      "spot": "Sawayaka",
+      "commons": "Genkotsu Humburg Steak, Sawayaka.jpg",
+      "author": "Miyuki Meinaka",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Genkotsu_Humburg_Steak,_Sawayaka.jpg",
+      "fetched": "Genkotsu Humburg Steak, Sawayaka.jpg"
+    },
+    {
+      "key": "d6-mihama",
+      "spot": "Mihama Cape, Heda",
+      "fetched": "https://cdn-ak.f.st-hatena.com/images/fotolife/n/nobuburi/20210619/20210619065215.jpg",
+      "url": "https://cdn-ak.f.st-hatena.com/images/fotolife/n/nobuburi/20210619/20210619065215.jpg",
+      "source": "https://cdn-ak.f.st-hatena.com/images/fotolife/n/nobuburi/20210619/20210619065215.jpg"
+    },
+    {
+      "key": "d7-loop",
+      "spot": "Kawazu Loop Bridge",
+      "fetched": "https://paulcolewrites.com/wp-content/uploads/2021/03/japan-kawazu-nanataki-spiral-bridge.jpg?w=1000&h=563",
+      "url": "https://paulcolewrites.com/wp-content/uploads/2021/03/japan-kawazu-nanataki-spiral-bridge.jpg?w=1000&h=563",
+      "source": "https://paulcolewrites.com/wp-content/uploads/2021/03/japan-kawazu-nanataki-spiral-bridge.jpg?w=1000&h=563"
+    },
+    {
+      "key": "d7-komachi",
+      "spot": "Komachi-dori",
+      "commons": "Komachi-dori Kamakura.jpg",
+      "author": "U-Kane",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Komachi-dori_Kamakura.jpg",
+      "fetched": "Komachi-dori Kamakura.jpg"
+    },
+    {
+      "key": "d8-ramen",
+      "spot": "Mutekiya",
+      "commons": "Tonkotsu ramen.JPG",
+      "author": "No machine-readable author provided. Schellack assumed (based on copyright claims).",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Tonkotsu_ramen.JPG",
+      "fetched": "Tonkotsu ramen.JPG"
+    },
+    {
+      "key": "d9-ginza",
+      "spot": "Ginza",
+      "commons": "Ginza-WAKO at night.jpg",
+      "author": "Kakidai",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ginza-WAKO_at_night.jpg",
+      "fetched": "Ginza-WAKO at night.jpg"
+    },
+    {
+      "key": "d9-monja",
+      "spot": "Tsukishima Monja",
+      "commons": "Monjayaki Before.JPG",
+      "author": "Jpatokal",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Monjayaki_Before.JPG",
+      "fetched": "Monjayaki Before.JPG"
+    },
+    {
+      "key": "d10-ameyoko",
+      "spot": "Ueno Ameyoko",
+      "commons": "Ameyoko Ueno Tokyo Japan.jpg",
+      "license": "CC BY-SA 2.5",
+      "source": "https://commons.wikimedia.org/wiki/File:Ameyoko_Ueno_Tokyo_Japan.jpg",
+      "fetched": "Ameyoko Ueno Tokyo Japan.jpg"
+    },
+    {
+      "key": "d1-ropeway",
+      "spot": "Mt. Fuji Panoramic Ropeway",
+      "url": "https://res.klook.com/image/upload/c_crop,h_800,w_1280,x_0,y_10,z_0.5/w_1265,h_791,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/ploxk4dk4nxxdfjbdbgz.webp",
+      "source": "https://res.klook.com/image/upload/c_crop,h_800,w_1280,x_0,y_10,z_0.5/w_1265,h_791,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/ploxk4dk4nxxdfjbdbgz.webp",
+      "fetched": "https://res.klook.com/image/upload/c_crop,h_800,w_1280,x_0,y_10,z_0.5/w_1265,h_791,c_fill,q_85/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/ploxk4dk4nxxdfjbdbgz.webp"
+    },
+    {
+      "key": "d1-ubuyagasaki",
+      "spot": "Ubuyagasaki Cape",
+      "url": "https://en.kawaguchiko.net/wp-content/uploads/2014/10/001.jpg.webp",
+      "source": "https://en.kawaguchiko.net/wp-content/uploads/2014/10/001.jpg.webp",
+      "fetched": "https://en.kawaguchiko.net/wp-content/uploads/2014/10/001.jpg.webp"
+    },
+    {
+      "key": "d2-honcho",
+      "spot": "Honcho-dori, Fujiyoshida",
+      "url": "https://thesmartlocal.jp/wp-content/uploads/2022/05/Fujiyoshida-Honcho-Street-2.jpg",
+      "source": "https://thesmartlocal.jp/wp-content/uploads/2022/05/Fujiyoshida-Honcho-Street-2.jpg",
+      "fetched": "https://thesmartlocal.jp/wp-content/uploads/2022/05/Fujiyoshida-Honcho-Street-2.jpg"
+    },
+    {
+      "key": "d2-panoramadai",
+      "spot": "Myojinyama Panorama-dai",
+      "url": "https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/602997932_2835755853422880_8235856308991502925_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa7b47&_nc_eui2=AeGwxletmsETW-hXlds9fNnkm5HZ4SUIyv-bkdnhJQjK_6hAdoMrN7gsl8yvD0ZwLsw&_nc_ohc=cSGYkANXfC8Q7kNvwGqjpDr&_nc_oc=AdrgIgb9a4WjXi9D3JeP78TCfq3WLsSV2Zh7FuAxpQ60VG64YsfGgfgNGGvVWqXLWMRzmhf1_bVkX2Orh1M9uiv5&_nc_zt=23&_nc_ht=scontent.fbkk22-8.fna&_nc_gid=Wn00VQCKnn5iSbv52QX7ew&_nc_ss=7b2a8&oh=00_AQOWQqhD6a_oQRBGumgqxTwRa9ponfbIYAvpXPlQjMC41g&oe=6AC29FE0",
+      "source": "https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/602997932_2835755853422880_8235856308991502925_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa7b47&_nc_eui2=AeGwxletmsETW-hXlds9fNnkm5HZ4SUIyv-bkdnhJQjK_6hAdoMrN7gsl8yvD0ZwLsw&_nc_ohc=cSGYkANXfC8Q7kNvwGqjpDr&_nc_oc=AdrgIgb9a4WjXi9D3JeP78TCfq3WLsSV2Zh7FuAxpQ60VG64YsfGgfgNGGvVWqXLWMRzmhf1_bVkX2Orh1M9uiv5&_nc_zt=23&_nc_ht=scontent.fbkk22-8.fna&_nc_gid=Wn00VQCKnn5iSbv52QX7ew&_nc_ss=7b2a8&oh=00_AQOWQqhD6a_oQRBGumgqxTwRa9ponfbIYAvpXPlQjMC41g&oe=6AC29FE0",
+      "fetched": "https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/602997932_2835755853422880_8235856308991502925_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=aa7b47&_nc_eui2=AeGwxletmsETW-hXlds9fNnkm5HZ4SUIyv-bkdnhJQjK_6hAdoMrN7gsl8yvD0ZwLsw&_nc_ohc=cSGYkANXfC8Q7kNvwGqjpDr&_nc_oc=AdrgIgb9a4WjXi9D3JeP78TCfq3WLsSV2Zh7FuAxpQ60VG64YsfGgfgNGGvVWqXLWMRzmhf1_bVkX2Orh1M9uiv5&_nc_zt=23&_nc_ht=scontent.fbkk22-8.fna&_nc_gid=Wn00VQCKnn5iSbv52QX7ew&_nc_ss=7b2a8&oh=00_AQOWQqhD6a_oQRBGumgqxTwRa9ponfbIYAvpXPlQjMC41g&oe=6AC29FE0"
+    },
+    {
+      "key": "d4-satta",
+      "spot": "Satta Pass",
+      "url": "https://www.datocms-assets.com/101439/1727091268-satta-toge-pass.jpg?w=1600&fm=jpg",
+      "source": "https://www.datocms-assets.com/101439/1727091268-satta-toge-pass.jpg?w=1600&fm=jpg",
+      "fetched": "https://www.datocms-assets.com/101439/1727091268-satta-toge-pass.jpg?w=1600&fm=jpg"
+    },
+    {
+      "key": "d4-nihondaira",
+      "spot": "Nihondaira Yume Terrace",
+      "url": "https://chillchilljapan.com/wp-content/uploads/2025/01/q-03-760x506.jpg.webp",
+      "source": "https://chillchilljapan.com/wp-content/uploads/2025/01/q-03-760x506.jpg.webp",
+      "fetched": "https://chillchilljapan.com/wp-content/uploads/2025/01/q-03-760x506.jpg.webp"
+    },
+    {
+      "key": "d5-panorama",
+      "spot": "Izu Panorama Park",
+      "url": "https://img.activityjapan.com/wi/izu-panoramapark6.jpg"
+    },
+    {
+      "key": "d6-dogashima",
+      "spot": "Dogashima",
+      "commons": "Nishiizu Jajima 06.jpg",
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Nishiizu_Jajima_06.jpg",
+      "fetched": "Nishiizu Jajima 06.jpg"
+    }
+  ]
+}
