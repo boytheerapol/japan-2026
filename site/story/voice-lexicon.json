@@ -1,0 +1,4 @@
+{
+  "_comment": "Pronunciation fixes for the story narrator (scripts/build_story_voice.py). Written form -> how the TTS should say it. Affects the audio only; subtitles keep the written form.",
+  "words": {}
+}

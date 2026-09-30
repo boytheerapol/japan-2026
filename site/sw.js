@@ -1,5 +1,6 @@
-/* Offline support: app shell is stale-while-revalidate, trip data is network-first. */
-const VERSION = "jp26-v5";
+/* Offline support: app shell is stale-while-revalidate, trip data + narrator index are network-first,
+ * narrator clips (content-hashed, never change) are cache-first. */
+const VERSION = "jp26-v6";
 const SHELL = [
   "./", "index.html", "styles.css", "app.js", "manifest.webmanifest",
   "data/trip.json", "icons/icon.svg",
@@ -28,7 +29,17 @@ self.addEventListener("fetch", (e) => {
   const isFont = /fonts\.(googleapis|gstatic)\.com$/.test(url.hostname);
   if (!sameOrigin && !isFont) return; // Google Maps links etc. go straight to the network
 
-  if (sameOrigin && url.pathname.endsWith("/data/trip.json")) {
+  if (sameOrigin && url.pathname.includes("/audio/story/")) {
+    e.respondWith(
+      caches.match(req).then((cached) => cached || fetch(req).then((res) => {
+        if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
+        return res;
+      })),
+    );
+    return;
+  }
+
+  if (sameOrigin && (url.pathname.endsWith("/data/trip.json") || url.pathname.endsWith("/story/voice.json"))) {
     e.respondWith(
       fetch(req).then((res) => {
         const copy = res.clone();

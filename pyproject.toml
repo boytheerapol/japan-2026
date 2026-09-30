@@ -8,6 +8,7 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "lameenc>=1.8.4",
     "openpyxl>=3.1.5",
     "pillow>=11.3",
 ]

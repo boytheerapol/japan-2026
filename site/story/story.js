@@ -13,14 +13,16 @@
   const CUE_PAD = 0.8;           // seconds added to every subtitle
   const MIN_CUE = 2.7;           // seconds
   const CHAPTER_CARD = 2.8;      // seconds, no subtitle
+  const VOICE_PAD = 0.45;        // seconds of breath after each narrated line
+  const VOICE_WAIT = 3;          // max seconds to hold the clock for a clip that is still loading
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
   const fmt = (s) => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, "0")}`;
 
-  let SCRIPT, TRIP, MAP, ROUTES = null;
+  let SCRIPT, TRIP, MAP, ROUTES = null, VOICE = null;
   const days = {};                 // n -> trip.json day
-  const cues = [];                 // { start, dur, text, scene }
+  const cues = [];                 // { start, dur, text, scene, voice }
   const scenes = [];               // { kind, start, end, ... }
   let total = 0;
 
@@ -51,8 +53,9 @@
     if (!lines.length) total += fixedDur;
     for (const raw of lines) {
       const text = fill(raw);
-      const dur = cueDur(text);
-      cues.push({ start: total, dur, text, scene });
+      const voice = VOICE && VOICE.cues[text];          // scripts/build_story_voice.py
+      const dur = voice ? voice.dur + VOICE_PAD : cueDur(text);
+      cues.push({ start: total, dur, text, scene, voice });
       total += dur;
     }
     scene.end = total;
@@ -591,7 +594,7 @@
   /* ------------------------------------------------------------------ */
   /* Playback                                                             */
   /* ------------------------------------------------------------------ */
-  let t = 0, playing = false, last = 0, curCue = -1;
+  let t = 0, playing = false, last = 0, curCue = -1, stall = 0;
   const sub = $("#subtitle"), subSpan = $("#subtitle span");
   const playBtn = $("#play"), timeEl = $("#time"), seek = $("#seek");
 
@@ -628,7 +631,16 @@
   function frame(now) {
     const dt = Math.min(0.1, (now - last) / 1000 || 0);
     last = now;
-    if (playing) { t += dt; if (t >= total) { t = total - 0.001; setPlaying(false); } }
+    if (playing) {
+      if (narrator.waiting(t)) {
+        stall += dt;
+        if (stall >= VOICE_WAIT) narrator.skip(t);      // give up on this clip, carry on with subtitles only
+      } else {
+        stall = 0;
+        t += dt; if (t >= total) { t = total - 0.001; setPlaying(false); }
+      }
+    }
+    narrator.sync(t, playing);
     stepCam(dt, false);
     render(false);
     fx.step(dt);
@@ -637,7 +649,8 @@
 
   function jump(time) {
     t = clamp(time, 0, total - 0.001);
-    curScene = null; curCue = -1;
+    curScene = null; curCue = -1; stall = 0;
+    narrator.reset();
     fx.clear();
     render(true);
     stepCam(0, true);
@@ -650,6 +663,7 @@
     playBtn.setAttribute("aria-label", on ? "หยุดชั่วคราว" : "เล่น");
     document.documentElement.style.setProperty("--kb-state", on ? "running" : "paused");
     music.setPlaying(on);
+    if (!on) narrator.stop();
   }
 
   /* ------------------------------------------------------------------ */
@@ -685,6 +699,14 @@
       music.setEnabled(on);
     });
     vol.addEventListener("input", () => music.setVolume(+vol.value / 100));
+    const voiceBtn = $("#voice");
+    if (!VOICE) voiceBtn.hidden = true;
+    voiceBtn.setAttribute("aria-pressed", String(narrator.enabled()));
+    voiceBtn.addEventListener("click", () => {
+      const on = !narrator.enabled();
+      voiceBtn.setAttribute("aria-pressed", String(on));
+      narrator.setEnabled(on);
+    });
 
     const list = $("#txList");
     let html = "", lastHead = "";
@@ -708,6 +730,7 @@
       else if (e.key === "ArrowRight") { e.preventDefault(); const s = scenes[sceneAt(t).idx + 1]; if (s) jump(s.start); }
       else if (e.key === "ArrowLeft") { e.preventDefault(); const cur = sceneAt(t); jump((t - cur.start > 1.5 ? cur : scenes[Math.max(0, cur.idx - 1)]).start); }
       else if (e.key === "m" || e.key === "M") musicBtn.click();
+      else if ((e.key === "v" || e.key === "V") && VOICE) voiceBtn.click();
       else if (e.key === "t" || e.key === "T") toggleTx();
       else if (e.key === "f" || e.key === "F") $("#fs").click();
       else if (e.key === "Escape" && !drawer.hidden) toggleTx(false);
@@ -751,7 +774,7 @@
   /* Music — generative Web Audio, upbeat, one groove per chapter         */
   /* ------------------------------------------------------------------ */
   const music = (() => {
-    let ctx = null, master, comp, verb, verbIn, enabled = true, vol = 0.45, playingNow = false, mood = "fuji";
+    let ctx = null, master, comp, verb, verbIn, enabled = true, vol = 0.45, playingNow = false, mood = "fuji", ducked = false;
     const buses = {};
     let timer = null, nextStep = 0, step = 0, noiseBuf = null, sfxBus = null;
     const mtof = (m) => 440 * Math.pow(2, (m - 69) / 12);
@@ -806,7 +829,7 @@
     }
     function applyGain() {
       if (!ctx) return;
-      master.gain.setTargetAtTime(enabled && playingNow ? vol * 0.6 : 0, ctx.currentTime, 0.25);
+      master.gain.setTargetAtTime(enabled && playingNow ? vol * 0.6 * (ducked ? 0.35 : 1) : 0, ctx.currentTime, ducked ? 0.12 : 0.4);
     }
 
     // --- instruments -------------------------------------------------
@@ -928,6 +951,8 @@
       setPlaying(on) { playingNow = on; applyGain(); },
       setEnabled(on) { enabled = on; applyGain(); },
       setVolume(v) { vol = v; applyGain(); },
+      duck(on) { if (on !== ducked) { ducked = on; applyGain(); } },
+      context() { return ctx; },
       setMood(m) {
         if (!m || m === mood) return;
         mood = m;
@@ -940,6 +965,82 @@
   })();
 
   /* ------------------------------------------------------------------ */
+  /* Narrator — pre-rendered clips, one per subtitle cue                  */
+  /* ------------------------------------------------------------------ */
+  const narrator = (() => {
+    const KEY = "story.voice", KEEP = 12, AHEAD = 4;
+    let on = true, src = null, srcCue = -1, skipped = -1, out = null;
+    try { on = localStorage.getItem(KEY) !== "0"; } catch {}
+    const bufs = new Map();                              // url -> AudioBuffer | Promise, oldest first
+
+    function load(url) {
+      const ctx = music.context();
+      if (!ctx || bufs.has(url)) return;
+      const p = fetch(`../${url}`).then((r) => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+        .then((a) => ctx.decodeAudioData(a))
+        .then((b) => { if (bufs.get(url) === p) bufs.set(url, b); })
+        .catch(() => { if (bufs.get(url) === p) bufs.set(url, null); });   // null = broken, don't wait on it
+      bufs.set(url, p);
+      while (bufs.size > KEEP) bufs.delete(bufs.keys().next().value);
+    }
+    function prefetch(ci) {
+      for (let i = ci, n = 0; i < cues.length && n < AHEAD; i++) if (cues[i].voice) { load(cues[i].voice.src); n++; }
+    }
+    const active = () => on && VOICE && music.context();
+    function stop() {
+      if (src) { src.onended = null; try { src.stop(); } catch {} src.disconnect(); src = null; }
+      srcCue = -1;
+      music.duck(false);
+    }
+    function start(ci, offset, buf) {
+      const ctx = music.context();
+      if (!out) { out = ctx.createGain(); out.gain.value = 1; out.connect(ctx.destination); }
+      src = ctx.createBufferSource();
+      src.buffer = buf;
+      src.connect(out);
+      src.onended = () => { if (srcCue === ci) { src = null; music.duck(false); } };
+      src.start(0, offset);
+      music.duck(true);
+    }
+
+    return {
+      enabled: () => on,
+      setEnabled(v) {
+        on = v;
+        try { localStorage.setItem(KEY, v ? "1" : "0"); } catch {}
+        if (!v) stop();
+      },
+      stop,
+      reset() { stop(); skipped = -1; },
+      // True while the clip for the cue at time t is still downloading.
+      waiting(time) {
+        if (!active()) return false;
+        const ci = cueAt(time), c = cues[ci];
+        if (!c || !c.voice || ci === skipped || ci === srcCue) return false;
+        load(c.voice.src);
+        const b = bufs.get(c.voice.src);
+        return b instanceof Promise;
+      },
+      skip(time) { skipped = cueAt(time); },
+      // Keep the clip that belongs to time t playing (or silent when paused / off / between cues).
+      sync(time, playingNow) {
+        if (!active() || !playingNow) { if (src) stop(); return; }
+        const ci = cueAt(time);
+        if (ci === srcCue) return;
+        stop();
+        if (ci < 0) return;
+        prefetch(ci);
+        const c = cues[ci], b = c.voice && bufs.get(c.voice.src);
+        if (b instanceof Promise && ci !== skipped) return;   // still loading: waiting() holds the clock
+        srcCue = ci;                                     // claim it even if silent, so we don't retry every frame
+        if (!c.voice || ci === skipped) return;
+        const offset = time - c.start;
+        if (b instanceof AudioBuffer && offset < b.duration - 0.1) start(ci, offset, b);
+      },
+    };
+  })();
+
+  /* ------------------------------------------------------------------ */
   /* Boot                                                                 */
   /* ------------------------------------------------------------------ */
   async function boot() {
@@ -947,6 +1048,7 @@
       const get = (u) => fetch(u, { cache: "no-cache" }).then((r) => { if (!r.ok) throw new Error(`${u}: ${r.status}`); return r.json(); });
       [SCRIPT, TRIP, MAP] = await Promise.all([get("script.json"), get("../data/trip.json"), get("map.json")]);
       ROUTES = await get("routes.json").catch(() => null);   // optional: over-land driving lines
+      VOICE = await get("voice.json").catch(() => null);     // optional: narrator clips
     } catch (err) {
       document.body.insertAdjacentHTML("beforeend", `<p style="position:fixed;inset:auto 0 50% 0;text-align:center;color:#ef6a50">โหลดข้อมูลไม่สำเร็จ (${esc(err.message)}) — ต้องเปิดผ่าน http server เช่น python3 -m http.server</p>`);
       return;

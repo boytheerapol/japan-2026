@@ -8,3 +8,7 @@ __pycache__/
 
 # uv virtual environment
 .venv/
+
+# Gemini API key for scripts/build_story_voice.py
+.env
+.voice-audition/
