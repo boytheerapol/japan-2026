@@ -166,6 +166,7 @@
             <span class="chip">🌙 11 วัน 10 คืน</span>
             <span class="chip">👥 4 ท่าน</span>
           </div>
+          <a class="btn btn-primary story-cta" href="story/">🎬 ฟังเรื่องเล่าทริป <small>~8 นาที</small></a>
           <div id="countdown"></div>
         </div>
       </section>

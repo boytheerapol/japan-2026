@@ -225,6 +225,8 @@ main { max-width: 760px; margin: 0 auto; padding: 0 16px; outline: none; }
 .hero h1 span { color: var(--shu); }
 .hero-sub { margin-top: 10px; font-size: 16px; color: var(--ink-2); font-weight: 500; }
 .hero-meta { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.story-cta { margin-top: 16px; gap: 8px; }
+.story-cta small { font-weight: 500; opacity: .8; }
 .chip {
   display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px;
   background: color-mix(in srgb, var(--paper) 80%, transparent); border: 1px solid var(--line);

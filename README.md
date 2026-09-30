@@ -16,6 +16,7 @@ source/day_meta.json         ชื่อวันภาษาไทย + intro 
 source/itinerary.xlsx        ไฟล์ Excel ของคุณ — ไม่มีใน repo (ดูหัวข้อถัดไป)
 scripts/build_data.py        แปลง Excel → site/data/trip.json (ตัดข้อมูลส่วนตัวออก)
 site/                        ตัวเว็บที่ deploy
+site/story/                  หน้าเรื่องเล่าทริป (ดูหัวข้อ Story)
 site/img/days/               รูปไฮไลท์รายวัน (WebP 600/1200px) จาก Wikimedia Commons — เครดิตและลิขสิทธิ์อยู่ใน day_meta.json
 .github/workflows/pages.yml  push เข้า main แล้ว deploy อัตโนมัติ
 ```
@@ -57,6 +58,22 @@ git push
 **ถ้า script หยุดทำงาน** มันจะบอกสาเหตุ เช่น
 - `workbook not found` → path ผิด หรือไม่มี `source/itinerary.xlsx`
 - `sheet '...' header X4 is '...'` → มีการย้าย/เปลี่ยนชื่อคอลัมน์หรือชีตใน Excel ให้แก้กลับ หรือแก้ `EXPECTED_HEADERS` ใน script ให้ตรง
+
+## 🎬 Story — เรื่องเล่าทริปแบบ animation
+หน้า `site/story/` (ปุ่ม 🎬 บนหน้าแรก) เล่าทริปทั้ง 11 วันแบบเล่นอัตโนมัติ ~8 นาที: แผนที่ลากเส้นทาง, รูปแต่ละจุด, ซับไทย + transcript, เพลงประกอบที่สร้างด้วย Web Audio (ไม่มีไฟล์เพลง)
+คีย์ลัด: `Space` เล่น/หยุด · `←/→` ฉากก่อน/ถัดไป · `M` เพลง · `T` transcript · `F` เต็มจอ · ลิงก์ตรงไปวันไหนก็ได้ด้วย `story/#d6`
+
+| ไฟล์ | หน้าที่ |
+|---|---|
+| `site/story/script.json` | บทพากย์ จุดแวะ พิกัด และรูปของแต่ละจุด — แก้ข้อความได้ตรงนี้ · `{d6.depart}` `{d1.sunset}` `{km}` ดึงค่าจาก `trip.json` อัตโนมัติ |
+| `site/story/story.js` · `story.css` · `index.html` | ตัว engine (ความเร็วปรับที่ `CHAR_RATE` บรรทัดต้นไฟล์) |
+| `site/story/map.json` | เส้นชายฝั่ง (สร้างครั้งเดียวด้วย `scripts/build_story_map.mjs`) |
+| `site/story/routes.json` | เส้นทางวิ่งบนแผ่นดิน — **รันใหม่ทุกครั้งที่แก้พิกัดใน script.json:** `node scripts/build_story_routes.mjs` |
+| `source/story_images.json` | รูปเพิ่มเติมของ story (Wikimedia `commons` หรือ `url` ตรง) |
+| `site/img/story/` | รูป webp 600/1200 ที่ดาวน์โหลดแล้ว |
+
+**เปลี่ยน/เพิ่มรูป:** แก้ `url` ใน `source/story_images.json` แล้วรัน `uv run scripts/fetch_story_images.py` (ดาวน์โหลดเฉพาะรายการที่เปลี่ยน) จากนั้นชี้ `"img": "story/<key>"` ใน `script.json`
+หมายเหตุ: repo เป็น public — รูปจาก blog/Facebook ใน `site/img/story/` เปิดดูได้โดยทุกคนที่มีลิงก์
 
 ## ดูบนเครื่อง
 ```bash

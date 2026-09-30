@@ -1,8 +1,11 @@
 /* Offline support: app shell is stale-while-revalidate, trip data is network-first. */
-const VERSION = "jp26-v3";
+const VERSION = "jp26-v5";
 const SHELL = [
   "./", "index.html", "styles.css", "app.js", "manifest.webmanifest",
-  "data/trip.json", "icons/icon.svg", "icons/icon-192.png", "icons/qr.svg",
+  "data/trip.json", "icons/icon.svg",
+  "story/", "story/index.html", "story/story.css", "story/story.js",
+  "story/script.json", "story/map.json", "story/routes.json", "img/story/cover-1200.webp",
+  "icons/icon-192.png", "icons/qr.svg",
 ];
 
 self.addEventListener("install", (e) => {
