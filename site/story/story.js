@@ -265,7 +265,7 @@
   function preload(key) {
     if (!key) return Promise.resolve(false);
     if (imgCache.has(key)) return imgCache.get(key);
-    const p = new Promise((res) => { const im = new Image(); im.onload = () => res(true); im.onerror = () => res(false); im.src = imgUrl(key); });
+    const p = new Promise((res) => { const im = new Image(); im.onload = () => res(true); im.onerror = () => { imgCache.delete(key); res(false); }; im.src = imgUrl(key); });
     imgCache.set(key, p);
     return p;
   }
@@ -644,6 +644,7 @@
   }
 
   function setPlaying(on) {
+    if (on && t >= total - 0.01) jump(0);               // finished: Play restarts from the top
     playing = on;
     playBtn.textContent = on ? "❚❚" : "▶";
     playBtn.setAttribute("aria-label", on ? "หยุดชั่วคราว" : "เล่น");
@@ -711,7 +712,14 @@
       else if (e.key === "f" || e.key === "F") $("#fs").click();
       else if (e.key === "Escape" && !drawer.hidden) toggleTx(false);
     });
-    addEventListener("resize", () => { measure(); if (curScene) enterScene(curScene, true); });
+    let vw = innerWidth, vh = innerHeight;
+    addEventListener("resize", () => {
+      measure();
+      // Mobile URL-bar show/hide only nudges the height; don't restart the scene for that.
+      const big = innerWidth !== vw || Math.abs(innerHeight - vh) > vh * 0.25;
+      vw = innerWidth; vh = innerHeight;
+      if (big && curScene) enterScene(curScene, true);
+    });
   }
 
   function markTranscript(i, scroll) {
