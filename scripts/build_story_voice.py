@@ -169,6 +169,8 @@ def tts(text: str, voice: str, key: str) -> bytes:
             if attempt == 5:
                 raise
             time.sleep(2 ** attempt)
+    if os.environ.get("VOICE_DEBUG"):
+        print("usage:", json.dumps(res.get("usage") or res.get("usage_metadata") or {k: v for k, v in res.items() if k != "steps"}), file=sys.stderr)
     audio = [c for s in res.get("steps", []) if s.get("type") == "model_output"
              for c in s.get("content", []) if c.get("type") == "audio"]
     if not audio:
