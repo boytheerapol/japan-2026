@@ -46,6 +46,14 @@
    "src": "audio/story/7f3920bdf0d0.mp3",
    "dur": 4.008
   },
+  "มื้อเย็นกิน Hoto เส้นแบนหนาในซุปมิโสะฟักทอง ร้อนๆ ในตึกทรงก้อนเมฆ": {
+   "src": "audio/story/8ae1c96cb3e3.mp3",
+   "dur": 6.659
+  },
+  "คืนนี้พักแยกสองโรงแรม Mifujien กับ Route Inn แช่ออนเซ็นแล้วนอนเร็ว เพราะเมื่อคืนแทบไม่ได้นอนบนเครื่อง": {
+   "src": "audio/story/a069e8284073.mp3",
+   "dur": 8.069
+  },
   "วันที่สอง วนรอบฟูจิทั้งวัน นัดรวมพลที่ล็อบบี้ Mifujien 08:45": {
    "src": "audio/story/9f1468cfbc86.mp3",
    "dur": 6.499
@@ -90,6 +98,10 @@
    "src": "audio/story/ac1e412e2828.mp3",
    "dur": 4.517
   },
+  "วันที่สาม บอกลา Kawaguchiko ออก 08:45 ไล่เก็บทะเลสาบฝั่งตะวันตก แล้วลงใต้ไป Shizuoka": {
+   "src": "audio/story/11e480dd4165.mp3",
+   "dur": 8.253
+  },
   "แวะหมู่บ้านหลังคาฟาง Nenba ริมทะเลสาบ Saiko": {
    "src": "audio/story/aa59d7d6a473.mp3",
    "dur": 3.752
@@ -130,9 +142,17 @@
    "src": "audio/story/d4355f176eb4.mp3",
    "dur": 4.571
   },
+  "สองคืนต่อจากนี้เราพักที่ Hotel Associa ติดสถานี Shizuoka": {
+   "src": "audio/story/c73f79c12b60.mp3",
+   "dur": 5.069
+  },
   "วันที่สี่ ฟูจิกับทะเล ออก 09:00 ไปตลาดปลา Shimizu ก่อน": {
    "src": "audio/story/23bc9d018d80.mp3",
    "dur": 5.184
+  },
+  "ไฮไลต์ของวันคือ Satta Pass มุมเดียวกับภาพพิมพ์ของ Hiroshige": {
+   "src": "audio/story/bb94c6af2b4d.mp3",
+   "dur": 5.12
   },
   "ทะเล ทางด่วน และฟูจิ อยู่ในเฟรมเดียว": {
    "src": "audio/story/5767adea1b39.mp3",
@@ -157,6 +177,10 @@
   "มองเห็นอ่าว Suruga กับฟูจิพร้อมกัน ตะวันตก 16:52": {
    "src": "audio/story/5e25356cdad6.mp3",
    "dur": 6.52
+  },
+  "ค่ำนี้ช็อปปิ้งรอบสถานี แล้วต่อคิวแฮมเบิร์ก Sawayaka ที่คนท้องถิ่นบอกว่าต้องมากินให้ได้": {
+   "src": "audio/story/bce60011c53f.mp3",
+   "dur": 7.939
   },
   "กลับไปนอน Associa อีกคืน พรุ่งนี้เราจะเข้า Izu กันแล้ว": {
    "src": "audio/story/ceb035233a89.mp3",
@@ -185,6 +209,10 @@
   "คืนนี้นอนเรียวกัง Katsuragawa ใน Shuzenji แช่ออนเซ็น แล้วกิน kaiseki เต็มคอร์ส": {
    "src": "audio/story/2332c0e63ac4.mp3",
    "dur": 6.565
+  },
+  "หลังอาหารค่อยเดินเล่นป่าไผ่ Chikurin no Komichi ที่เปิดไฟตอนกลางคืน": {
+   "src": "audio/story/81e90d618658.mp3",
+   "dur": 5.672
   },
   "คืนนี้เข้านอนเร็ว เพราะพรุ่งนี้เป็นวันที่หนักที่สุดของทริป": {
    "src": "audio/story/f73e265dcc1a.mp3",
@@ -254,6 +282,10 @@
    "src": "audio/story/976bc3692a84.mp3",
    "dur": 3.592
   },
+  "บ่ายแก่ๆ ถึงชายฝั่ง Shonan รอพระอาทิตย์ตกที่หาด Shichirigahama": {
+   "src": "audio/story/1c4a8df5ffdc.mp3",
+   "dur": 5.445
+  },
   "ถ้าฟ้าใส จะเห็นฟูจิอยู่ไกลๆ ข้ามอ่าว ตะวันตก 16:44": {
    "src": "audio/story/1a0e222bc1c2.mp3",
    "dur": 5.427
@@ -270,13 +302,141 @@
    "src": "audio/story/acb08a9d1bdd.mp3",
    "dur": 1.976
   },
+  "วันที่แปด ออก 07:40 เก็บ Kamakura ช่วงเช้าให้ครบ": {
+   "src": "audio/story/7217247d3d3f.mp3",
+   "dur": 4.349
+  },
+  "เริ่มที่พระใหญ่ Kamakura Daibutsu พระสำริดนั่งกลางแจ้งมาเกือบ 800 ปี": {
+   "src": "audio/story/3ed635fb02bf.mp3",
+   "dur": 5.64
+  },
   "เดินต่อไปวัด Hase-dera ขึ้นระเบียงไปดูวิวเมืองกับทะเล": {
    "src": "audio/story/d7e37926ab1c.mp3",
    "dur": 4.515
   },
+  "ไหว้ศาลเจ้า Tsurugaoka Hachiman-gu แล้วซื้อของฝากที่ Komachi-dori อีกรอบ": {
+   "src": "audio/story/ce3f3ca17f93.mp3",
+   "dur": 6.477
+  },
   "บ่ายนี้เราแยกกันนิดหนึ่ง ส่งทุกคนกับกระเป๋าที่ Sunshine City Prince ใน Ikebukuro": {
    "src": "audio/story/fd0b4fd082f6.mp3",
    "dur": 5.645
+  },
+  "จากนั้นรถคันเดียวไปคืนที่ Narita แล้วนั่ง Limousine bus กลับมา": {
+   "src": "audio/story/276382a678e1.mp3",
+   "dur": 4.491
+  },
+  "อีกสามคนระหว่างรอ ขึ้นไปดูวิวที่ Sunshine 60 ได้เลย": {
+   "src": "audio/story/edf491073b38.mp3",
+   "dur": 4.283
+  },
+  "รวมตัวกันครบแล้ว มื้อเย็นไปต่อคิวราเมน tonkotsu ร้าน Mutekiya": {
+   "src": "audio/story/915dae2a5a6c.mp3",
+   "dur": 4.992
+  },
+  "สามคืนสุดท้าย เราพักที่ Sunshine City Prince Ikebukuro": {
+   "src": "audio/story/ed5f286ff867.mp3",
+   "dur": 4.48
+  },
+  "วันที่เก้า เปิดตั๋ว Tokyo Subway 48 ชั่วโมง แล้วไปกินมื้อเช้าที่ตลาด Tsukiji": {
+   "src": "audio/story/b7eb26238906.mp3",
+   "dur": 6.005
+  },
+  "ตลาด Tsukiji ตอนเช้า เดินกินไข่หวาน หอยเชลล์ย่าง และซูชิ": {
+   "src": "audio/story/16496f614cd5.mp3",
+   "dur": 5.464
+  },
+  "เดินต่อไป Ginza แวะ Itoya GINZA SIX และชั้นอาหารใต้ห้าง Mitsukoshi": {
+   "src": "audio/story/525f6070e33b.mp3",
+   "dur": 5.84
+  },
+  "บ่ายเข้า teamLab Borderless ที่ Azabudai Hills": {
+   "src": "audio/story/af560fa84c7e.mp3",
+   "dur": 3.413
+  },
+  "ห้องแสงที่ไม่มีขอบเขต เดินหลงได้เป็นชั่วโมง": {
+   "src": "audio/story/20385217822e.mp3",
+   "dur": 4.059
+  },
+  "แล้วขึ้นดาดฟ้า Shibuya Sky สูง 229 เมตร ดูพระอาทิตย์ตกทั้งเมือง": {
+   "src": "audio/story/f94e6e0f2ec0.mp3",
+   "dur": 5.843
+  },
+  "วันที่อากาศดีจะเห็นฟูจิอยู่ไกลๆ ตะวันตก 16:41": {
+   "src": "audio/story/aa5951a21d55.mp3",
+   "dur": 7.128
+  },
+  "ลงมาข้าม Scramble Crossing แล้วนั่งรถไฟไปกิน monjayaki ที่ Tsukishima": {
+   "src": "audio/story/5c9a4eac285b.mp3",
+   "dur": 5.608
+  },
+  "เป็นวันที่เดินเยอะ ใส่รองเท้าคู่ที่สบายที่สุดไปนะ": {
+   "src": "audio/story/013fd3ded6a2.mp3",
+   "dur": 3.779
+  },
+  "วันที่สิบ โตเกียวแบบคลาสสิก ออกเช้าหน่อยให้ทันก่อนคนจะเยอะ": {
+   "src": "audio/story/03decd4bad63.mp3",
+   "dur": 5.261
+  },
+  "เช้าตรู่ที่ Senso-ji โคมแดง Kaminarimon ยังไม่มีคนมาบัง": {
+   "src": "audio/story/25ec148462ab.mp3",
+   "dur": 4.736
+  },
+  "ตามด้วย melonpan ร้อนๆ กับเจลาโต้มัทฉะ": {
+   "src": "audio/story/034bb9b0d5bb.mp3",
+   "dur": 3.189
+  },
+  "ต่อที่ตลาด Ameyoko ใน Ueno และ dorayaki ร้าน Usagiya": {
+   "src": "audio/story/af2f276fca5d.mp3",
+   "dur": 4.475
+  },
+  "บ่ายเดินป่าร่มรื่นเข้าศาลเจ้า Meiji Jingu": {
+   "src": "audio/story/a59e613bd415.mp3",
+   "dur": 3.981
+  },
+  "แล้วออกไปฝั่ง Harajuku เดิน Takeshita-dori": {
+   "src": "audio/story/d9bffb0e765c.mp3",
+   "dur": 3.077
+  },
+  "เย็นนี้ขึ้นจุดชมวิวตึก Tocho ฟรี ดูพระอาทิตย์ตก 16:40": {
+   "src": "audio/story/0d7f08786b46.mp3",
+   "dur": 4.853
+  },
+  "พอฟ้ามืดลงไปดู projection mapping TOKYO Night & Light บนผนังตึก": {
+   "src": "audio/story/ff8333f8a666.mp3",
+   "dur": 5.005
+  },
+  "มื้อสุดท้ายในญี่ปุ่นกินยากิโทริในตรอก Omoide Yokocho": {
+   "src": "audio/story/fa6ed86e7e28.mp3",
+   "dur": 4.419
+  },
+  "แล้วเก็บของฝากรอบสุดท้ายที่ Don Quijote": {
+   "src": "audio/story/017846eb8037.mp3",
+   "dur": 3.316
+  },
+  "คืนนี้แพ็คกระเป๋าให้เสร็จก่อนนอน เพราะพรุ่งนี้เช้าตื่นเร็วมาก": {
+   "src": "audio/story/3ad161d2ec1f.mp3",
+   "dur": 4.293
+  },
+  "วันสุดท้าย ตื่นตีห้าครึ่ง เช็คเอาท์ แล้วขึ้น Limousine bus รอบ 06:45 หน้าโรงแรม": {
+   "src": "audio/story/4ff7e16908ed.mp3",
+   "dur": 7.019
+  },
+  "ถึง Narita แล้วยื่นขอคืนภาษีที่ตู้ศุลกากรก่อน bag drop อย่าลืม": {
+   "src": "audio/story/f4aabf254a2c.mp3",
+   "dur": 4.792
+  },
+  "XJ603 ออก 11:10 ถึงดอนเมือง 16:50": {
+   "src": "audio/story/08ac731e8867.mp3",
+   "dur": 4.469
+  },
+  "ฟูจิแปดมุม ทะเลสองฝั่ง วัดเก่า และเมืองใหญ่": {
+   "src": "audio/story/018fdabdf5ff.mp3",
+   "dur": 4.683
+  },
+  "เตรียมกล้อง เตรียมขา แล้วเจอกันที่ดอนเมือง": {
+   "src": "audio/story/7b6ccd54e3f7.mp3",
+   "dur": 3.072
   }
  }
 }
