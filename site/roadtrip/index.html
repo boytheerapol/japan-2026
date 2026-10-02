@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1B1B1B">
+  <title>Road trip กับชิโระ · Japan 2026</title>
+  <meta name="description" content="เล่าทริปญี่ปุ่น 11 วันผ่านสายตาของชิโระ รถเช่าคันเล็กสีขาว — animation สไตล์ภาพพิมพ์ญี่ปุ่น">
+  <link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+JP:wght@700;900&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="roadtrip.css">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="sky" id="sky" aria-hidden="true"><div class="stars"></div><div class="sun" id="sun"></div></div>
+    <div class="biomes" id="biomes" aria-hidden="true"></div>
+    <div class="tint" id="tint" aria-hidden="true"></div>
+    <div class="world" id="world" aria-hidden="true"></div>
+    <canvas class="fx" id="fx" aria-hidden="true"></canvas>
+
+    <!-- HUD -->
+    <div class="prog" id="prog" role="slider" tabindex="0" aria-label="เลื่อนไปวันต่างๆ" aria-valuemin="1" aria-valuemax="11" aria-valuenow="1"></div>
+    <div class="daypill" id="daypill"></div>
+    <div class="sign" id="sign" hidden></div>
+    <div class="odo" id="odo" hidden></div>
+    <div class="kin" id="kin" hidden><span></span><b></b></div>
+    <div class="pol" id="pol" hidden><img alt=""><span></span></div>
+    <div class="stampfx" id="stampfx" hidden><div class="stamp"></div><b>+1</b></div>
+    <div class="chap" id="chap" hidden>
+      <div class="shoji l"></div><div class="shoji r"></div>
+      <div class="chap-in"><div class="kanji"></div><div class="seal"></div><div class="name"></div><div class="sub"></div></div>
+    </div>
+    <div class="end" id="end" hidden>
+      <div class="book"><h3></h3><div class="stamps"></div></div>
+      <div class="count"></div>
+      <div class="endbtns">
+        <button type="button" class="btnp" id="replay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v5h5"/></svg>ดูอีกครั้ง</button>
+        <button type="button" class="btng" id="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7"/></svg>แชร์</button>
+      </div>
+    </div>
+
+    <div class="dlg" id="dlg" aria-live="polite">
+      <span class="who"></span><span class="ava"></span><p class="txt"></p><span class="next" aria-hidden="true">▼</span>
+    </div>
+
+    <!-- controls -->
+    <div class="ctrl" id="ctrl">
+      <a class="cb" href="../" aria-label="กลับหน้าเว็บทริป"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></a>
+      <button type="button" class="cb pri" id="play" aria-label="เล่น"></button>
+      <button type="button" class="cb" id="music" aria-pressed="true" aria-label="เพลง"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3v12.3A3.5 3.5 0 1 0 11 18V8h7V3z"/></svg></button>
+      <button type="button" class="cb" id="voice" aria-pressed="true" aria-label="เสียงผู้เล่า" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+      <button type="button" class="cb" id="tx" aria-label="Transcript"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></button>
+      <button type="button" class="cb" id="bookBtn" aria-label="สมุดแสตมป์"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 6c-2-1.5-5-2-8-1.5v14c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-14c-3-.5-6 0-8 1.5zM12 6v14"/></svg><i id="bookCount"></i></button>
+      <button type="button" class="cb" id="fs" aria-label="เต็มจอ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+
+    <!-- start gate: needed so iOS allows audio -->
+    <button class="gate" id="gate" type="button">
+      <span class="gate-art" id="gateArt" aria-hidden="true"></span>
+      <span class="gate-top"><span class="jp">晩秋の旅</span><span class="ttl">Road trip กับชิโระ</span><span class="meta" id="gateMeta">11 วัน · 1,165 กม.</span></span>
+      <span class="gate-cta"><span class="btnp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>ออกเดินทาง</span>
+        <span class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9h4l5-4v14l-5-4H4zM16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>เปิดเสียงด้วยนะ</span></span>
+    </button>
+  </main>
+
+  <!-- bottom sheets -->
+  <aside class="sheet" id="txSheet" hidden aria-label="Transcript">
+    <header><h2>Transcript</h2><button type="button" class="x" data-close aria-label="ปิด">✕</button></header>
+    <ol id="txList"></ol>
+  </aside>
+  <aside class="sheet" id="bookSheet" hidden aria-label="สมุดแสตมป์">
+    <header><h2 id="bookTitle">สมุดแสตมป์</h2><button type="button" class="x" data-close aria-label="ปิด">✕</button></header>
+    <div class="stamps" id="bookGrid"></div>
+  </aside>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="paperCar" x="-5%" y="-5%" width="110%" height="115%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="1" seed="5" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feDropShadow in="d" dx="0" dy="2" stdDeviation="1.4" flood-color="#2a1c0c" flood-opacity=".3"/>
+      </filter>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+    </defs>
+  </svg>
+
+  <script src="art.js"></script>
+  <script src="roadtrip.js"></script>
+</body>
+</html>

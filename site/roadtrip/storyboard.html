@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Storyboard · Road trip กับชิโระ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+JP:wght@700;900&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    /* Storyboard only — static frames to agree on the look before building the engine. */
+    :root {
+      --washi: #F3E9D2; --washi-2: #E9DCBF; --ai: #1F3A5F; --shu: #C8442F; --momiji: #E07B39;
+      --matsu: #3E5C4A; --sumi: #1B1B1B; --kin: #E9B44C; --sign: #0B6E3D;
+      --page: #EFE5CD; --page-ink: #2a241d; --page-ink-2: #6b5f50; --card: #fbf6ea; --line: #d8c9a8;
+      --font: "Noto Sans Thai", system-ui, sans-serif;
+      --font-jp: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+      --font-sign: "Noto Sans JP", "Noto Sans Thai", system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) { --page: #17130f; --page-ink: #efe6d4; --page-ink-2: #b3a68f; --card: #221c16; --line: #3b3127; }
+    }
+    :root[data-theme="dark"] { --page: #17130f; --page-ink: #efe6d4; --page-ink-2: #b3a68f; --card: #221c16; --line: #3b3127; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--page-ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 32px 16px 80px; }
+    header h1 { font-family: var(--font-jp); font-size: clamp(28px, 5vw, 44px); margin: 0 0 4px; letter-spacing: .02em; }
+    header h1 small { display: block; font-family: var(--font); font-size: 15px; font-weight: 500; color: var(--page-ink-2); letter-spacing: 0; margin-top: 6px; }
+    .lede { max-width: 760px; line-height: 1.7; color: var(--page-ink-2); }
+    h2 { font-size: 20px; margin: 44px 0 14px; display: flex; align-items: baseline; gap: 10px; }
+    h2 .jp { font-family: var(--font-jp); color: var(--shu); font-size: 26px; }
+    .swatches { display: flex; flex-wrap: wrap; gap: 10px; }
+    .sw { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px 12px 6px 6px; font-size: 13px; }
+    .sw i { width: 28px; height: 28px; border-radius: 6px; display: block; box-shadow: inset 0 0 0 1px rgb(0 0 0 / .12); }
+    .sw b { font-family: var(--font-jp); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 28px 22px; }
+    figure { margin: 0; }
+    figcaption { margin-top: 12px; font-size: 13.5px; line-height: 1.6; color: var(--page-ink-2); }
+    figcaption .t { display: inline-block; font-weight: 700; color: var(--page-ink); font-size: 15px; margin-bottom: 2px; }
+    figcaption .t em { font-style: normal; color: var(--shu); font-variant-numeric: tabular-nums; margin-right: 6px; }
+    figcaption dl { margin: 6px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; }
+    figcaption dt { font-weight: 600; color: var(--page-ink); }
+    figcaption dd { margin: 0; }
+
+    /* ---------- a phone frame ---------- */
+    .frame {
+      position: relative; width: 100%; max-width: 330px; aspect-ratio: 360 / 740; margin: 0 auto;
+      border-radius: 30px; overflow: hidden; container-type: inline-size; isolation: isolate;
+      background: var(--washi); box-shadow: 0 0 0 7px #111, 0 18px 40px rgb(0 0 0 / .28);
+    }
+    .frame.wide { max-width: 760px; aspect-ratio: 16 / 9; border-radius: 22px; }
+    .frame > svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    .grain { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; opacity: .22; z-index: 5;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .ov { position: absolute; z-index: 6; }
+
+    /* progress: one segment per day */
+    .prog { top: 3.2cqw; left: 4cqw; right: 4cqw; display: grid; grid-template-columns: repeat(11, 1fr); gap: 1.1cqw; }
+    .prog i { height: 1.1cqw; border-radius: 1cqw; background: rgb(27 27 27 / .22); overflow: hidden; position: relative; }
+    .prog i.done { background: var(--sumi); }
+    .prog i.now::after { content: ""; position: absolute; inset: 0; width: var(--p, 40%); background: var(--sumi); }
+    .night .prog i { background: rgb(243 233 210 / .25); }
+    .night .prog i.done, .night .prog i.now::after { background: var(--washi); }
+
+    /* green expressway sign */
+    .sign {
+      top: 8.5cqw; left: 50%; transform: translateX(-50%) rotate(-.6deg); min-width: 62cqw;
+      background: var(--sign); color: #fff; border-radius: 2.2cqw; padding: 1.4cqw;
+      box-shadow: 0 1.2cqw 0 rgb(0 0 0 / .25); font-family: var(--font-sign);
+    }
+    .sign > div { border: .6cqw solid #fff; border-radius: 1.4cqw; padding: 1.6cqw 3cqw; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0 3cqw; }
+    .sign .k { font-weight: 900; font-size: 6.4cqw; line-height: 1.05; letter-spacing: .04em; }
+    .sign .r { font-weight: 700; font-size: 3.4cqw; opacity: .95; }
+    .sign .d { grid-row: span 2; text-align: right; font-weight: 900; font-size: 5.4cqw; line-height: 1; }
+    .sign .d small { display: block; font-size: 3cqw; font-weight: 700; }
+    .sign .tag { position: absolute; top: -2.6cqw; left: 3cqw; background: #fff; color: var(--sign); font-weight: 900; font-size: 2.8cqw; padding: .3cqw 1.6cqw; border-radius: 1cqw; }
+    .sign.station { background: #fff; color: var(--sumi); }
+    .sign.station > div { border-color: var(--matsu); border-width: 0 0 1.6cqw; border-radius: .6cqw; }
+    .sign.station .d { color: var(--matsu); }
+
+    /* RPG dialog box */
+    .dlg {
+      left: 4cqw; right: 4cqw; bottom: 5cqw; background: var(--washi); color: var(--sumi);
+      border: .8cqw solid var(--sumi); border-radius: 3cqw; padding: 4.6cqw 4.4cqw 4.4cqw 20cqw;
+      box-shadow: 1.6cqw 1.6cqw 0 var(--sumi); min-height: 30cqw;
+      font-size: 4.5cqw; line-height: 1.6;
+    }
+    .dlg .who { position: absolute; top: -3.8cqw; left: 4cqw; background: var(--shu); color: var(--washi); font-weight: 700;
+      font-size: 3.4cqw; padding: .4cqw 2.6cqw; border-radius: 1.4cqw; border: .6cqw solid var(--sumi); }
+    .dlg .ava { position: absolute; left: 3.4cqw; top: 4.6cqw; width: 13.5cqw; height: 13.5cqw; border-radius: 50%;
+      background: #dfe9ef; border: .6cqw solid var(--sumi); overflow: hidden; }
+    .dlg .ava svg { width: 100%; height: 100%; display: block; }
+    .dlg .hl { color: var(--shu); font-weight: 700; }
+    .dlg .tm { background: var(--ai); color: var(--washi); font-weight: 700; padding: 0 1.4cqw; border-radius: 1.2cqw; font-variant-numeric: tabular-nums; }
+    .dlg .typing { opacity: .25; }
+    .dlg .next { position: absolute; right: 3.4cqw; bottom: 2cqw; font-size: 3.4cqw; color: var(--shu); animation: bob 1s ease-in-out infinite; }
+    @keyframes bob { 50% { transform: translateY(.8cqw); } }
+    .dlg.radio .ava { background: var(--ai); }
+
+    /* polaroid */
+    .pol { background: #fffdf7; padding: 2.4cqw 2.4cqw 9cqw; box-shadow: 0 2cqw 4cqw rgb(0 0 0 / .3); width: 50cqw; }
+    .pol img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #ccc; }
+    .pol span { position: absolute; left: 0; right: 0; bottom: 2.2cqw; text-align: center; font-family: var(--font-jp); font-weight: 800; font-size: 4.2cqw; color: var(--sumi); }
+    .pol::before { content: ""; position: absolute; top: -2.4cqw; left: 50%; width: 18cqw; height: 5cqw; transform: translateX(-50%) rotate(-3deg);
+      background: rgb(224 123 57 / .55); }
+
+    /* hanko stamp */
+    .stamp { width: 21cqw; height: 21cqw; border-radius: 50%; border: 1cqw solid var(--shu); color: var(--shu);
+      display: grid; place-items: center; font-family: var(--font-jp); font-weight: 800; font-size: 5.4cqw; line-height: 1;
+      writing-mode: vertical-rl; background: rgb(243 233 210 / .85); transform: rotate(-12deg); box-shadow: inset 0 0 0 .6cqw rgb(243 233 210), inset 0 0 0 1cqw var(--shu); }
+    .pop { font-weight: 800; color: var(--washi); background: var(--shu); font-size: 3.6cqw; padding: .6cqw 2.2cqw; border-radius: 3cqw; border: .5cqw solid var(--sumi); transform: rotate(6deg); }
+
+    /* odometer */
+    .odo { display: flex; gap: .6cqw; align-items: center; font-family: var(--font-sign); font-weight: 900; }
+    .odo b { background: var(--sumi); color: var(--washi); font-size: 4.6cqw; width: 5.6cqw; text-align: center; border-radius: .8cqw; padding: .4cqw 0; }
+    .odo b:last-of-type { background: var(--shu); }
+    .odo span { margin-left: 1cqw; font-size: 3.4cqw; color: var(--sumi); }
+
+    /* kinetic big type */
+    .kin { left: 0; right: 0; text-align: center; color: var(--washi); text-shadow: 0 1cqw 0 rgb(27 27 27 / .35); }
+    .kin b { display: block; font-family: var(--font-sign); font-weight: 900; font-size: 24cqw; line-height: 1; letter-spacing: -.02em; }
+    .kin span { font-size: 4.6cqw; font-weight: 700; letter-spacing: .04em; }
+
+    /* chapter card */
+    .shoji { position: absolute; top: 0; bottom: 0; width: 50%; background:
+      linear-gradient(90deg, transparent 31%, rgb(27 27 27 / .2) 31% 32%, transparent 32% 65%, rgb(27 27 27 / .2) 65% 66%, transparent 66%),
+      linear-gradient(0deg, transparent 23%, rgb(27 27 27 / .2) 23% 24%, transparent 24% 48%, rgb(27 27 27 / .2) 48% 49%, transparent 49% 73%, rgb(27 27 27 / .2) 73% 74%, transparent 74%),
+      #f7f0de; border: 1.6cqw solid #5a3b22; z-index: 6; }
+    .shoji.l { left: -30%; } .shoji.r { right: -30%; }
+    .chap { inset: 0; display: grid; place-items: center; text-align: center; z-index: 7; }
+    .chap .kanji { font-family: var(--font-jp); font-weight: 800; font-size: 30cqw; line-height: 1.02; writing-mode: vertical-rl; color: var(--sumi); margin: 0 auto; }
+    .chap .seal { position: absolute; top: 34%; right: 18%; width: 15cqw; height: 15cqw; background: var(--shu); color: var(--washi); border-radius: 2cqw;
+      display: grid; place-items: center; font-family: var(--font-jp); font-weight: 800; font-size: 8cqw; transform: rotate(8deg); }
+    .chap .name { font-weight: 700; font-size: 6cqw; margin-top: 4cqw; }
+    .chap .sub { font-size: 3.8cqw; color: #5d4f3d; }
+
+    /* gate + end */
+    .gate { inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 16cqw; text-align: center; color: var(--sumi); }
+    .gate .jp { font-family: var(--font-jp); font-weight: 800; font-size: 13cqw; letter-spacing: .1em; }
+    .gate .cta { margin-top: auto; padding-bottom: 7cqw; display: flex; flex-direction: column; align-items: center; }
+    .gate .ttl { font-weight: 700; font-size: 5.4cqw; margin-top: 1cqw; }
+    .gate .meta { font-size: 3.6cqw; color: #5d4f3d; margin-top: 1cqw; }
+    .btnp { margin-top: 5cqw; display: inline-flex; gap: 2.4cqw; align-items: center; background: var(--shu); color: var(--washi); font-weight: 700; font-size: 5cqw;
+      padding: 3cqw 7cqw; border-radius: 10cqw; border: .8cqw solid var(--sumi); box-shadow: 0 1.4cqw 0 var(--sumi); }
+    .btnp svg { width: 4.4cqw; height: 4.4cqw; }
+    .btng { display: inline-flex; gap: 2cqw; align-items: center; background: var(--washi); color: var(--sumi); font-weight: 700; font-size: 4.2cqw;
+      padding: 2.6cqw 5cqw; border-radius: 10cqw; border: .8cqw solid var(--sumi); }
+    .gate .hint { margin-top: 3.4cqw; font-size: 3.4cqw; color: #5d4f3d; display: flex; gap: 1.4cqw; align-items: center; }
+    .gate .hint svg { width: 4cqw; height: 4cqw; }
+
+    .book { left: 6cqw; right: 6cqw; top: 14cqw; background: #fbf5e6; border: .8cqw solid var(--sumi); border-radius: 2cqw; padding: 5cqw 4cqw;
+      box-shadow: 1.6cqw 1.6cqw 0 var(--sumi); display: grid; grid-template-columns: repeat(4, 1fr); gap: 3cqw 2cqw; justify-items: center; }
+    .book::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: .4cqw dashed rgb(27 27 27 / .25); }
+    .book .stamp { width: 15cqw; height: 15cqw; font-size: 3.6cqw; border-width: .7cqw; box-shadow: none; background: transparent; }
+    .book h3 { grid-column: 1 / -1; margin: 0 0 1cqw; font-size: 4.4cqw; }
+    .count { left: 0; right: 0; top: 104cqw; text-align: center; }
+    .count b { font-family: var(--font-sign); font-weight: 900; font-size: 18cqw; line-height: 1; color: var(--shu); }
+    .count span { display: block; font-size: 4cqw; font-weight: 600; color: var(--sumi); }
+    .count .big { display: flex; align-items: baseline; justify-content: center; gap: 2cqw; } .count .big span { display: inline; font-size: 6cqw; font-weight: 700; }
+    .endbtns { left: 0; right: 0; top: 140cqw; display: flex; gap: 3cqw; justify-content: center; }
+
+    /* controls (shown once, to explain) */
+    .ctrl { left: 4cqw; right: 4cqw; bottom: 40cqw; display: flex; justify-content: space-between; align-items: center;
+      background: rgb(27 27 27 / .72); border-radius: 8cqw; padding: 1.6cqw 3cqw; opacity: .92; }
+    .ctrl span { width: 10cqw; height: 10cqw; display: grid; place-items: center; color: var(--washi); border-radius: 50%; }
+    .ctrl span.pri { background: var(--shu); }
+    .ctrl svg { width: 5cqw; height: 5cqw; }
+    .note { position: absolute; z-index: 9; background: #fffbe6; color: #3a3226; font-size: 3.2cqw; line-height: 1.35; padding: 1.4cqw 2.4cqw; border-radius: 1.6cqw;
+      border: .4cqw dashed #b39a68; max-width: 46cqw; }
+
+    /* car options */
+    .cars { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 18px; }
+    .carcard { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px; }
+    .carcard svg { width: 100%; height: auto; display: block; background: linear-gradient(#cfe3ec, #f3e9d2 70%, #c9b98f 70%); border-radius: 10px; }
+    .carcard h3 { margin: 10px 0 2px; font-size: 16px; }
+    .carcard p { margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--page-ink-2); }
+    .carcard .pick { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--shu); }
+    .rules { columns: 2 300px; font-size: 14px; line-height: 1.7; color: var(--page-ink-2); padding-left: 18px; }
+    .rules li { break-inside: avoid; margin-bottom: 4px; }
+    .rules b { color: var(--page-ink); }
+  </style>
+</head>
+<body>
+  <!-- shared SVG defs: paper-cut edge + soft drop shadow -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="paper" x="-5%" y="-5%" width="110%" height="115%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feDropShadow in="d" dx="0" dy="2.2" stdDeviation="1.6" flood-color="#2a1c0c" flood-opacity=".28"/>
+      </filter>
+      <filter id="paperCar" x="-5%" y="-5%" width="110%" height="115%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="1" seed="5" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.4" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feDropShadow in="d" dx="0" dy="2" stdDeviation="1.4" flood-color="#2a1c0c" flood-opacity=".3"/>
+      </filter>
+      <filter id="paperLite" x="-5%" y="-5%" width="110%" height="115%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+    <header>
+      <h1>晩秋の旅 · Storyboard<small>Road trip กับ "ชิโระ" — story animation เวอร์ชัน 2 (ภาพนิ่งตัวอย่าง ยังไม่มี animation / เพลง)</small></h1>
+      <p class="lede">เล่าทริปผ่านสายตาของ <b>ชิโระ</b> รถ kei car ทรงกล่องสีขาว ที่พาพวกเรา 4 คนขับจาก Narita วนฟูจิ ลงทะเลซูรูกะ รอบอิซุ ถึงคามาคุระ ก่อนบอกลาแล้วส่งไม้ต่อให้รถไฟในโตเกียว ฉากเป็นกระดาษตัดสไตล์ ukiyo-e ซ้อน 5 ชั้น เลื่อน parallax ตลอดเวลา ตัวหนังสือพิมพ์ขึ้นในกล่องบทสนทนาแบบเกม RPG ยาวรวม ~3½ นาที</p>
+    </header>
+
+    <h2><span class="jp">色</span> สีและตัวอักษร</h2>
+    <div class="swatches" id="swatches"></div>
+
+    <h2><span class="jp">絵コンテ</span> 10 เฟรมหลัก (มือถือแนวตั้ง)</h2>
+    <div class="grid" id="frames"></div>
+
+    <h2><span class="jp">横</span> จอแนวนอน (ตัวอย่างเฟรม 4)</h2>
+    <figure>
+      <div class="frame wide" id="wide"></div>
+      <figcaption>ฉากกว้างขึ้น เห็นวิวยาวกว่า กล่องบทสนทนาลอยมุมล่างซ้าย (กว้างสุด ~560px) ป้ายทางหลวงชิดขวาบน</figcaption>
+    </figure>
+
+    <h2><span class="jp">白</span> เลือกหน้าตาชิโระ</h2>
+    <div class="cars" id="cars"></div>
+
+    <h2><span class="jp">遊</span> ลูกเล่น &amp; การควบคุม</h2>
+    <ul class="rules">
+      <li><b>แตะรถ</b> → บีบแตร "ปู้น!" ชิโระเด้ง + คนในรถโบกมือ</li>
+      <li><b>แตะท้องฟ้า</b> → ใบเมเปิลร่วงพรู</li>
+      <li><b>แตะกล่องข้อความ</b> → ข้อความขึ้นครบทันที / แตะอีกที = ข้ามบรรทัด</li>
+      <li><b>แถบ 11 ช่องด้านบน</b> = 11 วัน แตะเพื่อกระโดดไปวันไหนก็ได้</li>
+      <li><b>สมุดแสตมป์</b> → ได้ตราประทับทุกจุดเด่น เปิดดูระหว่างทางได้</li>
+      <li><b>ปุ่มล่าง</b> (เล่น/หยุด · เพลง · transcript · สมุดแสตมป์ · เต็มจอ) ซ่อนเองหลัง 3 วิ แตะจอว่างเพื่อเรียกกลับ</li>
+      <li><b>Transcript เต็ม</b> → แผ่นดึงขึ้นจากด้านล่าง แตะบรรทัดไหนก็กระโดดไปตรงนั้น</li>
+      <li><b>เพลง</b> lo-fi city pop + โคโตะ 96–116 BPM เปลี่ยนโทนตามภาค ไม่มีช่วงไหนช้าจนง่วง</li>
+      <li><b>เครื่องที่ตั้ง reduced-motion</b> → ฉากนิ่ง เปลี่ยนแบบ crossfade</li>
+    </ul>
+  </div>
+
+  <script>
+  (() => {
+    "use strict";
+    const C = { washi: "#F3E9D2", ai: "#1F3A5F", shu: "#C8442F", momiji: "#E07B39", matsu: "#3E5C4A", sumi: "#1B1B1B", kin: "#E9B44C" };
+
+    /* ---------- tiny helpers ---------- */
+    const rng = (seed) => () => { seed |= 0; seed = (seed + 0x6D2B79F5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+    let uid = 0;
+    const id = (p) => `${p}${++uid}`;
+    const ICON = {
+      play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>',
+      pause: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>',
+      note: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3v12.3A3.5 3.5 0 1 0 11 18V8h7V3z"/></svg>',
+      list: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>',
+      book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 6c-2-1.5-5-2-8-1.5v14c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-14c-3-.5-6 0-8 1.5zM12 6v14"/></svg>',
+      full: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+      sound: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9h4l5-4v14l-5-4H4zM16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>',
+      replay: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v5h5"/></svg>',
+      share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7"/></svg>',
+    };
+
+    /* ---------- scenery (all return SVG strings; W = scene width, H = scene height) ---------- */
+    const sky = (W, H, stops) => {
+      const g = id("sky");
+      return `<defs><linearGradient id="${g}" x1="0" y1="0" x2="0" y2="1">${stops.map(([o, c]) => `<stop offset="${o}" stop-color="${c}"/>`).join("")}</linearGradient></defs><rect width="${W}" height="${H}" fill="url(#${g})"/>`;
+    };
+    const sun = (x, y, r, c = C.kin, glow = true) =>
+      (glow ? `<circle cx="${x}" cy="${y}" r="${r * 1.9}" fill="${c}" opacity=".28" filter="url(#glow)"/>` : "") + `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
+    const hills = (W, H, y, amp, color, seed, step = 46, filter = "paper") => {
+      const r = rng(seed); let d = `M-10 ${H} L-10 ${y}`; let px = -10, py = y;
+      for (let x = -10 + step; x <= W + step; x += step) { const ny = y - r() * amp; d += ` Q${px + step / 2} ${Math.min(py, ny) - amp * .35} ${x} ${ny}`; px = x; py = ny; }
+      return `<path d="${d} L${W + 10} ${H} Z" fill="${color}" filter="url(#${filter})"/>`;
+    };
+    const fuji = (cx, base, w, h, body = "#4F6D8F", snow = "#FBF7EE") => {
+      const cp = id("fj");
+      const d = `M${cx - w / 2} ${base} C${cx - w * .26} ${base - h * .3} ${cx - w * .12} ${base - h * .86} ${cx - w * .07} ${base - h} L${cx + w * .07} ${base - h} C${cx + w * .12} ${base - h * .86} ${cx + w * .26} ${base - h * .3} ${cx + w / 2} ${base} Z`;
+      const sy = base - h * .6; let zz = `M${cx - w / 2} ${base - h - 5} L${cx + w / 2} ${base - h - 5} L${cx + w / 2} ${sy}`;
+      const n = 9; for (let i = n; i >= 0; i--) zz += ` L${cx - w / 2 + (w * i) / n} ${sy + (i % 2 ? h * .1 : -h * .02) + (i % 3 === 0 ? h * .05 : 0)}`;
+      return `<g filter="url(#paper)"><defs><clipPath id="${cp}"><path d="${d}"/></clipPath></defs><path d="${d}" fill="${body}"/><path d="${zz}Z" fill="${snow}" clip-path="url(#${cp})"/>` +
+        `<path d="${d}" fill="none" stroke="rgb(0 0 0 / .08)" stroke-width="1"/></g>`;
+    };
+    const cloud = (x, y, s, c = "#FBF5E6") =>
+      `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)"><path d="M0 20 Q4 6 18 8 Q24 -4 40 2 Q52 -6 62 6 Q78 4 80 20 Z" fill="${c}"/><path d="M14 20 h52" stroke="${C.sumi}" stroke-opacity=".12" stroke-width="1.4"/></g>`;
+    const pine = (x, y, s, c = C.matsu) =>
+      `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)"><path d="M-2 0 L-3 -30 Q0 -40 4 -50 L3 -30 L2 0Z" fill="#5a3b22"/>` +
+      `<ellipse cx="-12" cy="-30" rx="16" ry="6" fill="${c}"/><ellipse cx="10" cy="-42" rx="18" ry="6.5" fill="${c}"/><ellipse cx="-4" cy="-56" rx="14" ry="6" fill="${c}"/><ellipse cx="6" cy="-66" rx="9" ry="4.5" fill="${c}"/></g>`;
+    const maple = (x, y, s, c = C.momiji) =>
+      `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)"><path d="M-2 0 L-2.5 -26 L2.5 -26 L2 0Z" fill="#5a3b22"/>` +
+      `<circle cx="0" cy="-40" r="17" fill="${c}"/><circle cx="-13" cy="-31" r="11" fill="${c}"/><circle cx="13" cy="-30" r="12" fill="${C.shu}"/><circle cx="4" cy="-52" r="10" fill="${C.kin}" opacity=".9"/></g>`;
+    const torii = (x, y, s) =>
+      `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)"><rect x="-22" y="-44" width="5" height="44" fill="${C.shu}"/><rect x="17" y="-44" width="5" height="44" fill="${C.shu}"/>` +
+      `<rect x="-26" y="-36" width="52" height="4" fill="${C.shu}"/><path d="M-32 -48 Q0 -44 32 -48 L30 -42 Q0 -39 -30 -42Z" fill="${C.sumi}"/><rect x="-2" y="-42" width="4" height="7" fill="${C.shu}"/></g>`;
+    const pagoda = (x, y, s) => {
+      let g = `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)"><rect x="-1" y="-118" width="2" height="18" fill="${C.sumi}"/>`;
+      for (let i = 0; i < 5; i++) { const w = 34 - i * 5, yy = -i * 20; g += `<rect x="${-w / 2 + 5}" y="${yy - 16}" width="${w - 10}" height="16" fill="${C.shu}"/><path d="M${-w / 2 - 6} ${yy - 14} Q0 ${yy - 22} ${w / 2 + 6} ${yy - 14} L${w / 2} ${yy - 19} Q0 ${yy - 25} ${-w / 2} ${yy - 19}Z" fill="${C.sumi}"/>`; }
+      return g + "</g>";
+    };
+    const daibutsu = (x, y, s) =>
+      `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)" fill="#5E7A6E"><path d="M-48 0 Q-50 -40 -30 -56 Q-16 -64 0 -64 Q16 -64 30 -56 Q50 -40 48 0Z"/>` +
+      `<ellipse cx="0" cy="-80" rx="17" ry="20"/><circle cx="0" cy="-100" r="9"/><ellipse cx="0" cy="-10" rx="26" ry="9" fill="#4d665b"/></g>`;
+    const seaBand = (W, H, y, c1 = "#2f5a86", c2 = C.ai, lines = true) => {
+      let s = `<rect x="0" y="${y}" width="${W}" height="${H - y}" fill="${c1}" filter="url(#paperLite)"/><rect x="0" y="${y + (H - y) * .45}" width="${W}" height="${H - y}" fill="${c2}"/>`;
+      if (lines) for (let row = 0; row < 6; row++) { const yy = y + 8 + row * 12; let d = ""; for (let x = (row % 2) * 14; x < W; x += 28) d += `M${x} ${yy} q7 -5 14 0 `; s += `<path d="${d}" stroke="${C.washi}" stroke-opacity="${.55 - row * .07}" stroke-width="1.3" fill="none"/>`; }
+      return s;
+    };
+    const bigWave = (x, y, s) => {
+      let foam = ""; const r = rng(11);
+      for (let i = 0; i < 9; i++) { const a = -2.6 + i * .28, R = 70; foam += `<circle cx="${130 + Math.cos(a) * R * .9}" cy="${-62 + Math.sin(a) * R * .8}" r="${3 + r() * 3}" fill="${C.washi}"/>`; }
+      return `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)">` +
+        `<path d="M-40 0 C0 -40 40 -120 130 -126 C182 -128 206 -92 186 -64 C176 -84 156 -92 138 -84 C116 -74 114 -44 134 -22 C104 -30 86 -12 96 0 Z" fill="${C.ai}"/>` +
+        `<path d="M-20 -6 C20 -44 56 -112 130 -118 C172 -120 192 -96 182 -76" fill="none" stroke="#6f97bd" stroke-width="7" stroke-linecap="round"/>` +
+        `<path d="M10 -20 C40 -50 70 -92 120 -100" fill="none" stroke="${C.washi}" stroke-width="2" stroke-opacity=".7"/>${foam}</g>`;
+    };
+    const cliff = (x, y, w, h, c = "#7a5236") =>
+      `<path d="M${x} ${y} L${x} ${y - h * .7} Q${x + w * .2} ${y - h} ${x + w * .45} ${y - h * .92} Q${x + w * .7} ${y - h * .98} ${x + w} ${y - h * .6} L${x + w * .92} ${y}Z" fill="${c}" filter="url(#paper)"/>`;
+    const city = (W, y, seed, night = true, neon = []) => {
+      const r = rng(seed); let s = ""; let x = -6;
+      while (x < W) {
+        const w = 22 + r() * 34, h = 50 + r() * 150, c = night ? (r() < .5 ? "#18273d" : "#22344f") : (r() < .5 ? "#8aa0b8" : "#9db1c4");
+        s += `<rect x="${x}" y="${y - h}" width="${w}" height="${h}" fill="${c}"/>`;
+        if (night) for (let wy = y - h + 8; wy < y - 6; wy += 9) for (let wx = x + 4; wx < x + w - 5; wx += 7) if (r() < .32) s += `<rect x="${wx}" y="${wy}" width="3" height="4" fill="${r() < .7 ? C.kin : "#f6d8a8"}" opacity=".9"/>`;
+        x += w + 2;
+      }
+      neon.forEach(([nx, ny, txt, col]) => { s += `<g><rect x="${nx - 4}" y="${ny - 15}" width="${txt.length * 15 + 8}" height="22" rx="3" fill="${col}" filter="url(#glow)" opacity=".8"/><rect x="${nx - 4}" y="${ny - 15}" width="${txt.length * 15 + 8}" height="22" rx="3" fill="#120e1c" stroke="${col}" stroke-width="2"/><text x="${nx}" y="${ny + 1}" font-family="Noto Sans JP" font-weight="900" font-size="14" fill="${col}">${txt}</text></g>`; });
+      return `<g filter="url(#paperLite)">${s}</g>`;
+    };
+    const tower = (x, y, s) =>
+      `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paper)"><path d="M-30 0 L-4 -150 L4 -150 L30 0 L20 0 L0 -120 L-20 0Z" fill="${C.shu}"/><rect x="-14" y="-70" width="28" height="6" fill="${C.washi}"/><rect x="-9" y="-112" width="18" height="5" fill="${C.washi}"/><rect x="-1" y="-178" width="2" height="30" fill="${C.shu}"/></g>`;
+    const road = (W, H, y, c = "#3b3632") => {
+      let d = ""; for (let x = 6; x < W; x += 38) d += `<rect x="${x}" y="${y + 19}" width="20" height="3" rx="1.5" fill="${C.washi}" opacity=".85"/>`;
+      return `<rect x="0" y="${y}" width="${W}" height="42" fill="${c}"/><rect x="0" y="${y}" width="${W}" height="4" fill="#d8cbb0"/>${d}<rect x="0" y="${y + 42}" width="${W}" height="${H - y - 42}" fill="#b49b72"/><rect x="0" y="${y + 42}" width="${W}" height="${H - y - 42}" fill="url(#none)"/>`;
+    };
+    const speed = (W, y, n, seed) => { const r = rng(seed); let s = ""; for (let i = 0; i < n; i++) { const yy = y + r() * 60, x = r() * W; s += `<rect x="${x}" y="${yy}" width="${30 + r() * 50}" height="1.6" rx=".8" fill="${C.washi}" opacity=".7"/>`; } return s; };
+    const leaves = (W, H, n, seed, y0 = 0) => {
+      const r = rng(seed); let s = "";
+      for (let i = 0; i < n; i++) { const x = r() * W, y = y0 + r() * (H - y0), a = r() * 360, sc = .5 + r() * .7, c = [C.momiji, C.shu, C.kin][i % 3];
+        s += `<path transform="translate(${x} ${y}) rotate(${a}) scale(${sc})" d="M0 5 L-2 6 L-9 3 L-7 1 L-11 -4 L-6 -4 L-7 -10 L-2.5 -6.5 L0 -12 L2.5 -6.5 L7 -10 L6 -4 L11 -4 L7 1 L9 3 L2 6Z" fill="${c}"/><path transform="translate(${x} ${y}) rotate(${a}) scale(${sc})" d="M0 4 L0 11" stroke="${c}" stroke-width="1.6"/>`; }
+      return s;
+    };
+    const plane = (x, y, s) =>
+      `<g transform="translate(${x} ${y}) scale(${s}) rotate(-8)" filter="url(#paper)" fill="#fbf7ee"><path d="M-40 0 Q-40 -6 -30 -6 L34 -6 Q46 -4 48 0 Q46 4 34 4 L-30 4 Q-40 4 -40 0Z"/><path d="M0 -4 L-14 -26 L-6 -26 L14 -4Z"/><path d="M0 2 L-12 20 L-5 20 L12 2Z"/><path d="M-36 -4 L-44 -18 L-38 -18 L-28 -6Z" fill="${C.shu}"/></g>`;
+    const terminal = (x, y, w) =>
+      `<g filter="url(#paper)"><rect x="${x}" y="${y - 40}" width="${w}" height="40" fill="#c9cfd2"/><path d="M${x - 6} ${y - 40} Q${x + w / 2} ${y - 62} ${x + w + 6} ${y - 40}Z" fill="#a9b3b8"/>` +
+      `<rect x="${x + 8}" y="${y - 30}" width="${w - 16}" height="12" fill="#7f97a8"/><rect x="${x + w + 20}" y="${y - 96}" width="10" height="96" fill="#c9cfd2"/><rect x="${x + w + 12}" y="${y - 110}" width="26" height="16" rx="3" fill="#7f97a8"/></g>`;
+
+    /* ---------- vehicles ---------- */
+    const people = (xs, y, wave) => xs.map((px, i) =>
+      `<circle cx="${px}" cy="${y}" r="5.2" fill="${C.sumi}"/><path d="M${px - 7} ${y + 12} Q${px} ${y + 3} ${px + 7} ${y + 12}Z" fill="${C.sumi}"/>` +
+      (wave && i % 2 === 0 ? `<path d="M${px + 5} ${y + 4} L${px + 10} ${y - 9}" stroke="${C.sumi}" stroke-width="3" stroke-linecap="round"/>` : "")).join("");
+    const walkers = (x, y, n = 4) => Array.from({ length: n }, (_, i) => { const px = x + i * 22, h = i % 2 ? 0 : 3;
+      return `<g fill="${C.sumi}"><circle cx="${px}" cy="${y - 44 - h}" r="6"/><path d="M${px - 7} ${y - 16} L${px - 6} ${y - 34 - h} Q${px} ${y - 38 - h} ${px + 6} ${y - 34 - h} L${px + 7} ${y - 16}Z"/>` +
+        `<path d="M${px - 3} ${y - 17} L${px - 6} ${y}M${px + 3} ${y - 17} L${px + 6} ${y}" stroke="${C.sumi}" stroke-width="3.4" stroke-linecap="round"/>` +
+        (i === 0 || i === 3 ? `<path d="M${px + 5} ${y - 32 - h} L${px + 12} ${y - 50 - h}" stroke="${C.sumi}" stroke-width="3" stroke-linecap="round"/>` : "") +
+        `<rect x="${px + 6}" y="${y - 20}" width="8" height="10" rx="1.5" fill="${[C.shu, C.ai, C.momiji, C.matsu][i]}"/></g>`; }).join("");
+    const wheel = (x, y, r = 10.5) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.sumi}"/><circle cx="${x}" cy="${y}" r="${r * .45}" fill="#c9c2b4"/><path d="M${x - r * .45} ${y} H${x + r * .45}" stroke="${C.sumi}" stroke-width="1.4"/>`;
+    // Shiro, side view facing right. Origin = road contact point under the rear wheel area.
+    const shiro = (x, y, s = 1, o = {}) => {
+      const v = o.v || "A", body = "#FBF8F1", trim = o.trim || (v === "B" ? C.momiji : v === "C" ? "#9db8b0" : C.shu);
+      const lights = o.lights ? `<path d="M118 -34 L230 -60 L230 -2 L118 -22Z" fill="${C.kin}" opacity=".35" filter="url(#glow)"/>` : "";
+      const hazard = o.hazard ? `<circle cx="115" cy="-26" r="7" fill="#ffb02e" filter="url(#glow)"/><circle cx="-1" cy="-26" r="7" fill="#ffb02e" filter="url(#glow)"/>` : "";
+      let shape, win, extra = "";
+      if (v === "A") { // tall box (N-BOX / Tanto-ish)
+        shape = `<path d="M0 -12 L0 -78 Q0 -86 8 -86 L96 -86 Q104 -86 106 -78 L114 -46 Q118 -44 118 -36 L118 -12 Q118 -6 112 -6 L6 -6 Q0 -6 0 -12Z"/>`;
+        win = `<path d="M8 -78 H38 V-50 H8Z M43 -78 H74 V-50 H43Z M79 -78 H98 L106 -50 H79Z"/>`;
+        extra = `<rect x="0" y="-30" width="118" height="5" fill="${trim}"/><circle cx="111" cy="-36" r="4.4" fill="${C.kin}"/>`;
+      } else if (v === "B") { // two-tone crossover (Hustler-ish)
+        shape = `<path d="M0 -14 L0 -70 Q0 -80 10 -80 L92 -80 Q100 -80 104 -72 L112 -48 Q118 -46 118 -38 L118 -14 Q118 -6 110 -6 L8 -6 Q0 -6 0 -14Z"/>`;
+        win = `<path d="M10 -72 H40 V-50 H10Z M45 -72 H74 V-50 H45Z M79 -72 H96 L104 -50 H79Z"/>`;
+        extra = `<path d="M0 -70 Q0 -80 10 -80 L92 -80 Q100 -80 104 -72 L106 -66 H0Z" fill="${trim}"/><rect x="-2" y="-18" width="122" height="10" rx="4" fill="#4a4a48"/><circle cx="110" cy="-38" r="6" fill="${C.washi}" stroke="${C.sumi}" stroke-width="1.6"/><circle cx="110" cy="-38" r="3" fill="${C.kin}"/>`;
+      } else { // rounded box (Cube-ish)
+        shape = `<path d="M0 -16 Q0 -84 22 -84 L90 -84 Q110 -84 114 -56 L118 -40 Q120 -30 118 -16 Q118 -6 108 -6 L10 -6 Q0 -6 0 -16Z"/>`;
+        win = `<path d="M12 -74 Q14 -78 22 -78 H44 V-52 H10Z M49 -78 H80 V-52 H49Z M85 -78 H92 Q104 -78 108 -52 H85Z"/>`;
+        extra = `<rect x="2" y="-32" width="116" height="4" rx="2" fill="${trim}"/><circle cx="112" cy="-40" r="5.5" fill="${C.kin}" stroke="${C.sumi}" stroke-width="1.4"/>`;
+      }
+      const ppl = people([22, 54, 70, 90], -66, o.wave);
+      return `<g transform="translate(${x} ${y}) scale(${s})">${lights}${hazard}<g filter="url(#paperCar)" fill="${body}" stroke="${C.sumi}" stroke-width="2.2">${shape}</g>` +
+        `<g fill="#9cc3d8" stroke="${C.sumi}" stroke-width="1.6">${win}</g><g clip-path="none">${ppl}</g>${extra}` +
+        `<path d="M42 -48 V-10 M77 -48 V-10" stroke="${C.sumi}" stroke-opacity=".35" stroke-width="1.4"/><rect x="56" y="-40" width="10" height="2.6" rx="1.3" fill="${C.sumi}" opacity=".5"/>` +
+        `${wheel(24, -6)}${wheel(94, -6)}${o.dust ? `<g fill="${C.washi}" opacity=".8"><circle cx="-10" cy="-8" r="5"/><circle cx="-20" cy="-12" r="3.6"/><circle cx="-28" cy="-6" r="2.6"/></g>` : ""}</g>`;
+    };
+    const avatar = (radio) => radio
+      ? `<svg viewBox="0 0 60 60"><rect x="12" y="22" width="36" height="24" rx="5" fill="${C.washi}" stroke="${C.sumi}" stroke-width="2.4"/><circle cx="23" cy="34" r="6" fill="${C.sumi}"/><rect x="33" y="29" width="10" height="3" fill="${C.sumi}"/><rect x="33" y="35" width="10" height="3" fill="${C.sumi}"/><path d="M18 22 L40 10" stroke="${C.sumi}" stroke-width="2.4" stroke-linecap="round"/></svg>`
+      : `<svg viewBox="0 0 60 60"><rect x="8" y="14" width="44" height="40" rx="7" fill="#FBF8F1" stroke="${C.sumi}" stroke-width="2.4"/><rect x="13" y="18" width="34" height="16" rx="3" fill="#9cc3d8" stroke="${C.sumi}" stroke-width="2"/>` +
+        `<circle cx="18" cy="42" r="5" fill="${C.kin}" stroke="${C.sumi}" stroke-width="1.8"/><circle cx="42" cy="42" r="5" fill="${C.kin}" stroke="${C.sumi}" stroke-width="1.8"/><path d="M25 46 Q30 50 35 46" stroke="${C.sumi}" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="8" y="35" width="44" height="2.6" fill="${C.shu}"/></svg>`;
+    const train = (x, y, s) => {
+      let cars = ""; for (let i = 0; i < 3; i++) { const cx = i * 128; let w = ""; for (let k = 0; k < 4; k++) w += `<rect x="${cx + 12 + k * 28}" y="-50" width="20" height="18" rx="2" fill="#f6e3b0"/>`;
+        cars += `<rect x="${cx}" y="-62" width="124" height="54" rx="7" fill="#d9dcd6" stroke="${C.sumi}" stroke-width="2"/>${w}<rect x="${cx}" y="-28" width="124" height="7" fill="#7cb342"/>` + people([cx + 22, cx + 50, cx + 78, cx + 106].slice(0, i === 1 ? 4 : 0), -46, i === 1); }
+      return `<g transform="translate(${x} ${y}) scale(${s})" filter="url(#paperLite)">${cars}<path d="M384 -62 Q404 -62 410 -40 L410 -14 Q410 -8 404 -8 L384 -8Z" fill="#d9dcd6" stroke="${C.sumi}" stroke-width="2"/><circle cx="402" cy="-20" r="3.6" fill="${C.kin}"/></g>`;
+    };
+
+    /* ---------- HTML overlays ---------- */
+    const prog = (day, p = "40%") => `<div class="ov prog">${Array.from({ length: 11 }, (_, i) => `<i class="${i + 1 < day ? "done" : i + 1 === day ? "now" : ""}" style="--p:${p}"></i>`).join("")}</div>`;
+    const sign = (k, r, d, du = "km", tag = "", cls = "", style = "") => `<div class="ov sign ${cls}" style="${style}">${tag ? `<span class="tag">${tag}</span>` : ""}<div><span class="k">${k}</span><span class="d">${d}<small>${du}</small></span><span class="r">${r}</span></div></div>`;
+    const dlg = (html, o = {}) => `<div class="ov dlg ${o.radio ? "radio" : ""}" style="${o.style || ""}"><span class="who">${o.who || "ชิโระ"}</span><span class="ava">${avatar(o.radio)}</span>${html}<span class="next">▼</span></div>`;
+    const svg = (W, H, inner) => `<svg class="scene" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${inner}</svg>`;
+    const grain = '<div class="grain"></div>';
+
+    const W = 360, H = 740, RY = 520; // portrait scene; RY = road top
+    const FRAMES = [
+      {
+        t: "0:00", title: "หน้าเริ่ม (gate)",
+        what: "ฟูจิใหญ่กลางจอ ชิโระจอดรออยู่ข้างทาง เมฆลอยช้าๆ ปุ่มแดงใหญ่กดแล้วเริ่ม (จำเป็นสำหรับให้ iOS เปิดเสียง)",
+        motion: "เมฆลอย ใบเมเปิลร่วงเบาๆ ชิโระกระพริบไฟหน้า",
+        sound: "ยังเงียบ → กดแล้วเสียงสตาร์ทรถ + เพลงเข้า",
+        html: () => svg(W, H, sky(W, H, [[0, "#f6e7c8"], [.55, "#f3d9b0"], [1, "#e9c79a"]]) + sun(292, 262, 22, C.shu, false) + cloud(14, 250, 1) + cloud(230, 300, .7) +
+          fuji(180, 480, 380, 200) + hills(W, H, 470, 30, "#6d8a76", 3) + hills(W, H, 505, 18, C.matsu, 8) + road(W, H, RY) + pine(330, 522, 1.1) + maple(30, 524, 1.05) + shiro(122, 560, .9) + leaves(W, 420, 7, 4, 200)) +
+          `<div class="ov gate"><span class="jp">晩秋の旅</span><span class="ttl">Road trip กับชิโระ</span><span class="meta">11 วัน · 1,165 กม. · ~3½ นาที</span><span class="cta"><span class="btnp">${ICON.play} ออกเดินทาง</span><span class="hint">${ICON.sound} เปิดเสียงด้วยนะ</span></span></div>` + grain,
+      },
+      {
+        t: "0:05", title: "Intro · Narita — ชิโระแนะนำตัว",
+        what: "เครื่องบินร่อนผ่าน อาคารผู้โดยสาร Narita ชิโระเริ่มวิ่ง ป้ายเขียวบอกทางไป Chuo Expressway",
+        motion: "เครื่องบินเฉียงขึ้นข้ามจอ · ฉากเริ่มเลื่อน · ตัวหนังสือพิมพ์ทีละตัว",
+        sound: "เสียงเครื่องบิน → เพลงเข้า 108 BPM",
+        html: () => svg(W, H, sky(W, H, [[0, "#bcd6e2"], [.6, "#e7e7d6"], [1, "#f1e3c4"]]) + cloud(250, 90, .9) + cloud(-10, 230, 1.2) + plane(130, 170, 1.4) +
+          hills(W, H, 470, 20, "#9fb3a3", 21) + terminal(30, 500, 150) + hills(W, H, 512, 8, "#7c9a7f", 5) + road(W, H, RY) + shiro(120, 560, .9, { dust: true })) +
+          prog(1, "8%") + sign("中央道", "Chuo Expwy", "165", "km", "E20") +
+          dlg(`สวัสดี! ฉันชื่อ <span class="hl">ชิโระ</span> รถกล่องสีขาวจาก Narita อีก 8 วัน ฉันต้องพาสี่คนนี้ไปจีบ<span class="hl">ฟูจิ</span><span class="typing">ให้ได้</span>`) +
+          `<div class="ov ctrl">${["pause", "note", "list", "book", "full"].map((k, i) => `<span class="${i ? "" : "pri"}">${ICON[k]}</span>`).join("")}</div>` +
+          `<div class="note" style="right:5cqw;bottom:54cqw">ปุ่มควบคุม (ซ่อนเองหลัง 3 วิ)</div>` +
+          `<div class="note" style="left:5cqw;top:33cqw">แถบ 11 ช่อง = 11 วัน แตะเพื่อกระโดด</div>` + grain,
+      },
+      {
+        t: "0:20", title: "การ์ดเปิดภาค · 富士",
+        what: "ประตูโชจิเลื่อนปิดฉากแล้วเปิดออก ตัวคันจิใหญ่แนวตั้ง ตราแดง 壱 (หนึ่ง) ประทับลง",
+        motion: "โชจิเลื่อนเข้า-ออก 0.6 วิ · ตราประทับเด้ง",
+        sound: "เสียงกลองไทโกะ \"ด้ง\" + ตราประทับ \"ปั้ก\"",
+        html: () => svg(W, H, sky(W, H, [[0, "#f6ecd6"], [1, "#efe1c2"]]) + leaves(W, H, 14, 9)) +
+          `<div class="shoji l"></div><div class="shoji r"></div>` +
+          `<div class="ov chap"><div><div class="kanji">富士</div><div class="name">ภาค 1 · ฟูจิ</div><div class="sub">วัน 1–3 · ทะเลสาบ 5 แห่ง · 445 กม.</div></div><div class="seal">壱</div></div>` + grain,
+      },
+      {
+        t: "0:30", title: "ขับบน Chuo Expressway",
+        what: "ฉากหลัก: ฟูจิไกล ภูเขากลาง ต้นสนใกล้ ถนน เลื่อนคนละความเร็ว (parallax) · เลขไมล์นับขึ้น",
+        motion: "5 ชั้นเลื่อน · ชิโระเด้งตามถนน · เส้นความเร็ว",
+        sound: "เพลงเต็มวง · ชิโระบ่นทางชัน",
+        html: () => svg(W, H, sky(W, H, [[0, "#9fc4d8"], [.55, "#dbe6dc"], [1, "#f1e3c4"]]) + cloud(40, 110, .9) + cloud(240, 160, .7) + fuji(250, 440, 300, 190) +
+          hills(W, H, 440, 50, "#7f9d86", 13) + hills(W, H, 492, 26, C.matsu, 17) + pine(30, 520, 1.25) + pine(110, 518, .95, "#35503f") + maple(300, 522, 1.1) + road(W, H, RY) + speed(W, 535, 7, 2) + shiro(130, 560, .9, { dust: true })) +
+          prog(1, "45%") + sign("河口湖", "Kawaguchiko", "85", "km", "中央道 E20") +
+          `<div class="ov odo" style="left:5cqw;top:44cqw"><b>0</b><b>1</b><b>3</b><b>0</b><span>km</span></div>` +
+          dlg(`ทางขึ้นเขาชันจังเลย… แต่ไม่เป็นไร ข้างหน้ามี<span class="hl">ฟูจิ</span>รออยู่!`) + grain,
+      },
+      {
+        t: "0:45", title: "จอดแวะ · โพลารอยด์ + แสตมป์",
+        what: "ชิโระจอด คนในรถโบกมือ รูปถ่ายจริงเด้งขึ้นเป็นโพลารอยด์ (หมุนเบาๆ) แล้วตราประทับกระโดดลงสมุด",
+        motion: "โพลารอยด์ตกลงมา + หมุน · ตราประทับเด้ง \"+1\"",
+        sound: "ชัตเตอร์กล้อง · ตราประทับ \"ปั้ก\"",
+        html: () => svg(W, H, sky(W, H, [[0, "#a9cbe0"], [.6, "#e3eadf"], [1, "#f1e3c4"]]) + fuji(160, 430, 400, 250) + seaBand(W, H, 430, "#5f8db3", "#46749b") +
+          hills(W, H, 500, 14, C.matsu, 31) + torii(300, 520, 1.1) + road(W, H, RY) + shiro(70, 560, .9, { wave: true })) +
+          prog(1, "60%") +
+          `<div class="ov" style="top:16cqw;left:24cqw;transform:rotate(-5deg)"><div class="pol" style="position:relative"><img src="../img/days/d1-ropeway-600.webp" alt=""><span>天上山 Ropeway</span></div></div>` +
+          `<div class="ov" style="top:78cqw;right:6cqw"><div class="stamp">天上山</div></div><div class="ov pop" style="top:76cqw;right:4cqw">+1</div>` +
+          dlg(`จอดพักแป๊บ! สี่คนนี้ขึ้น<span class="hl">กระเช้า</span>ไปส่องฟูจิกันแล้ว ฉันรอตรงนี้นะ`) + grain,
+      },
+      {
+        t: "0:55", title: "พระอาทิตย์ตก · kinetic type",
+        what: "ท้องฟ้าไล่สีส้ม→ม่วง ฟูจิเป็นเงาดำ เวลาพระอาทิตย์ตกเป็นตัวเลขใหญ่ลอยลงมาจากฟ้า ทุกวันมีฉากนี้",
+        motion: "ฟ้าค่อยๆ ไล่สี · ตัวเลขลอยลง · ไฟหน้ารถติด",
+        sound: "คอร์ดลอยๆ + กระดิ่งลม (ยังมีกลองเบาๆ)",
+        html: () => svg(W, H, sky(W, H, [[0, "#3c3a6b"], [.4, "#b8546a"], [.7, "#f08a4b"], [1, "#f7c873"]]) + sun(322, 300, 28, "#ffd27a") +
+          fuji(180, 450, 400, 250, "#2b2742", "#4b4568") + seaBand(W, H, 450, "#6b4566", "#3c3354", false) +
+          `<g opacity=".7">${[0, 1, 2, 3, 4].map((i) => `<rect x="${300 - i * 6}" y="${462 + i * 11}" width="${60 + i * 12}" height="3" rx="1.5" fill="#ffd27a"/>`).join("")}</g>` +
+          hills(W, H, 508, 10, "#231f33", 41) + road(W, H, RY, "#29242e") + shiro(120, 560, .9, { lights: true }) + leaves(W, 420, 6, 12, 40)) +
+          prog(1, "92%") +
+          `<div class="ov kin" style="top:28cqw"><span>พระอาทิตย์ตก · Ubuyagasaki</span><b>16:53</b></div>` +
+          dlg(`ทุกเย็นเรามีนัดกับพระอาทิตย์ — วันนี้ <span class="tm">16:53</span> ที่ <span class="hl">Ubuyagasaki</span>`) + grain,
+      },
+      {
+        t: "1:40", title: "อิซุ · ถนนเลียบหน้าผา",
+        what: "ฉากเปลี่ยนเป็นทะเล: หน้าผา ต้นสน คลื่นยักษ์สไตล์โฮคุไซ ชิโระวิ่งบนถนนเลียบชายฝั่ง",
+        motion: "คลื่นม้วนขึ้น-ลง · นกนางนวลบิน · ฉากเลื่อน",
+        sound: "เพลงโทนทะเล 100 BPM + เสียงคลื่น",
+        html: () => svg(W, H, sky(W, H, [[0, "#8ec1d6"], [.6, "#e7ecdf"], [1, "#f1e3c4"]]) + cloud(200, 100, 1) + seaBand(W, H, 400) + bigWave(170, 470, 1) +
+          cliff(-20, 520, 170, 200) + pine(40, 336, .9) + pine(100, 350, .75, "#35503f") + road(W, H, RY) + shiro(150, 560, .9) +
+          `<path d="M250 160 q8 -8 16 0 q8 -8 16 0" stroke="${C.sumi}" stroke-width="2" fill="none"/><path d="M290 200 q6 -6 12 0 q6 -6 12 0" stroke="${C.sumi}" stroke-width="1.8" fill="none"/>`) +
+          prog(6, "40%") + sign("下田", "Shimoda", "32", "km", "R136") +
+          dlg(`ทะเลอิซุสีครามขนาดนี้ ใครจะขับเร็วล่ะ… แต่ต้องถึง <span class="hl">Shimoda</span> ก่อน <span class="tm">16:49</span> นะ`) + grain,
+      },
+      {
+        t: "2:30", title: "บอกลาชิโระ · คืนรถที่ Narita",
+        what: "ฟ้าโพล้เพล้ ใบเมเปิลร่วง ชิโระจอดเปิดไฟฉุกเฉิน สี่คนเดินออกไปโบกมือลา — จุดซึ้งของเรื่อง",
+        motion: "ใบไม้ร่วงช้าๆ · ไฟฉุกเฉินกระพริบ · คนเดินออกจากเฟรม",
+        sound: "เพลงลดเหลือเปียโน/โคโตะ แต่ยัง 96 BPM · เสียงล็อกรถ \"ปิ๊บๆ\"",
+        html: () => svg(W, H, sky(W, H, [[0, "#5d5a86"], [.55, "#d98d7a"], [1, "#f1c995"]]) + hills(W, H, 470, 20, "#8d7f8e", 51) +
+          `<g filter="url(#paper)"><rect x="160" y="420" width="190" height="100" fill="#e9e1cf"/><rect x="160" y="420" width="190" height="16" fill="${C.shu}"/><text x="255" y="432" text-anchor="middle" font-family="Noto Sans JP" font-weight="900" font-size="10" fill="${C.washi}">レンタカー返却 · CAR RETURN</text><rect x="180" y="452" width="50" height="68" fill="#9cc3d8"/><rect x="250" y="452" width="80" height="40" fill="#9cc3d8"/></g>` +
+          maple(30, 522, 1.2) + road(W, H, RY) + shiro(80, 560, .9, { hazard: true }) +
+          walkers(232, 518) + leaves(W, 600, 22, 77, 0)) +
+          prog(8, "85%") +
+          dlg(`8 วัน <span class="tm">1,165 กม.</span> … ถึงเวลาคืนตัวฉันแล้วสินะ ไปสนุกที่โตเกียวกันต่อนะ ดูแลกันดีๆ ล่ะ`) + grain,
+      },
+      {
+        t: "2:45", title: "โตเกียว · รถไฟส่งไม้ต่อ",
+        what: "กลางคืน ตึกระฟ้า ไฟนีออน 渋谷 โตเกียวทาวเวอร์ รถไฟสาย Yamanote วิ่งบนทางยกระดับ ชิโระยังพากย์ต่อ \"ทางวิทยุ\"",
+        motion: "รถไฟวิ่งเร็ว · นีออนกระพริบ · ป้ายสถานีเปลี่ยน",
+        sound: "โทนเมือง 116 BPM ซินธ์ · เมโลดี้สถานีรถไฟ",
+        html: () => svg(W, H, sky(W, H, [[0, "#0f1a2e"], [.6, "#24365a"], [1, "#3b3f6b"]]) +
+          `<g fill="${C.washi}">${[[40, 80], [120, 50], [300, 70], [250, 130], [80, 160], [330, 180]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="1.4"/>`).join("")}</g>` +
+          tower(280, 470, 1) + city(W, 480, 61, true, [[30, 370, "渋谷", "#ff5fa2"], [190, 400, "SKY", "#4fe3e8"]]) +
+          `<rect x="0" y="480" width="${W}" height="14" fill="#2a2f3d"/><rect x="0" y="494" width="${W}" height="${H - 494}" fill="#1a1d27"/>${[0, 1, 2, 3, 4, 5].map((i) => `<rect x="${i * 70 + 20}" y="494" width="10" height="60" fill="#2a2f3d"/>`).join("")}` +
+          train(-60, 482, .82) + speed(W, 420, 6, 9)) +
+          `<div class="night">${prog(9, "50%")}</div>` + sign("渋谷", "Shibuya · 次は 原宿", "JY20", "", "", "station") +
+          dlg(`ได้ยินไหม~ ขึ้น <span class="hl">Shibuya Sky</span> แล้วโบกมือมาทาง Narita ด้วยนะ`, { radio: true, who: "ชิโระ (วิทยุ)" }) + grain,
+      },
+      {
+        t: "3:30", title: "ฉากจบ · สมุดแสตมป์ + นับถอยหลัง",
+        what: "สมุดแสตมป์กางออกครบทุกตรา นับถอยหลังถึงวันเดินทาง ปุ่ม \"ดูอีกครั้ง\" และ \"แชร์\" (ส่งลิงก์)",
+        motion: "ตราประทับทยอยปั้กทีละอัน · ตัวเลขนับลง",
+        sound: "เพลงปิดท้ายสดใส จบด้วยแตรชิโระ \"ปู้น ปู้น\"",
+        html: () => {
+          const st = [["富士", C.shu], ["河口湖", C.ai], ["忠霊塔", C.shu], ["薩埵峠", C.momiji], ["三保", C.ai], ["堂ヶ島", "#0e9384"], ["下田", "#0e9384"], ["大仏", "#7b4fc4"], ["浅草", "#2c6fd6"], ["渋谷", "#2c6fd6"], ["白", C.sumi]];
+          return svg(W, H, sky(W, H, [[0, "#f6ecd6"], [1, "#ead9b6"]]) + leaves(W, 300, 8, 33, 0) + leaves(W, H, 6, 34, 640)) +
+            `<div class="ov book"><h3>สมุดแสตมป์ · 11/11</h3>${st.map(([k, c], i) => `<div class="stamp" style="color:${c};border-color:${c};transform:rotate(${(i * 37) % 24 - 12}deg)">${k}</div>`).join("")}</div>` +
+            `<div class="ov count"><div class="big"><span>อีก</span><b>28</b><span>วัน</span></div><span>ออกเดินทาง 29.10.2026 · DMK → NRT</span></div>` +
+            `<div class="ov endbtns"><span class="btnp" style="margin:0;font-size:4.2cqw;padding:2.6cqw 5cqw">${ICON.replay} ดูอีกครั้ง</span><span class="btng">${ICON.share} แชร์</span></div>` + grain;
+        },
+      },
+    ];
+
+    /* ---------- render ---------- */
+    const host = document.getElementById("frames");
+    FRAMES.forEach((f, i) => {
+      const fig = document.createElement("figure");
+      fig.innerHTML = `<div class="frame">${f.html()}</div><figcaption><span class="t"><em>F${i + 1} · ${f.t}</em>${f.title}</span><br>${f.what}<dl><dt>ขยับ</dt><dd>${f.motion}</dd><dt>เสียง</dt><dd>${f.sound}</dd></dl></figcaption>`;
+      host.appendChild(fig);
+    });
+
+    // landscape sample (frame 4)
+    const LW = 800, LH = 450, LR = 330;
+    document.getElementById("wide").innerHTML = svg(LW, LH, sky(LW, LH, [[0, "#9fc4d8"], [.6, "#dbe6dc"], [1, "#f1e3c4"]]) + cloud(80, 60, 1) + cloud(520, 90, .8) + fuji(560, 270, 420, 200) +
+      hills(LW, LH, 270, 50, "#7f9d86", 13) + hills(LW, LH, 312, 22, C.matsu, 17) + pine(60, 332, 1.2) + pine(160, 330, .95, "#35503f") + maple(700, 334, 1.1) + maple(430, 332, .9) +
+      road(LW, LH, LR) + speed(LW, 344, 8, 2) + shiro(330, 372, .85, { dust: true })) +
+      prog(1, "45%") + sign("河口湖", "Kawaguchiko", "85", "km", "中央道 E20", "", "left:auto;right:3cqw;top:5cqw;transform:rotate(-.6deg);min-width:0;font-size:.42em") +
+      dlg(`ทางขึ้นเขาชันจังเลย… แต่ไม่เป็นไร ข้างหน้ามี<span class="hl">ฟูจิ</span>รออยู่!`, { style: "right:auto;width:min(560px,58%);bottom:2.4cqw;left:2.4cqw;font-size:1.9cqw;padding:2cqw 2cqw 2cqw 9cqw;min-height:0;border-width:.35cqw;box-shadow:.7cqw .7cqw 0 #1B1B1B" }) + grain;
+    // scale the sign + dialog internals for the wide frame (they are sized in cqw for portrait)
+    const wide = document.getElementById("wide");
+    wide.querySelector(".sign").style.cssText += ";transform:scale(.45);transform-origin:top right";
+    const wd = wide.querySelector(".dlg");
+    wd.querySelector(".ava").style.cssText = "width:6cqw;height:6cqw;left:1.6cqw;top:2cqw;border-width:.3cqw";
+    wd.querySelector(".who").style.cssText = "font-size:1.5cqw;top:-1.7cqw;left:1.8cqw;border-width:.3cqw;padding:.2cqw 1.2cqw";
+    wd.querySelector(".next").style.cssText = "font-size:1.5cqw;right:1.6cqw;bottom:.8cqw";
+    wide.querySelectorAll(".prog i").forEach((el) => (el.style.height = ".5cqw"));
+    wide.querySelector(".prog").style.cssText = "top:1.4cqw;left:2cqw;right:2cqw;gap:.5cqw";
+
+    // car options
+    const cars = [
+      ["A", "กล่องทรงสูง", "สไตล์ N-BOX / Tanto · ตัวสูง หน้าสั้น กระจกบานใหญ่ คาดแถบแดงชาด — kei car ทรงกล่องคลาสสิกที่สุด", "แนะนำ"],
+      ["B", "Two-tone ลุยๆ", "สไตล์ Hustler · หลังคาสีส้มเมเปิล ซุ้มล้อดำ ไฟกลมโต ดูขี้เล่นที่สุด", ""],
+      ["C", "กล่องมนๆ เรโทร", "สไตล์ Cube · มุมโค้ง ไฟกลม คาดแถบเขียวอ่อน ดูนุ่มนวล อบอุ่น", ""],
+    ];
+    document.getElementById("cars").innerHTML = cars.map(([v, n, d, pick]) =>
+      `<div class="carcard"><svg viewBox="-20 -110 170 120">${shiro(0, 0, 1, { v, wave: true })}</svg><h3>${v} · ${n}</h3><p>${d}</p>${pick ? `<span class="pick">★ ${pick}</span>` : ""}</div>`).join("");
+
+    // palette
+    const sw = [["和紙", "washi", "#F3E9D2"], ["藍", "คราม", "#1F3A5F"], ["朱", "ชาด", "#C8442F"], ["紅葉", "เมเปิล", "#E07B39"], ["松", "สน", "#3E5C4A"], ["墨", "หมึก", "#1B1B1B"], ["金", "ทอง", "#E9B44C"], ["標識", "ป้ายทาง", "#0B6E3D"]];
+    document.getElementById("swatches").innerHTML = sw.map(([k, n, c]) => `<span class="sw"><i style="background:${c}"></i><b>${k}</b> ${n} <code>${c}</code></span>`).join("") +
+      `<span class="sw" style="padding:6px 12px">ตัวอักษร: <b style="font-size:18px">富士</b> Shippori Mincho · <span style="font-family:'Noto Sans JP';font-weight:900">中央道</span> ป้าย · Noto Sans Thai</span>`;
+  })();
+  </script>
+</body>
+</html>

@@ -1,13 +1,16 @@
-"""Generate the narrator voice for the story page (site/story/) with Gemini TTS.
+"""Generate the narrator voice for the story pages with Gemini TTS.
 
-Reads site/story/script.json and site/data/trip.json, fills the placeholders the
-same way story.js does ({km}, {d1.sunset}, ...), and writes one MP3 per subtitle
-line to site/audio/story/<hash>.mp3 plus an index at site/story/voice.json that
-story.js uses to play the clips and time the scenes.
+--page story (default): site/story/, a documentary-style narrator.
+--page roadtrip:        site/roadtrip/, told by Shiro the rental car.
+
+Reads site/<page>/script.json and site/data/trip.json, fills the placeholders the
+same way the page's JS does ({km}, {d1.sunset}, ...), and writes one MP3 per
+subtitle line to site/audio/<page>/<hash>.mp3 plus an index at
+site/<page>/voice.json that the page uses to play the clips and time the scenes.
 
 Clips are named by a hash of voice + style + spoken text, so a re-run only calls
 the API for lines that changed. Pronunciation fixes go in
-site/story/voice-lexicon.json (written form -> spoken form); they change the
+site/<page>/voice-lexicon.json (written form -> spoken form); they change the
 audio only, never the on-screen subtitle.
 
 Needs GEMINI_API_KEY in the environment or in .env at the repo root.
@@ -16,6 +19,7 @@ Usage (from the repo root):
     uv run scripts/build_story_voice.py                          # generate new/changed lines
     uv run scripts/build_story_voice.py --dry-run                # list what would be generated
     uv run scripts/build_story_voice.py --audition --voices Kore,Charon,Aoede
+    uv run scripts/build_story_voice.py --page roadtrip
 """
 
 from __future__ import annotations
@@ -40,19 +44,35 @@ from pathlib import Path
 import lameenc
 
 ROOT = Path(__file__).resolve().parent.parent
-SCRIPT = ROOT / "site" / "story" / "script.json"
 TRIP = ROOT / "site" / "data" / "trip.json"
-LEXICON = ROOT / "site" / "story" / "voice-lexicon.json"
-INDEX = ROOT / "site" / "story" / "voice.json"
-OUT_DIR = ROOT / "site" / "audio" / "story"
 AUDITION_DIR = ROOT / ".voice-audition"
 
 MODEL = "gemini-3.8-flash-tts"
 VOICE = "Kore"
-STYLE = (
-    "ผู้บรรยายสารคดีท่องเที่ยวภาษาไทย น้ำเสียงอบอุ่น เป็นกันเอง ตื่นเต้นเล็กน้อย "
-    "พูดชัด จังหวะสบายๆ ไม่เร่ง อ่านชื่อภาษาอังกฤษและญี่ปุ่นแบบคนไทยพูด"
-)
+STYLES = {
+    "story": (
+        "ผู้บรรยายสารคดีท่องเที่ยวภาษาไทย น้ำเสียงอบอุ่น เป็นกันเอง ตื่นเต้นเล็กน้อย "
+        "พูดชัด จังหวะสบายๆ ไม่เร่ง อ่านชื่อภาษาอังกฤษและญี่ปุ่นแบบคนไทยพูด"
+    ),
+    "roadtrip": (
+        "ชิโระ รถเช่าคันเล็กสีขาวที่เล่าเรื่องทริปด้วยตัวเอง น้ำเสียงสดใส ร่าเริง ขี้เล่น "
+        "เหมือนตัวการ์ตูนใจดี พูดเป็นกันเอง จังหวะกระชับมีชีวิตชีวา ช่วงบอกลาให้ซึ้งขึ้นนิดหน่อย "
+        "อ่านชื่อภาษาอังกฤษและญี่ปุ่นแบบคนไทยพูด"
+    ),
+}
+
+
+class Page:
+    def __init__(self, name: str):
+        self.name = name
+        self.script = ROOT / "site" / name / "script.json"
+        self.lexicon = ROOT / "site" / name / "voice-lexicon.json"
+        self.index = ROOT / "site" / name / "voice.json"
+        self.out_dir = ROOT / "site" / "audio" / name
+        self.style = STYLES[name]
+
+
+PAGE = Page("story")
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
 RATE = 24000
 BITRATE = 48          # kbps, mono speech
@@ -68,6 +88,8 @@ def day_km(day: dict) -> int:
 
 
 def collect_lines(script: dict, trip: dict) -> list[str]:
+    if PAGE.name == "roadtrip":
+        return collect_roadtrip(script, trip)
     days = {d["n"]: d for d in trip["days"]}
     km_total = sum(day_km(days.get(d["n"], {})) for d in script["days"])
 
@@ -95,10 +117,30 @@ def collect_lines(script: dict, trip: dict) -> list[str]:
     return out
 
 
+def collect_roadtrip(script: dict, trip: dict) -> list[str]:
+    """Mirrors fill() / parse() in site/roadtrip/roadtrip.js: the key is the plain text,
+    with [[place]] and {{time}} markers unwrapped."""
+    days = {d["n"]: d for d in trip["days"]}
+    km_total = sum(day_km(d) for d in trip["days"])
+
+    def plain(s: str) -> str:
+        s = s.replace("{km}", f"{km_total:,}")
+        s = re.sub(r"\{d(\d+)\.(\w+)\}", lambda m: str(days.get(int(m.group(1)), {}).get(m.group(2)) or ""), s)
+        return re.sub(r"\[\[(.+?)\]\]|\{\{(.+?)\}\}", lambda m: m.group(1) or m.group(2), s)
+
+    seen, out = set(), []
+    for sc in script["scenes"]:
+        for line in map(plain, sc.get("lines") or []):
+            if line and line not in seen:
+                seen.add(line)
+                out.append(line)
+    return out
+
+
 def load_lexicon() -> dict[str, str]:
-    if not LEXICON.exists():
+    if not PAGE.lexicon.exists():
         return {}
-    return json.loads(LEXICON.read_text("utf-8")).get("words", {})
+    return json.loads(PAGE.lexicon.read_text("utf-8")).get("words", {})
 
 
 def spoken(text: str, lexicon: dict[str, str]) -> str:
@@ -109,7 +151,7 @@ def spoken(text: str, lexicon: dict[str, str]) -> str:
 
 
 def clip_key(voice: str, say: str) -> str:
-    return hashlib.sha1(f"{MODEL}\n{voice}\n{STYLE}\n{say}".encode()).hexdigest()[:12]
+    return hashlib.sha1(f"{MODEL}\n{voice}\n{PAGE.style}\n{say}".encode()).hexdigest()[:12]
 
 
 # --------------------------------------------------------------------------- #
@@ -141,7 +183,7 @@ def tts(text: str, voice: str, key: str) -> bytes:
             "content": [{
                 "type": "text",
                 "text": text,
-                "annotations": [{"type": "speech_metadata", "style": STYLE}],
+                "annotations": [{"type": "speech_metadata", "style": PAGE.style}],
             }],
         }],
         "response_format": {"type": "audio"},
@@ -215,22 +257,23 @@ def audition(voices: list[str], text: str) -> None:
     key = api_key()
     AUDITION_DIR.mkdir(exist_ok=True)
     for v in voices:
-        if (AUDITION_DIR / f"{v}.mp3").exists():
+        path = AUDITION_DIR / f"{PAGE.name}-{v}.mp3"
+        if path.exists():
             print(f"{v}: already rendered")
             continue
         try:
             pcm = trim(tts(spoken(text, load_lexicon()), v, key))
         except QuotaExhausted as e:
             sys.exit(f"stopped at {v}: {e}")
-        path = AUDITION_DIR / f"{v}.mp3"
         path.write_bytes(to_mp3(pcm))
         print(f"{path.relative_to(ROOT)}  {len(pcm) / 2 / RATE:.1f}s")
 
 
 def build(voice: str, dry_run: bool) -> None:
-    script = json.loads(SCRIPT.read_text("utf-8"))
+    script = json.loads(PAGE.script.read_text("utf-8"))
     trip = json.loads(TRIP.read_text("utf-8"))
     lexicon = load_lexicon()
+    OUT_DIR, INDEX = PAGE.out_dir, PAGE.index
     lines = collect_lines(script, trip)
 
     old = json.loads(INDEX.read_text("utf-8")).get("cues", {}) if INDEX.exists() else {}
@@ -281,8 +324,11 @@ def build(voice: str, dry_run: bool) -> None:
                 failed += 1
                 print(f"[{i}/{len(todo)}] FAILED {todo[i - 1][0][:50]}: {e}", file=sys.stderr)
 
-    cues = {text: {"src": f"audio/story/{k}.mp3", "dur": durs[k]}
+    cues = {text: {"src": f"audio/{PAGE.name}/{k}.mp3", "dur": durs[k]}
             for text, _, k, _ in plan if k in durs and (OUT_DIR / f"{k}.mp3").exists()}
+    for text, c in old.items():       # not regenerated yet (quota/failure): keep the previous clip rather than lose narration
+        if text not in cues and text in lines and (ROOT / "site" / c["src"]).exists():
+            cues[text] = c
     INDEX.write_text(json.dumps({"model": MODEL, "voice": voice, "cues": cues}, ensure_ascii=False, indent=1) + "\n", "utf-8")
 
     used = {Path(c["src"]).name for c in cues.values()}
@@ -299,15 +345,19 @@ def build(voice: str, dry_run: bool) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--page", choices=sorted(STYLES), default="story")
     ap.add_argument("--voice", default=VOICE)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--audition", action="store_true", help="render a sample line in each of --voices to .voice-audition/")
     ap.add_argument("--voices", default="Kore,Charon,Aoede")
     ap.add_argument("--text", default=None, help="sample text for --audition (default: first intro lines)")
     args = ap.parse_args()
+    global PAGE
+    PAGE = Page(args.page)
     if args.audition:
-        script = json.loads(SCRIPT.read_text("utf-8"))
-        audition(args.voices.split(","), args.text or " ".join(script["intro"][:2]))
+        script = json.loads(PAGE.script.read_text("utf-8"))
+        first = collect_lines(script, json.loads(TRIP.read_text("utf-8")))[:2]
+        audition(args.voices.split(","), args.text or " ".join(first))
     else:
         build(args.voice, args.dry_run)
 
