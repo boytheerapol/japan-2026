@@ -136,6 +136,7 @@
       const legs = (ROUTES && ROUTES.days[d.n] && ROUTES.days[d.n].legs.length === day.pts.length - 1)
         ? ROUTES.days[d.n].legs.map((l) => l.map(([x, y]) => ({ x, y })))
         : day.pts.slice(1).map((p, i) => [day.pts[i], p]);
+      day.legs = legs;                                  // per-leg polylines: the camera frames "where the car comes from"
       const line = legs.flatMap((l, i) => (i ? l.slice(1) : l));
       const dstr = pathFor(line);
       day.base = svgEl("path", { class: "route base", d: dstr });
@@ -184,19 +185,31 @@
   }
 
   let _ms = { W: 1, H: 1 };
-  function measure() { const r = svg.getBoundingClientRect(); _ms = { W: Math.max(1, r.width), H: Math.max(1, r.height) }; fx.resize(); }
+  function measure() {
+    const r = svg.getBoundingClientRect();
+    _ms = { W: Math.max(1, r.width), H: Math.max(1, r.height) };
+    measureSub();
+    fx.resize();
+  }
 
-  function bboxCam(points, pad = 1.45, minW = 70) {
+  // Frame `points` (map units) so every one sits at least padPx inside the map, whatever the zoom.
+  // minW caps how far we zoom in (map units across the view); 4 units ~ 1 km.
+  function fitCam(points, padPx = 34, minW = 60, maxW = Infinity) {
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
     for (const p of points) { x0 = Math.min(x0, p.x); y0 = Math.min(y0, p.y); x1 = Math.max(x1, p.x); y1 = Math.max(y1, p.y); }
     const { W, H } = _ms;
-    return { x: (x0 + x1) / 2, y: (y0 + y1) / 2, w: Math.max((x1 - x0) * pad, (y1 - y0) * pad * (W / H), minW) };
+    const px = Math.min(padPx, W * 0.2, H * 0.2);
+    const w = clamp(Math.max((x1 - x0) * W / (W - 2 * px), (y1 - y0) * W / (H - 2 * px)), minW, maxW);
+    return { x: (x0 + x1) / 2, y: (y0 + y1) / 2, w };
   }
-  const regionCam = () => bboxCam(SCRIPT._allDays.flatMap((d) => d.pts), 1.2);
-  function spotCam(day, spot) {   // the day's sightseeing cluster, not the long drive in/out
-    const group = (day.data.spotsAfter || []).includes(spot) ? day.data.spotsAfter : day.data.spots;
-    return bboxCam(group, 1.9, 110);
+  const regionCam = () => fitCam(SCRIPT._allDays.flatMap((d) => d.pts), 30, 200);
+  // Spot scenes: show the whole leg the car drives (so it never appears from off-screen) ...
+  function legCam(day, reach) {
+    const leg = day.legs && day.legs[reach - 1];
+    return fitCam(leg && leg.length ? leg : [day.pts[Math.max(0, reach - 1)], day.pts[reach]], 40, 60);
   }
+  // ... then settle closer on the place it arrived at.
+  const arriveCam = (day, reach, from) => fitCam([day.pts[reach]], 40, clamp(from.w * 0.35, 70, 160));
   function japanCam() {
     const [x, y, w, h] = MAP.japanBox, { W, H } = _ms;
     return { x: x + w * 0.62, y: y + h * 0.52, w: Math.max(w * 0.55, h * 0.55 * (W / H)) };
@@ -213,9 +226,54 @@
     svg.style.setProperty("--u", u);
     for (const d of SCRIPT._allDays) if (d.carPath) d.carPath.style.strokeDasharray = `${2 * u} ${7 * u}`;
     for (const p of pins) p.el.style.transform = toScreen(p);
+    placeLabels();
     if (moverEl._pos) moverEl.style.transform = toScreen(moverEl._pos);
     if (headEl._pos) headEl.style.transform = toScreen(headEl._pos);
     $("#landJapan").style.opacity = cam.w > 1600 ? 1 : 0;
+  }
+  // Pin labels: the current spot first, then the overnight stops. Each takes the first side
+  // (right, left, above, below) that stays inside the map and clear of labels already placed;
+  // an overnight label that fits nowhere is hidden, the current one never is.
+  const LBL_GAP = 14;
+  const hit = (a, b) => a[0] < b[2] + 3 && a[2] > b[0] - 3 && a[1] < b[3] + 2 && a[3] > b[1] - 2;
+  function placeLabels() {
+    const { W, H } = _ms;
+    const nightOn = !(curScene && curScene.kind === "spot");
+    const placed = [];
+    for (const q of pins) if (q.fuji) { const x = (q.x - vx) * k, y = (q.y - vy) * k; placed.push([x - 26, y - 30, x + 26, y + 18]); }
+    const cars = [headEl, moverEl].filter((e) => e && e._pos && +e.style.opacity > 0.5).map((e) => ({ x: (e._pos.x - vx) * k, y: (e._pos.y - vy) * k }));
+    for (const c of cars) placed.push([c.x - 19, c.y - 19, c.x + 19, c.y + 19]);
+    const list = pins.filter((p) => !p.fuji && (p.cur = p.el.classList.contains("cur")) || (p.night && nightOn));
+    list.sort((a, b) => !!b.cur - !!a.cur);
+    for (const p of list) {
+      const label = p.el.firstElementChild && p.el.querySelector("b");
+      if (!label) continue;
+      const sx = (p.x - vx) * k, sy = (p.y - vy) * k;
+      if (sx < -80 || sx > W + 80 || sy < -40 || sy > H + 40) continue;
+      const w = (p.lw ||= label.offsetWidth), h = (p.lh ||= label.offsetHeight);
+      if (!w) continue;
+      const cx = clamp(sx - w / 2, 6, Math.max(6, W - 6 - w));
+      const near = cars.some((c) => Math.hypot(c.x - sx, c.y - sy) < 40);   // the car sits on the pin: leave it room
+      const gx = near ? 26 : LBL_GAP, gy = near ? 28 : 18;
+      const spots = {
+        r: [sx + gx, sy - h / 2], l: [sx - gx - w, sy - h / 2],
+        t: [cx, sy - gy - h], b: [cx, sy + gy],
+      };
+      const order = [...new Set([p.mode, "r", "l", "t", "b"].filter(Boolean))];
+      const rect = (m) => [spots[m][0], spots[m][1], spots[m][0] + w, spots[m][1] + h];
+      const fits = (r) => r[0] >= 4 && r[2] <= W - 4 && r[1] >= 2 && r[3] <= H - 2;
+      let pick = order.find((m) => fits(rect(m)) && !placed.some((o) => hit(rect(m), o)));
+      if (!pick && p.cur) pick = order.find((m) => fits(rect(m))) || "r";
+      const off = !pick;
+      if (off !== !!p.nl) { p.nl = off; p.el.classList.toggle("nl", off); }
+      if (off) continue;
+      p.mode = pick;
+      const [x, y] = spots[pick];
+      placed.push(rect(pick));
+      const lx = Math.round(x - sx), ly = Math.round(y - sy);
+      if (lx !== p.lx) { p.lx = lx; p.el.style.setProperty("--lx", `${lx}px`); }
+      if (ly !== p.ly) { p.ly = ly; p.el.style.setProperty("--ly", `${ly}px`); }
+    }
   }
   function stepCam(dt, snap) {
     if (snap || REDUCED) { Object.assign(cam, camTarget); return applyCam(); }
@@ -307,6 +365,7 @@
   /* ------------------------------------------------------------------ */
   const overlay = $("#overlay");
   function setOverlay(cls, html) {
+    $("#stage").classList.toggle("full", !!html);
     if (!html) { overlay.classList.remove("show"); return; }
     overlay.className = `overlay show ${cls}`;
     overlay.innerHTML = html;
@@ -488,7 +547,7 @@
           <div class="kanji-big">${esc(sc.chapter.jp)}</div>
           <h2>${esc(sc.chapter.name)}</h2>
           <div class="days">Day ${sc.chapter.days.join(" · ")}</div></div>`);
-        camTarget = bboxCam(sc.chapter.days.flatMap((n) => SCRIPT.days.find((d) => d.n === n)._day.pts), 1.5);
+        camTarget = fitCam(sc.chapter.days.flatMap((n) => SCRIPT.days.find((d) => d.n === n)._day.pts), 40, 120);
         routesUpTo(day.n, 0); pinsFor(null);
         fx.set(sc.chapter.mood === "city" ? "sparkle" : "leaves");
         if (live) { music.sfx("whoosh"); music.sfx("taiko", 0.45); }
@@ -499,7 +558,7 @@
         const first = day.data.spots[0];
         showPhoto(first && first.img, first && first.jp, "", dur + 2);
         setCard(dayCard(day));
-        camTarget = bboxCam(day.pts, 1.5);
+        camTarget = fitCam(day.pts, 40, 100);
         routesUpTo(day.n, 0); pinsFor(day, 0);
         if (live) { music.sfx("whoosh"); music.sfx("stamp", 0.55); }
         break;
@@ -507,7 +566,8 @@
       case "spot": {
         setOverlay("", null); setCard("");
         showPhoto(sc.spot.img, sc.spot.jp, spotCaption(sc.spot, day), dur);
-        camTarget = spotCam(day, sc.spot);
+        camTarget = sc._leg = legCam(day, sc.reach);
+        sc._arr = false;
         routesUpTo(day.n, 0);
         pinsFor(day, sc.reach);
         if (sc.spot.golden) {
@@ -528,7 +588,7 @@
           <ul><li><span>🚗</span><span>รถหนึ่งคัน → Narita คืนรถ → Limousine bus กลับ</span></li>
           <li><span>👥</span><span>อีกสามคน เช็คอิน + ชมวิว Sunshine 60</span></li>
           <li><span>🍜</span><span>ค่ำ รวมตัวกินราเมน</span></li></ul></div>`);
-        camTarget = bboxCam([...day.pts, day.car.b], 1.35);
+        camTarget = fitCam([...day.pts, day.car.b], 40, 100);
         routesUpTo(day.n, 0);
         pinsFor(day, sc.reach);
         day.carPath.style.opacity = 1;
@@ -540,7 +600,7 @@
         const t = days[day.n] || {};
         if (t.hotel && !/กลับ/.test(t.hotel)) setCard(`<div class="card hotel" style="--chapter:${day.ch.color}"><div class="ico">🏨</div><div class="kicker">คืนนี้นอนที่</div><h2>${esc(t.hotel)}</h2></div>`);
         else setCard("");
-        camTarget = bboxCam(day.pts, 1.5);
+        camTarget = fitCam(day.pts, 40, 100);
         routesUpTo(day.n, 0);
         pinsFor(day, day.pts.length - 1);
         const all = [...day.data.spots, ...(day.data.spotsAfter || [])];
@@ -580,6 +640,10 @@
     } else if (sc.kind === "day") {
       setRoute(day, 0); setHead(day, true); setOdo(day);
     } else if (sc.kind === "spot" || sc.kind === "close") {
+      if (sc.kind === "spot") {
+        if (!sc._arr && p >= 0.42) { sc._arr = true; camTarget = arriveCam(day, sc.reach, sc._leg); }
+        else if (sc._arr && p < 0.38) { sc._arr = false; camTarget = sc._leg; }      // sought back into the drive
+      }
       setRoute(day, routeFracAt(day, sc.reach, ease(clamp(p / 0.4, 0, 1))));
       setHead(day, p < 0.42); setOdo(day);
     } else if (sc.kind === "split") {
@@ -596,6 +660,56 @@
   /* ------------------------------------------------------------------ */
   let t = 0, playing = false, last = 0, curCue = -1, stall = 0;
   const sub = $("#subtitle"), subSpan = $("#subtitle span");
+
+  // Subtitle words appear as they are spoken. Gemini gives no per-word timing, so the pace is
+  // estimated from how much each word has to say (Thai letters count 1, Latin 0.6, a space adds a pause).
+  const segmenter = typeof Intl !== "undefined" && Intl.Segmenter ? new Intl.Segmenter("th", { granularity: "word" }) : null;
+  const weightOf = (tk) => {
+    let w = 0;
+    for (const ch of tk.replace(/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/g, "")) w += /[\u0E00-\u0E7F]/.test(ch) ? 1 : /\s/.test(ch) ? 0 : 0.6;
+    return w;
+  };
+  function splitWords(text) {
+    const toks = segmenter ? [...segmenter.segment(text)].map((x) => x.segment) : text.split(/(\s+)/).filter(Boolean);
+    const out = [];
+    for (const tk of toks) {
+      if (/^\s+$/.test(tk) && out.length) { out[out.length - 1].s += tk; out[out.length - 1].w += 2.5; }
+      else out.push({ s: tk, w: Math.max(0.6, weightOf(tk)) });
+    }
+    const sum = out.reduce((a, o) => a + o.w, 0) || 1;
+    let acc = 0;
+    for (const o of out) { o.at = acc / sum; acc += o.w; }
+    return out;
+  }
+  let wordEls = [], shown = 0;
+  function showCue(ci) {
+    const c = cues[ci];
+    c.words ||= splitWords(c.text);
+    subSpan.innerHTML = c.words.map((o) => `<i class="w">${esc(o.s)}</i>`).join("");
+    wordEls = [...subSpan.children];
+    shown = 0;
+  }
+  function revealWords(time) {
+    const c = cues[curCue];
+    if (!c || !c.words) return;
+    const f = clamp((time - c.start) / Math.max(0.3, c.voice ? c.voice.dur : c.dur - CUE_PAD), 0, 1);
+    let n = 0;
+    while (n < c.words.length && c.words[n].at <= f + 0.015) n++;
+    if (n === shown) return;
+    for (let i = Math.min(n, shown); i < Math.max(n, shown); i++) wordEls[i].classList.toggle("on", i < n);
+    shown = n;
+  }
+  // Height the subtitle needs for the longest cue, so photo captions and cards can stay clear of it.
+  function measureSub() {
+    if (!cues.length) return;
+    const longest = cues.reduce((a, c) => (c.text.length > a.length ? c.text : a), "");
+    const prev = subSpan.innerHTML;
+    subSpan.textContent = longest;
+    const h = sub.getBoundingClientRect().height;
+    subSpan.innerHTML = prev;
+    wordEls = [...subSpan.children];
+    document.documentElement.style.setProperty("--sub-h", `${Math.ceil(h)}px`);
+  }
   const playBtn = $("#play"), timeEl = $("#time"), seek = $("#seek");
 
   function sceneAt(time) {
@@ -619,11 +733,12 @@
       if (ci < 0) sub.classList.add("off");
       else {
         sub.classList.remove("off");
-        subSpan.textContent = cues[ci].text;
+        showCue(ci);
         subSpan.classList.remove("pop"); void subSpan.offsetWidth; subSpan.classList.add("pop");
         markTranscript(ci);
       }
     }
+    if (curCue >= 0) revealWords(t);
     seek.value = String(Math.round((t / total) * 1000));
     timeEl.textContent = `${fmt(t)} / ${fmt(total)}`;
   }
@@ -699,6 +814,15 @@
       music.setEnabled(on);
     });
     vol.addEventListener("input", () => music.setVolume(+vol.value / 100));
+    const ccBtn = $("#cc"), stage = $("#stage");
+    let cc = true;
+    try { cc = localStorage.getItem("story.cc") !== "0"; } catch {}
+    const applyCc = () => { stage.classList.toggle("nocc", !cc); ccBtn.setAttribute("aria-pressed", String(cc)); };
+    applyCc();
+    ccBtn.addEventListener("click", () => {
+      cc = !cc; applyCc();
+      try { localStorage.setItem("story.cc", cc ? "1" : "0"); } catch {}
+    });
     const voiceBtn = $("#voice");
     if (!VOICE) voiceBtn.hidden = true;
     voiceBtn.setAttribute("aria-pressed", String(narrator.enabled()));
@@ -725,12 +849,14 @@
 
     addEventListener("keydown", (e) => {
       if (e.target.closest && e.target.closest("input") && e.key !== " ") return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;          // leave Ctrl/Cmd+C, Cmd+F... to the browser
       if (!$("#gate").hidden && (e.key === " " || e.key === "Enter")) { e.preventDefault(); startFromGate(); return; }
       if (e.key === " ") { e.preventDefault(); setPlaying(!playing); }
       else if (e.key === "ArrowRight") { e.preventDefault(); const s = scenes[sceneAt(t).idx + 1]; if (s) jump(s.start); }
       else if (e.key === "ArrowLeft") { e.preventDefault(); const cur = sceneAt(t); jump((t - cur.start > 1.5 ? cur : scenes[Math.max(0, cur.idx - 1)]).start); }
       else if (e.key === "m" || e.key === "M") musicBtn.click();
       else if ((e.key === "v" || e.key === "V") && VOICE) voiceBtn.click();
+      else if (e.key === "c" || e.key === "C") ccBtn.click();
       else if (e.key === "t" || e.key === "T") toggleTx();
       else if (e.key === "f" || e.key === "F") $("#fs").click();
       else if (e.key === "Escape" && !drawer.hidden) toggleTx(false);
@@ -1058,6 +1184,7 @@
     measure();
     prepMap();
     buildControls();
+    document.fonts?.ready.then(() => { for (const q of pins) q.lw = q.lh = 0; measure(); });
     $("#gate").addEventListener("click", startFromGate);
     $("#gate .gate-hint").textContent = `เปิดเสียงด้วยนะ · ราว ${Math.round(total / 60)} นาที`;
     const m = location.hash.match(/^#d(\d+)$/);

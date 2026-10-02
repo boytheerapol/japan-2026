@@ -1,11 +1,12 @@
 /* Offline support: app shell is stale-while-revalidate, trip data + narrator index are network-first,
  * narrator clips (content-hashed, never change) are cache-first. */
-const VERSION = "jp26-v6";
+const VERSION = "jp26-v8";
 const SHELL = [
   "./", "index.html", "styles.css", "app.js", "manifest.webmanifest",
   "data/trip.json", "icons/icon.svg",
   "story/", "story/index.html", "story/story.css", "story/story.js",
   "story/script.json", "story/map.json", "story/routes.json", "img/story/cover-1200.webp",
+  "roadtrip/", "roadtrip/index.html", "roadtrip/roadtrip.css", "roadtrip/roadtrip.js", "roadtrip/art.js", "roadtrip/script.json",
   "icons/icon-192.png", "icons/qr.svg",
 ];
 
@@ -29,7 +30,7 @@ self.addEventListener("fetch", (e) => {
   const isFont = /fonts\.(googleapis|gstatic)\.com$/.test(url.hostname);
   if (!sameOrigin && !isFont) return; // Google Maps links etc. go straight to the network
 
-  if (sameOrigin && url.pathname.includes("/audio/story/")) {
+  if (sameOrigin && (url.pathname.includes("/audio/story/") || url.pathname.includes("/audio/roadtrip/"))) {
     e.respondWith(
       caches.match(req).then((cached) => cached || fetch(req).then((res) => {
         if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
@@ -39,7 +40,7 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  if (sameOrigin && (url.pathname.endsWith("/data/trip.json") || url.pathname.endsWith("/story/voice.json"))) {
+  if (sameOrigin && (url.pathname.endsWith("/data/trip.json") || url.pathname.endsWith("/story/voice.json") || url.pathname.endsWith("/roadtrip/voice.json"))) {
     e.respondWith(
       fetch(req).then((res) => {
         const copy = res.clone();

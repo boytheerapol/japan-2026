@@ -1,4 +1,25 @@
 {
   "_comment": "Pronunciation fixes for the story narrator (scripts/build_story_voice.py). Written form -> how the TTS should say it. Affects the audio only; subtitles keep the written form.",
-  "words": {}
+  "words": {
+    "Shizuoka": "ชิซุโอกะ",
+    "Shimizu": "ชิมิซุ",
+    "Izu": "อิซุ",
+    "Izukyu": "อิซึคิว",
+    "Nishi-Izu": "นิชิอิซุ",
+    "Kawaguchiko": "คาวากุจิโกะ",
+    "Fujinomiya": "ฟูจิโนมิยะ",
+    "Hoto": "โฮโต",
+    "Fujiyoshida": "ฟูจิโยชิดะ",
+    "Yoshida Udon": "โยชิดะ อุด้ง",
+    "Sengen Taisha": "เซงเก็น ไทฉะ",
+    "Sawayaka": "ซาวายากะ",
+    "Byuo": "บิ-วู-โอ",
+    "Chikurin no Komichi": "ชิคุริน โนะ โคมิจิ",
+    "shirasu": "ชิราซุ",
+    "Tsurugaoka Hachiman-gu": "สึ-รุ-งะ-โอกะ ฮา-จิ-มัน-กู",
+    "monjayaki": "มอน-จา-ยะ-กิ",
+    "Kaminarimon": "คา-มิ-นา-ริ-มง",
+    "Izu Panorama Park": "อิซุ พาโนรามา พาร์ค",
+    "Nishi-Izu Skyline": "นิชิอิซุ สกายไลน์"
+  }
 }

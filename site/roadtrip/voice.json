@@ -1,0 +1,210 @@
+{
+ "model": "gemini-3.8-flash-tts",
+ "voice": "Kore",
+ "cues": {
+  "สวัสดี! ฉันชื่อ ชิโระ รถกล่องสีขาว ประจำสนามบิน Narita": {
+   "src": "audio/roadtrip/d43e4d6e008a.mp3",
+   "dur": 4.995
+  },
+  "ปลายตุลานี้ฉันได้งานใหญ่ พาสี่คนจากเมืองไทยไปไล่ล่าภูเขาไฟฟูจิ": {
+   "src": "audio/roadtrip/4626af0ef4de.mp3",
+   "dur": 6.285
+  },
+  "11 วัน ฉันขับให้ 8 วัน รวม 1,165 กม. สบายมาก!": {
+   "src": "audio/roadtrip/369ed6700c60.mp3",
+   "dur": 6.733
+  },
+  "วันแรก 29 ต.ค. (พฤ) เครื่องลง 09:45 ทุกคนตาโหลมาก แต่ฉันพร้อมซิ่งแล้ว": {
+   "src": "audio/roadtrip/bcfe70b58659.mp3",
+   "dur": 8.579
+  },
+  "ทางขึ้นเขาชันจัง… แต่ไม่เป็นไร ข้างหน้ามีฟูจิรออยู่!": {
+   "src": "audio/roadtrip/54997f510330.mp3",
+   "dur": 4.571
+  },
+  "ถึง Kawaguchiko แล้ว! สี่คนนี้วิ่งไปขึ้นกระเช้า Tenjo-yama ฉันรอข้างล่างนะ": {
+   "src": "audio/roadtrip/5f9000cdc792.mp3",
+   "dur": 6.085
+  },
+  "ทุกเย็นเรามีนัดกับพระอาทิตย์ วันนี้ 16:53 ที่แหลม Ubuyagasaki": {
+   "src": "audio/roadtrip/8277882d5cfc.mp3",
+   "dur": 6.104
+  },
+  "ฟูจิกลับหัวบนผิวน้ำ… สวยจนฉันลืมดับเครื่อง": {
+   "src": "audio/roadtrip/5beaebb2c524.mp3",
+   "dur": 4.235
+  },
+  "ปิดวันด้วยโฮโตร้อนๆ ส่วนฉันขอนอนชาร์จพลังที่ลานจอด": {
+   "src": "audio/roadtrip/c0e723d8bb83.mp3",
+   "dur": 4.965
+  },
+  "วันที่สอง วนรอบฟูจิทั้งวัน ขึ้นช่องเขา Misaka โค้งเยอะจนฉันเวียนหัว": {
+   "src": "audio/roadtrip/865c5a80cee7.mp3",
+   "dur": 7.467
+  },
+  "ถนน Honcho-dori มีฟูจิตั้งอยู่ปลายถนน ถ่ายจากเกาะกลางเท่านั้นนะ!": {
+   "src": "audio/roadtrip/27f0990bb64f.mp3",
+   "dur": 5.192
+  },
+  "มื้อกลางวัน Yoshida Udon เส้นแข็งที่สุดในญี่ปุ่น ฉันกินไม่ได้ ได้ยินแต่เสียงซู้ดก็อิ่มแล้ว": {
+   "src": "audio/roadtrip/a4db4d8723ea.mp3",
+   "dur": 8.024
+  },
+  "เย็นนี้ขึ้นไปรอที่ Panorama-dai ฟูจิเต็มตัวลอยเหนือทะเลสาบ Yamanaka": {
+   "src": "audio/roadtrip/b9450bfa5223.mp3",
+   "dur": 5.739
+  },
+  "วันที่สาม ไล่เก็บทะเลสาบฝั่งตะวันตก ผ่านหมู่บ้านหลังคาฟาง Nenba": {
+   "src": "audio/roadtrip/bbabebc792e8.mp3",
+   "dur": 5.336
+  },
+  "แล้วไป Motosu วิวเดียวกับรูปฟูจิบนแบงก์พันเยน": {
+   "src": "audio/roadtrip/7ad9e8095442.mp3",
+   "dur": 3.853
+  },
+  "ลงใต้ไปไหว้ Sengen Taisha ศาลเจ้าหลักของฟูจิ แล้วกินยากิโซบะ Fujinomiya": {
+   "src": "audio/roadtrip/2d8c272aa701.mp3",
+   "dur": 6.243
+  },
+  "เย็นนี้ไร่ชา Obuchi Sasaba แถวชาเขียวไล่ขึ้นไปหาฟูจิ ภาพที่อยากได้ที่สุดของทริป": {
+   "src": "audio/roadtrip/56cfa4c0458a.mp3",
+   "dur": 6.949
+  },
+  "วันที่สี่ ไปหาทะเล! ที่ Satta Pass ทะเล ทางด่วน และฟูจิ อยู่ในเฟรมเดียว": {
+   "src": "audio/roadtrip/83f18b640a07.mp3",
+   "dur": 7.467
+  },
+  "มุมเดียวกับภาพพิมพ์ของ Hiroshige เมื่อเกือบ 200 ปีก่อนเลยนะ": {
+   "src": "audio/roadtrip/44d894bce837.mp3",
+   "dur": 4.371
+  },
+  "กลางวันกุ้งซากุระที่ Yui จับได้ที่อ่าวนี้ที่เดียวในญี่ปุ่น": {
+   "src": "audio/roadtrip/195ab347419f.mp3",
+   "dur": 4.805
+  },
+  "เดินหาดสน Miho แล้วขึ้น Nihondaira เห็นทั้งอ่าวและฟูจิ": {
+   "src": "audio/roadtrip/9a4346ba831a.mp3",
+   "dur": 5.133
+  },
+  "ปิดท้ายด้วยแฮมเบิร์ก Sawayaka คิวยาวแค่ไหนก็ต้องรอ": {
+   "src": "audio/roadtrip/01ec37efeca8.mp3",
+   "dur": 4.539
+  },
+  "วันที่ห้า เข้าคาบสมุทร Izu แวะกินซีฟู้ดสดๆ ที่ท่าเรือ Numazu": {
+   "src": "audio/roadtrip/c98033721d86.mp3",
+   "dur": 5.011
+  },
+  "ขึ้นกระเช้า Izu Panorama Park ฟูจิอยู่ข้ามอ่าวตรงหน้า": {
+   "src": "audio/roadtrip/768e026e0ee1.mp3",
+   "dur": 5.864
+  },
+  "คืนนี้เรียวกังใน Shuzenji ป่าไผ่ ออนเซ็น ไคเซกิ ฉันขอนอนฟังเสียงลำธาร": {
+   "src": "audio/roadtrip/754b0f840251.mp3",
+   "dur": 7.109
+  },
+  "วันที่หก วันหนักสุด! ออก 08:30 ขึ้น Nishi-Izu Skyline ถนนบนสันเขา": {
+   "src": "audio/roadtrip/d8a9f6942ab9.mp3",
+   "dur": 6.565
+  },
+  "เลียบหน้าผาสีทอง Koganezaki ทะเลสีครามขนาดนี้ ใครจะขับเร็วล่ะ": {
+   "src": "audio/roadtrip/b330d6b8caae.mp3",
+   "dur": 6.6
+  },
+  "เกาะหินกลางทะเลที่ Dogashima ฉายา Matsushima แห่ง Izu": {
+   "src": "audio/roadtrip/c285f94f595d.mp3",
+   "dur": 4.715
+  },
+  "ตะวันตกที่แหลม Kumomi ฟูจิลอยอยู่ปลายทะเล แล้วตัดไปนอน Shimoda": {
+   "src": "audio/roadtrip/832e52a505d6.mp3",
+   "dur": 5.837
+  },
+  "เช้าวันที่เจ็ด โทริอิสีแดงบนโขดหินริมหาด Shirahama": {
+   "src": "audio/roadtrip/e63251b3f39e.mp3",
+   "dur": 4.051
+  },
+  "ขาขึ้นเหนือ ฉันได้วนสะพานเกลียว Kawazu Loop สองรอบ วี้~": {
+   "src": "audio/roadtrip/e14efbbc7f91.mp3",
+   "dur": 6.232
+  },
+  "ทันพระอาทิตย์ตกที่หาด Shichirigahama คืนนี้… เป็นคืนสุดท้ายที่พวกเขามีฉัน": {
+   "src": "audio/roadtrip/117e8c3f54c4.mp3",
+   "dur": 6.248
+  },
+  "วันที่แปด ไหว้พระใหญ่ Kamakura ที่นั่งกลางแจ้งมาเกือบ 800 ปี": {
+   "src": "audio/roadtrip/aea948736bd1.mp3",
+   "dur": 5.224
+  },
+  "แล้วขึ้นวัด Hase-dera มองเมืองกับทะเล": {
+   "src": "audio/roadtrip/b54bbeb584d0.mp3",
+   "dur": 3.837
+  },
+  "บ่ายนี้ส่งทุกคนกับกระเป๋าที่ Ikebukuro": {
+   "src": "audio/roadtrip/a782d633671a.mp3",
+   "dur": 2.968
+  },
+  "สามคนลงไปก่อน เหลือคนขับคนเดียวพาฉันไปคืนที่ Narita": {
+   "src": "audio/roadtrip/e7e85bd4f360.mp3",
+   "dur": 4.861
+  },
+  "ทางไป Narita เงียบกว่าทุกวัน… ฉันแอบขับช้าลงนิดนึง": {
+   "src": "audio/roadtrip/294f0e5957ec.mp3",
+   "dur": 5.339
+  },
+  "8 วัน 1,165 กม. ฟูจิทุกมุม ทะเลสองฝั่ง ฉันจำได้หมดเลยนะ": {
+   "src": "audio/roadtrip/d5bac6981727.mp3",
+   "dur": 8.072
+  },
+  "ไปสนุกที่โตเกียวต่อนะ ดูแลกันดีๆ ล่ะ… ปิ๊บ ปิ๊บ": {
+   "src": "audio/roadtrip/b5cc4ec57178.mp3",
+   "dur": 3.664
+  },
+  "ฮัลโหล~ ชิโระเองจ้า ได้ยินไหม ต่อจากนี้ฝากรถไฟพาไปแทนนะ": {
+   "src": "audio/roadtrip/f8ef7ef25713.mp3",
+   "dur": 5.512
+  },
+  "วันที่เก้า มื้อเช้าตลาด Tsukiji เดิน Ginza บ่ายเข้า teamLab": {
+   "src": "audio/roadtrip/7bb54ee6fdfe.mp3",
+   "dur": 5.176
+  },
+  "16:41 ขึ้น Shibuya Sky สูง 229 เมตร โบกมือมาทาง Narita ด้วยนะ": {
+   "src": "audio/roadtrip/e1df1fa17cc2.mp3",
+   "dur": 7.707
+  },
+  "ลงมาข้ามสี่แยก Scramble แล้วนั่งรถไฟไปกิน monjayaki ที่ Tsukishima": {
+   "src": "audio/roadtrip/76dcc345ba16.mp3",
+   "dur": 4.824
+  },
+  "วันที่สิบ เช้าตรู่ที่ Senso-ji โคมแดงยักษ์ยังไม่มีใครบัง": {
+   "src": "audio/roadtrip/2b50eec26da9.mp3",
+   "dur": 5.379
+  },
+  "ตลาด Ameyoko แล้วเดินป่าร่มรื่นเข้า Meiji Jingu": {
+   "src": "audio/roadtrip/ce8bac3bb268.mp3",
+   "dur": 3.653
+  },
+  "พระอาทิตย์ตกครั้งสุดท้ายของทริป ดูฟรีบนตึก Tocho": {
+   "src": "audio/roadtrip/77790769d481.mp3",
+   "dur": 4.291
+  },
+  "มื้อสุดท้าย ยากิโทริในตรอก Omoide Yokocho คืนนี้แพ็คกระเป๋าด้วยนะ": {
+   "src": "audio/roadtrip/988d967ed0c2.mp3",
+   "dur": 7.125
+  },
+  "วันสุดท้าย ตีห้าครึ่งก็ต้องตื่น ขึ้น Limousine bus รอบ 06:45": {
+   "src": "audio/roadtrip/8d6cf08c545b.mp3",
+   "dur": 5.563
+  },
+  "ผ่าน Narita อีกที… เห็นฉันจอดอยู่ไหม? ปีหน้ามาขับด้วยกันอีกนะ!": {
+   "src": "audio/roadtrip/e9ffa183e287.mp3",
+   "dur": 4.469
+  },
+  "ฟูจิแปดมุม ทะเลสองฝั่ง วัดเก่า และเมืองใหญ่": {
+   "src": "audio/roadtrip/4df05e9f6d83.mp3",
+   "dur": 5.061
+  },
+  "เตรียมกล้อง เตรียมขา แล้วเจอกันที่ดอนเมือง!": {
+   "src": "audio/roadtrip/4fb987eaa7df.mp3",
+   "dur": 3.453
+  }
+ }
+}

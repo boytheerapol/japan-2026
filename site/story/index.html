@@ -34,8 +34,10 @@
           <g id="routes"></g>
         </svg>
         <div class="markers" id="markers"></div>
-        <div class="odo" id="odo" hidden></div>
       </section>
+
+      <!-- day / km chip: lives on the photo side so the map stays clear -->
+      <div class="odo" id="odo" hidden></div>
 
       <!-- full-screen scenes (title / chapter / outro) -->
       <section class="overlay" id="overlay" aria-hidden="true"></section>
@@ -66,6 +68,7 @@
         <span class="time" id="time">0:00 / 0:00</span>
         <nav class="days" id="days" aria-label="ไปยังวัน"></nav>
         <span class="spacer"></span>
+        <button id="cc" class="btn" type="button" aria-pressed="true" aria-label="ซับ">CC</button>
         <button id="voice" class="btn" type="button" aria-pressed="true" aria-label="เสียงผู้เล่า">🎙</button>
         <button id="music" class="btn" type="button" aria-pressed="true" aria-label="เพลง">♪</button>
         <input id="vol" class="vol" type="range" min="0" max="100" value="45" aria-label="ความดังเพลง">

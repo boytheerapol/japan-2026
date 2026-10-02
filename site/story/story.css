@@ -37,7 +37,7 @@ button { font: inherit; color: inherit; }
 .photo { grid-area: photo; position: relative; overflow: hidden; background: #0d0b09; }
 @media (max-aspect-ratio: 1/1) {
   .stage { grid-template-columns: 1fr; grid-template-rows: 52% 48%; grid-template-areas: "photo" "map"; }
-  .card-layer { padding: 52px 14px 16px !important; }
+  .card-layer { padding: 52px 14px calc(var(--sub-h, 0px) + 20px) !important; }
   .card .facts span { font-size: 12px; }
   .card .stamp { width: 58px; height: 58px; font-size: 20px; right: 12px; top: -14px; }
 }
@@ -78,13 +78,14 @@ button { font: inherit; color: inherit; }
 @keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(3.2); opacity: 0; } }
 .pin.golden i { background: #f2a93b; }
 .pin b {
-  position: absolute; left: 14px; top: -13px; white-space: nowrap; font-size: 13px; font-weight: 700;
+  position: absolute; left: var(--lx, 14px); top: var(--ly, -13px); white-space: nowrap; font-size: 13px; font-weight: 700;
   padding: 3px 10px; border-radius: 8px; background: #fff; color: var(--map-ink);
   box-shadow: 0 3px 10px rgb(20 40 55 / .22); border-left: 4px solid var(--chapter);
   opacity: 0; transform: translateX(-6px) scale(.9); transform-origin: left center;
   transition: opacity .35s, transform .45s cubic-bezier(.3, 1.6, .5, 1);
 }
 .pin.cur b { opacity: 1; transform: none; }
+.pin.nl b { opacity: 0 !important; }
 .pin.night i { background: #fff; border: 2.5px solid var(--map-ink-2); width: 12px; height: 12px; left: -6px; top: -6px; border-radius: 3px; transform: scale(1); }
 .pin.night b {
   opacity: var(--night-label, 1); transform: none; color: var(--map-ink-2); font-weight: 600; font-size: 11.5px;
@@ -103,7 +104,7 @@ button { font: inherit; color: inherit; }
 .head span { animation: bob .5s ease-in-out infinite alternate; }
 @keyframes bob { to { transform: translateY(-3px); } }
 .odo {
-  position: absolute; z-index: 4; right: 12px; top: 12px; padding: 6px 12px; border-radius: 999px;
+  position: absolute; grid-area: photo; z-index: 6; right: 12px; top: 12px; padding: 6px 12px; border-radius: 999px;
   background: rgb(255 255 255 / .92); color: var(--map-ink); font-size: 13px; font-weight: 600;
   box-shadow: 0 3px 12px rgb(20 40 55 / .2); font-variant-numeric: tabular-nums;
 }
@@ -149,7 +150,7 @@ button { font: inherit; color: inherit; }
 @keyframes flare { from { transform: translate(0, 0) scale(1); } to { transform: translate(-6%, 4%) scale(1.12); } }
 
 .caption {
-  position: absolute; z-index: 2; left: clamp(16px, 4vw, 40px); right: 16px; bottom: clamp(70px, 12vh, 120px);
+  position: absolute; z-index: 2; left: clamp(16px, 4vw, 40px); right: 16px; bottom: max(clamp(70px, 12vh, 120px), calc(var(--sub-h, 0px) + 24px));
   display: grid; gap: 4px; text-shadow: 0 2px 10px rgb(0 0 0 / .8);
 }
 .caption .jp { font: 700 clamp(13px, 1.6vw, 17px) var(--font-jp); color: var(--gold); letter-spacing: .08em; animation: rise .5s .15s both; }
@@ -165,7 +166,7 @@ button { font: inherit; color: inherit; }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 /* ---------- cards on the photo side (day / hotel / split) ---------- */
-.card-layer { position: absolute; inset: 0; z-index: 4; pointer-events: none; display: grid; place-items: center; padding: 20px 20px 90px; }
+.card-layer { position: absolute; inset: 0; z-index: 4; pointer-events: none; display: grid; place-items: center; padding: 20px 20px max(90px, calc(var(--sub-h, 0px) + 24px)); }
 .card {
   position: relative; width: min(520px, 92%); padding: clamp(18px, 3vw, 30px); border-radius: 18px;
   background: rgb(22 18 15 / .8); backdrop-filter: blur(10px); border: 1px solid var(--line);
@@ -241,27 +242,33 @@ button { font: inherit; color: inherit; }
 
 /* ---------- overview stats (on map) ---------- */
 .ov-stats {
-  position: absolute; z-index: 4; left: 50%; top: 18px; transform: translateX(-50%);
-  display: flex; gap: 18px; padding: 10px 18px; border-radius: 14px; background: rgb(255 255 255 / .92);
-  box-shadow: 0 6px 20px rgb(20 40 55 / .2); animation: rise .6s both; white-space: nowrap; color: var(--map-ink);
+  position: absolute; z-index: 4; left: 12px; right: 12px; margin: 0 auto; top: 18px;   /* not translateX: the rise animation resets transform */
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; padding: 10px 18px; border-radius: 14px; background: rgb(255 255 255 / .92);
+  max-width: calc(100% - 24px); width: max-content;
+  box-shadow: 0 6px 20px rgb(20 40 55 / .2); animation: rise .6s both; color: var(--map-ink);
 }
-.ov-stats div { display: grid; text-align: center; }
+.ov-stats div { display: grid; text-align: center; white-space: nowrap; }
 .ov-stats b { font: 800 26px var(--font-jp); color: #d7372b; font-variant-numeric: tabular-nums; }
 .ov-stats span { font-size: 12px; color: var(--map-ink-2); }
+@media (max-width: 480px) { .ov-stats { gap: 4px 14px; padding: 8px 12px; } .ov-stats b { font-size: 22px; } }
 
 /* ---------- particles ---------- */
 .fx { position: absolute; inset: 0; z-index: 7; width: 100%; height: 100%; pointer-events: none; }
 
 /* ---------- subtitle ---------- */
-.subtitle { position: absolute; z-index: 20; left: 50%; bottom: clamp(14px, 3vh, 28px); transform: translateX(-50%); width: min(820px, 94%); text-align: center; pointer-events: none; }
-.subtitle span {
+.subtitle { position: absolute; grid-area: photo; z-index: 20; left: 50%; bottom: clamp(12px, 2.4vh, 24px); transform: translateX(-50%); width: min(820px, 94%); text-align: center; pointer-events: none; }
+.stage.full .subtitle { grid-area: 1 / 1 / -1 / -1; }   /* title / chapter / outro cover the whole stage */
+.stage.nocc .subtitle { visibility: hidden; }
+.subtitle .w { font-style: normal; opacity: 0; transition: opacity .16s ease-out; }
+.subtitle .w.on { opacity: 1; }
+.subtitle > span {
   display: inline; padding: .18em .55em; line-height: 1.75; border-radius: 8px;
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
   background: rgb(10 8 7 / .78); font-size: clamp(16px, 2.1vw, 24px); font-weight: 500; transition: opacity .25s;
 }
-.subtitle span.pop { animation: subIn .35s ease-out; }
+.subtitle > span.pop { animation: subIn .35s ease-out; }
 @keyframes subIn { from { opacity: 0; filter: blur(4px); } to { opacity: 1; filter: none; } }
-.subtitle.off span { opacity: 0; }
+.subtitle.off > span { opacity: 0; }
 
 /* ---------- start gate ---------- */
 .gate {
