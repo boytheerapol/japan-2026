@@ -244,6 +244,7 @@
     const key = `${sc.idx}:${k.toFixed(3)}:${biomeName(sc)}`;
     let sunY = mixN(from.sun[1], to.sun[1], k);
     if (sc.kind === "sunset") sunY = mixN(0.36, 0.56, clamp((time - sc.start) / sc.dur, 0, 1));
+    sunEl.style.top = `${(sunY * 100).toFixed(2)}%`;      // the sunset sun keeps sinking after the colours settle
     if (key === skyKey) return;
     skyKey = key;
     const st = from.sky.map((c, i) => mixC(c, to.sky[i], k));
@@ -255,7 +256,6 @@
     sunEl.style.background = mixC(from.sun[2], to.sun[2], k);
     sunEl.style.opacity = mixN(from.sun[3], to.sun[3], k).toFixed(3);
     sunEl.style.left = `${(mixN(from.sun[0], to.sun[0], k) * 100).toFixed(2)}%`;
-    sunEl.style.top = `${(sunY * 100).toFixed(2)}%`;
     stage.dataset.tod = k > 0.5 ? sc.tod : sc.fromTod;
   }
   const biomeName = (sc) => sc.biome || "airport";

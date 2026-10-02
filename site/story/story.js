@@ -640,7 +640,10 @@
     } else if (sc.kind === "day") {
       setRoute(day, 0); setHead(day, true); setOdo(day);
     } else if (sc.kind === "spot" || sc.kind === "close") {
-      if (sc.kind === "spot" && !sc._arr && p >= 0.42) { sc._arr = true; camTarget = arriveCam(day, sc.reach, sc._leg); }
+      if (sc.kind === "spot") {
+        if (!sc._arr && p >= 0.42) { sc._arr = true; camTarget = arriveCam(day, sc.reach, sc._leg); }
+        else if (sc._arr && p < 0.38) { sc._arr = false; camTarget = sc._leg; }      // sought back into the drive
+      }
       setRoute(day, routeFracAt(day, sc.reach, ease(clamp(p / 0.4, 0, 1))));
       setHead(day, p < 0.42); setOdo(day);
     } else if (sc.kind === "split") {
@@ -846,6 +849,7 @@
 
     addEventListener("keydown", (e) => {
       if (e.target.closest && e.target.closest("input") && e.key !== " ") return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;          // leave Ctrl/Cmd+C, Cmd+F... to the browser
       if (!$("#gate").hidden && (e.key === " " || e.key === "Enter")) { e.preventDefault(); startFromGate(); return; }
       if (e.key === " ") { e.preventDefault(); setPlaying(!playing); }
       else if (e.key === "ArrowRight") { e.preventDefault(); const s = scenes[sceneAt(t).idx + 1]; if (s) jump(s.start); }
