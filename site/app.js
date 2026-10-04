@@ -166,8 +166,8 @@
             <span class="chip">🌙 11 วัน 10 คืน</span>
             <span class="chip">👥 4 ท่าน</span>
           </div>
-          <a class="btn btn-primary story-cta" href="story/">🎬 ฟังเรื่องเล่าทริป <small>~8 นาที</small></a>
-          <a class="btn btn-ghost story-cta" href="roadtrip/">🚗 Road trip กับชิโระ <small>~4 นาที</small></a>
+          <a class="btn btn-primary story-cta" href="story/">🎬 ฟังเรื่องเล่าทริป <small>~10 นาที</small></a>
+          <a class="btn btn-ghost story-cta" href="roadtrip/">🚗 Road trip กับชิโระ <small>~6 นาที</small></a>
           <div id="countdown"></div>
         </div>
       </section>
