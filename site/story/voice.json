@@ -270,6 +270,10 @@
    "src": "audio/story/9ec15c808f38.mp3",
    "dur": 5.168
   },
+  "วันที่เจ็ด ตื่นมาเดินหาดก่อน แล้วออก 08:00 ขึ้นเหนือไป Kamakura": {
+   "src": "audio/story/1ce82253aab2.mp3",
+   "dur": 5.957
+  },
   "เช้าที่หาดทรายขาว Shirahama มีโทริอิสีแดงตั้งอยู่บนโขดหินริมทะเล": {
    "src": "audio/story/d5edf7ccaa14.mp3",
    "dur": 6.208
@@ -338,9 +342,17 @@
    "src": "audio/story/8a6896c98cf6.mp3",
    "dur": 6.176
   },
+  "เช็คอินเสร็จ มื้อเย็นไปต่อคิวราเมน tonkotsu ร้าน Mutekiya": {
+   "src": "audio/story/a5b1cbbef457.mp3",
+   "dur": 4.845
+  },
   "สามคืนสุดท้าย เราพักที่ Sunshine City Prince Ikebukuro": {
    "src": "audio/story/8e1c8cbee08e.mp3",
    "dur": 4.44
+  },
+  "วันที่เก้า เปิดตั๋ว Tokyo Subway 48 ชั่วโมง แล้วไปกินมื้อเช้าที่ตลาด Tsukiji": {
+   "src": "audio/story/f2a038581e4e.mp3",
+   "dur": 5.912
   },
   "ตลาด Tsukiji ตอนเช้า เดินกินไข่หวาน หอยเชลล์ย่าง และซูชิ": {
    "src": "audio/story/c56f780840d3.mp3",
@@ -445,14 +457,6 @@
   "เตรียมกล้อง เตรียมขา แล้วเจอกันที่ดอนเมือง": {
    "src": "audio/story/7b6ccd54e3f7.mp3",
    "dur": 3.072
-  },
-  "วันที่เจ็ด ตื่นมาเดินหาดก่อน แล้วออก 08:00 ขึ้นเหนือไป Kamakura": {
-   "src": "audio/story/6459123a6889.mp3",
-   "dur": 5.043
-  },
-  "วันที่เก้า เปิดตั๋ว Tokyo Subway 48 ชั่วโมง แล้วไปกินมื้อเช้าที่ตลาด Tsukiji": {
-   "src": "audio/story/b7eb26238906.mp3",
-   "dur": 6.005
   }
  }
 }
