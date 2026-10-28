@@ -1,0 +1,196 @@
+{
+  "_comment": "Narration for /roadtrip/, told by Shiro the rental car. [[x]] = highlighted place, {{x}} = time/number badge. Placeholders {km}, {d1.sunset}, {d1.dateLabel}, {d6.depart} are filled from data/trip.json. photo keys resolve to img/<key>-600.webp. Scene kinds: intro, chapter, drive, stop, sunset, night, dropoff, farewell, end.",
+  "chapters": {
+    "fuji":     { "jp": "富士", "seal": "壱", "name": "ภาค 1 · ฟูจิ",       "sub": "วัน 1–3 · ทะเลสาบ 5 แห่ง",      "color": "#C8442F", "mood": "fuji" },
+    "suruga":   { "jp": "駿河", "seal": "弐", "name": "ภาค 2 · อ่าวซูรูกะ", "sub": "วัน 4 · ฟูจิกับทะเล",           "color": "#E07B39", "mood": "sea" },
+    "izu":      { "jp": "伊豆", "seal": "参", "name": "ภาค 3 · อิซุ",       "sub": "วัน 5–7 · ถนนเลียบหน้าผา",      "color": "#0E7F74", "mood": "sea" },
+    "kamakura": { "jp": "鎌倉", "seal": "肆", "name": "ภาค 4 · คามาคุระ",   "sub": "วัน 7–8 · พระใหญ่ และการบอกลา", "color": "#7B4FC4", "mood": "temple" },
+    "tokyo":    { "jp": "東京", "seal": "伍", "name": "ภาค 5 · โตเกียว",    "sub": "วัน 9–11 · ต่อด้วยรถไฟ",         "color": "#2C6FD6", "mood": "city" }
+  },
+  "scenes": [
+    { "kind": "intro", "day": 1, "chapter": "fuji", "biome": "airport", "tod": "morning", "wave": true, "lines": [
+      "สวัสดี! ฉันชื่อ [[ชิโระ]] รถกล่องสีขาว ประจำสนามบิน [[Narita]]",
+      "ปลายตุลานี้ฉันได้งานใหญ่ พาสี่คนจากเมืองไทยไปไล่ล่า[[ภูเขาไฟฟูจิ]]"
+    ], "kinetic": { "big": "11", "small": "วัน · {km} กม." } },
+    { "kind": "drive", "day": 1, "chapter": "fuji", "biome": "airport", "tod": "morning",
+      "sign": { "k": "中央道", "r": "Chuo Expwy", "d": "165", "tag": "E20" }, "lines": [
+      "{{11 วัน}} ฉันขับให้ {{8 วัน}} รวม {{{km} กม.}} สบายมาก!"
+    ] },
+    { "kind": "chapter", "chapter": "fuji", "day": 1 },
+    { "kind": "drive", "day": 1, "chapter": "fuji", "biome": "fuji", "tod": "day",
+      "sign": { "k": "河口湖", "r": "Kawaguchiko", "d": "85", "tag": "中央道 E20" }, "lines": [
+      "วันแรก {d1.dateLabel} เครื่องลง {{09:45}} ทุกคนตาโหลมาก แต่ฉันพร้อมซิ่งแล้ว",
+      "ทางขึ้นเขาชันจัง… แต่ไม่เป็นไร ข้างหน้ามี[[ฟูจิ]]รออยู่!"
+    ] },
+    { "kind": "stop", "day": 1, "chapter": "fuji", "biome": "fuji", "tod": "day", "prop": "ropeway",
+      "photo": "story/d1-ropeway", "cap": "天上山", "stamp": "天上山", "lines": [
+      "ถึง [[Kawaguchiko]] แล้ว! สี่คนนี้วิ่งไปขึ้นกระเช้า [[Tenjo-yama]] ฉันรอข้างล่างนะ"
+    ] },
+    { "kind": "sunset", "day": 1, "chapter": "fuji", "biome": "fuji",
+      "photo": "story/d1-ubuyagasaki", "cap": "産屋ヶ崎", "stamp": "河口湖", "lines": [
+      "ทุกเย็นเรามีนัดกับพระอาทิตย์ วันนี้ {{{d1.sunset}}} ที่แหลม [[Ubuyagasaki]]",
+      "ฟูจิกลับหัวบนผิวน้ำ… สวยจนฉันลืมดับเครื่อง"
+    ] },
+    { "kind": "night", "day": 1, "chapter": "fuji", "biome": "fuji",
+      "photo": "story/d1-hoto", "cap": "ほうとう", "lines": [
+      "ปิดวันด้วย[[โฮโต]]ร้อนๆ ส่วนฉันขอนอนชาร์จพลังที่ลานจอด"
+    ] },
+
+    { "kind": "drive", "day": 2, "chapter": "fuji", "biome": "fuji", "tod": "morning",
+      "sign": { "k": "御坂峠", "r": "Misaka Pass", "d": "12", "tag": "R137" }, "lines": [
+      "วันที่สอง วนรอบฟูจิทั้งวัน ขึ้น[[ช่องเขา Misaka]] โค้งเยอะจนฉันเวียนหัว"
+    ] },
+    { "kind": "stop", "day": 2, "chapter": "fuji", "biome": "fuji", "tod": "day", "prop": "pagoda",
+      "photo": "story/d2-honcho", "cap": "本町通り", "stamp": "吉田", "lines": [
+      "ถนน [[Honcho-dori]] มีฟูจิตั้งอยู่ปลายถนน ถ่ายจากเกาะกลางเท่านั้นนะ!"
+    ] },
+    { "kind": "stop", "day": 2, "chapter": "fuji", "biome": "fuji", "tod": "day",
+      "photo": "story/d2-udon", "cap": "吉田のうどん", "lines": [
+      "มื้อกลางวัน [[Yoshida Udon]] เส้นแข็งที่สุดในญี่ปุ่น ฉันกินไม่ได้ ได้ยินแต่เสียงซู้ดก็อิ่มแล้ว"
+    ] },
+    { "kind": "sunset", "day": 2, "chapter": "fuji", "biome": "fuji",
+      "photo": "story/d2-panoramadai", "cap": "パノラマ台", "stamp": "山中湖", "lines": [
+      "เย็นนี้ขึ้นไปรอที่ [[Panorama-dai]] ฟูจิเต็มตัวลอยเหนือทะเลสาบ Yamanaka"
+    ] },
+
+    { "kind": "drive", "day": 3, "chapter": "fuji", "biome": "fuji", "tod": "morning",
+      "sign": { "k": "本栖湖", "r": "Lake Motosu", "d": "28", "tag": "R139" }, "lines": [
+      "วันที่สาม ไล่เก็บทะเลสาบฝั่งตะวันตก ผ่านหมู่บ้านหลังคาฟาง [[Nenba]]"
+    ] },
+    { "kind": "stop", "day": 3, "chapter": "fuji", "biome": "fuji", "tod": "day",
+      "photo": "days/d3-motosu", "cap": "本栖湖", "stamp": "本栖湖", "lines": [
+      "แล้วไป [[Motosu]] วิวเดียวกับรูปฟูจิบนแบงก์พันเยน"
+    ] },
+    { "kind": "stop", "day": 3, "chapter": "fuji", "biome": "tea", "tod": "day", "prop": "torii",
+      "photo": "story/d3-sengen", "cap": "浅間大社", "stamp": "浅間", "lines": [
+      "ลงใต้ไปไหว้ [[Sengen Taisha]] ศาลเจ้าหลักของฟูจิ แล้วกินยากิโซบะ Fujinomiya"
+    ] },
+    { "kind": "sunset", "day": 3, "chapter": "fuji", "biome": "tea",
+      "photo": "days/d3-obuchi", "cap": "大淵笹場", "stamp": "大淵", "lines": [
+      "เย็นนี้ไร่ชา [[Obuchi Sasaba]] แถวชาเขียวไล่ขึ้นไปหาฟูจิ ภาพที่อยากได้ที่สุดของทริป"
+    ] },
+
+    { "kind": "chapter", "chapter": "suruga", "day": 4 },
+    { "kind": "drive", "day": 4, "chapter": "suruga", "biome": "suruga", "tod": "morning",
+      "sign": { "k": "薩埵峠", "r": "Satta Pass", "d": "18", "tag": "R1" }, "lines": [
+      "วันที่สี่ ไปหาทะเล! ที่ [[Satta Pass]] ทะเล ทางด่วน และฟูจิ อยู่ในเฟรมเดียว"
+    ] },
+    { "kind": "stop", "day": 4, "chapter": "suruga", "biome": "suruga", "tod": "day",
+      "photo": "story/d4-satta", "cap": "薩埵峠", "stamp": "薩埵峠", "lines": [
+      "มุมเดียวกับภาพพิมพ์ของ [[Hiroshige]] เมื่อเกือบ 200 ปีก่อนเลยนะ"
+    ] },
+    { "kind": "stop", "day": 4, "chapter": "suruga", "biome": "suruga", "tod": "day",
+      "photo": "story/d4-sakuraebi", "cap": "桜えび", "stamp": "由比", "lines": [
+      "กลางวัน[[กุ้งซากุระ]]ที่ Yui จับได้ที่อ่าวนี้ที่เดียวในญี่ปุ่น"
+    ] },
+    { "kind": "sunset", "day": 4, "chapter": "suruga", "biome": "suruga",
+      "photo": "story/d4-nihondaira", "cap": "日本平", "stamp": "日本平", "lines": [
+      "เดินหาดสน [[Miho]] แล้วขึ้น [[Nihondaira]] เห็นทั้งอ่าวและฟูจิ"
+    ] },
+    { "kind": "night", "day": 4, "chapter": "suruga", "biome": "suruga",
+      "photo": "story/d4-sawayaka", "cap": "さわやか", "lines": [
+      "ปิดท้ายด้วยแฮมเบิร์ก [[Sawayaka]] คิวยาวแค่ไหนก็ต้องรอ"
+    ] },
+
+    { "kind": "chapter", "chapter": "izu", "day": 5 },
+    { "kind": "drive", "day": 5, "chapter": "izu", "biome": "izu", "tod": "morning",
+      "sign": { "k": "沼津", "r": "Numazu", "d": "42", "tag": "R1" }, "lines": [
+      "วันที่ห้า เข้าคาบสมุทร [[Izu]] แวะกินซีฟู้ดสดๆ ที่ท่าเรือ Numazu"
+    ] },
+    { "kind": "sunset", "day": 5, "chapter": "izu", "biome": "izu", "prop": "ropeway",
+      "photo": "days/d5-katsuragi", "cap": "伊豆パノラマ", "stamp": "葛城山", "lines": [
+      "ขึ้นกระเช้า [[Izu Panorama Park]] ฟูจิอยู่ข้ามอ่าวตรงหน้า"
+    ] },
+    { "kind": "night", "day": 5, "chapter": "izu", "biome": "bamboo",
+      "photo": "days/d5-chikurin", "cap": "修善寺", "stamp": "修善寺", "lines": [
+      "คืนนี้เรียวกังใน [[Shuzenji]] ป่าไผ่ ออนเซ็น ไคเซกิ ฉันขอนอนฟังเสียงลำธาร"
+    ] },
+    { "kind": "drive", "day": 6, "chapter": "izu", "biome": "izu", "tod": "morning",
+      "sign": { "k": "西伊豆", "r": "Nishi-Izu Skyline", "d": "24", "tag": "R136" }, "lines": [
+      "วันที่หก วันหนักสุด! ออก {{{d6.depart}}} ขึ้น [[Nishi-Izu Skyline]] ถนนบนสันเขา",
+      "เลียบหน้าผาสีทอง [[Koganezaki]] ทะเลสีครามขนาดนี้ ใครจะขับเร็วล่ะ"
+    ] },
+    { "kind": "stop", "day": 6, "chapter": "izu", "biome": "izu", "tod": "day",
+      "photo": "story/d6-dogashima", "cap": "堂ヶ島", "stamp": "堂ヶ島", "lines": [
+      "เกาะหินกลางทะเลที่ [[Dogashima]] ฉายา Matsushima แห่ง Izu"
+    ] },
+    { "kind": "sunset", "day": 6, "chapter": "izu", "biome": "izu",
+      "photo": "days/d6-kumomi", "cap": "雲見", "stamp": "雲見", "lines": [
+      "ตะวันตกที่แหลม [[Kumomi]] ฟูจิลอยอยู่ปลายทะเล แล้วตัดไปนอน Shimoda"
+    ] },
+    { "kind": "stop", "day": 7, "chapter": "izu", "biome": "izu", "tod": "morning", "prop": "torii",
+      "photo": "days/d7-shirahama", "cap": "白浜", "stamp": "下田", "lines": [
+      "เช้าวันที่เจ็ด โทริอิสีแดงบนโขดหินริมหาด [[Shirahama]]"
+    ] },
+    { "kind": "drive", "day": 7, "chapter": "izu", "biome": "bamboo", "tod": "day",
+      "sign": { "k": "河津", "r": "Kawazu Loop", "d": "6", "tag": "R414" }, "lines": [
+      "ขาขึ้นเหนือ ฉันได้วนสะพานเกลียว [[Kawazu Loop]] สองรอบ วี้~"
+    ] },
+
+    { "kind": "chapter", "chapter": "kamakura", "day": 7 },
+    { "kind": "sunset", "day": 7, "chapter": "kamakura", "biome": "kamakura",
+      "photo": "days/d7-shichirigahama", "cap": "七里ヶ浜", "stamp": "湘南", "lines": [
+      "ทันพระอาทิตย์ตกที่หาด [[Shichirigahama]] คืนนี้… เป็นคืนสุดท้ายที่พวกเขามีฉัน"
+    ] },
+    { "kind": "stop", "day": 8, "chapter": "kamakura", "biome": "kamakura", "tod": "morning", "prop": "daibutsu",
+      "photo": "days/d8-daibutsu", "cap": "大仏", "stamp": "大仏", "lines": [
+      "วันที่แปด ไหว้[[พระใหญ่ Kamakura]] ที่นั่งกลางแจ้งมาเกือบ 800 ปี",
+      "แล้วขึ้นวัด [[Hase-dera]] มองเมืองกับทะเล"
+    ] },
+    { "kind": "drive", "day": 8, "chapter": "kamakura", "biome": "tokyo", "tod": "day", "mood": "city",
+      "sign": { "k": "池袋", "r": "Ikebukuro", "d": "58", "tag": "首都高 C2" }, "lines": [
+      "บ่ายนี้ส่งทุกคนกับกระเป๋าที่ [[Ikebukuro]]"
+    ] },
+    { "kind": "dropoff", "day": 8, "chapter": "kamakura", "biome": "tokyo", "tod": "golden", "mood": "city", "walkers": 3, "lines": [
+      "สามคนลงไปก่อน เหลือคนขับคนเดียวพาฉันไปคืนที่ [[Narita]]"
+    ] },
+    { "kind": "drive", "day": 8, "chapter": "kamakura", "biome": "airport", "tod": "dusk", "slow": 0.6,
+      "sign": { "k": "成田空港", "r": "Narita Airport", "d": "66", "tag": "東関東道" }, "lines": [
+      "ทางไป Narita เงียบกว่าทุกวัน… ฉันแอบขับช้าลงนิดนึง"
+    ] },
+    { "kind": "farewell", "day": 8, "chapter": "kamakura", "biome": "airport", "tod": "dusk", "walkers": 1, "prop": "rental", "stamp": "白", "lines": [
+      "8 วัน {{{km} กม.}} ฟูจิทุกมุม ทะเลสองฝั่ง ฉันจำได้หมดเลยนะ",
+      "ไปสนุกที่โตเกียวต่อนะ ดูแลกันดีๆ ล่ะ… ปิ๊บ ปิ๊บ"
+    ] },
+
+    { "kind": "chapter", "chapter": "tokyo", "day": 9 },
+    { "kind": "drive", "day": 9, "chapter": "tokyo", "biome": "tokyo", "tod": "morning", "veh": "train", "radio": true,
+      "sign": { "k": "築地", "r": "Tsukiji · 次は 銀座", "d": "H11", "station": true }, "lines": [
+      "ฮัลโหล~ [[ชิโระ]]เองจ้า ได้ยินไหม ต่อจากนี้ฝากรถไฟพาไปแทนนะ",
+      "วันที่เก้า มื้อเช้าตลาด [[Tsukiji]] เดิน [[Ginza]] บ่ายเข้า teamLab"
+    ] },
+    { "kind": "sunset", "day": 9, "chapter": "tokyo", "biome": "tokyo", "veh": "train", "radio": true,
+      "photo": "days/d9-shibuyasky", "cap": "渋谷スカイ", "stamp": "渋谷", "lines": [
+      "{{{d9.sunset}}} ขึ้น [[Shibuya Sky]] สูง 229 เมตร โบกมือมาทาง Narita ด้วยนะ"
+    ] },
+    { "kind": "night", "day": 9, "chapter": "tokyo", "biome": "tokyoNight", "veh": "train", "radio": true,
+      "photo": "days/d9-scramble", "cap": "スクランブル", "lines": [
+      "ลงมาข้ามสี่แยก [[Scramble]] แล้วนั่งรถไฟไปกิน monjayaki ที่ Tsukishima"
+    ] },
+    { "kind": "stop", "day": 10, "chapter": "tokyo", "biome": "tokyo", "tod": "morning", "veh": "train", "radio": true, "prop": "lantern",
+      "photo": "days/d10-kaminarimon", "cap": "雷門", "stamp": "浅草寺", "lines": [
+      "วันที่สิบ เช้าตรู่ที่ [[Senso-ji]] โคมแดงยักษ์ยังไม่มีใครบัง"
+    ] },
+    { "kind": "stop", "day": 10, "chapter": "tokyo", "biome": "tokyo", "tod": "day", "veh": "train", "radio": true, "prop": "torii",
+      "photo": "story/d10-meiji", "cap": "明治神宮", "stamp": "明治", "lines": [
+      "ตลาด [[Ameyoko]] แล้วเดินป่าร่มรื่นเข้า [[Meiji Jingu]]"
+    ] },
+    { "kind": "sunset", "day": 10, "chapter": "tokyo", "biome": "tokyo", "veh": "train", "radio": true,
+      "photo": "days/d10-tocho", "cap": "都庁", "stamp": "都庁", "lines": [
+      "พระอาทิตย์ตกครั้งสุดท้ายของทริป ดูฟรีบนตึก [[Tocho]]"
+    ] },
+    { "kind": "night", "day": 10, "chapter": "tokyo", "biome": "tokyoNight", "veh": "train", "radio": true,
+      "photo": "days/d10-omoide", "cap": "思い出横丁", "lines": [
+      "มื้อสุดท้าย ยากิโทริในตรอก [[Omoide Yokocho]] คืนนี้แพ็คกระเป๋าด้วยนะ"
+    ] },
+    { "kind": "drive", "day": 11, "chapter": "tokyo", "biome": "airport", "tod": "dawn", "veh": "bus", "radio": true, "prop": "shiro",
+      "sign": { "k": "成田空港", "r": "Narita Airport", "d": "70", "tag": "Limousine" }, "lines": [
+      "วันสุดท้าย ตีห้าครึ่งก็ต้องตื่น ขึ้น Limousine bus รอบ {{06:45}}",
+      "ผ่าน Narita อีกที… เห็นฉันจอดอยู่ไหม? ปีหน้ามาขับด้วยกันอีกนะ!"
+    ] },
+    { "kind": "end", "day": 11, "chapter": "tokyo", "biome": "airport", "tod": "morning", "veh": "none", "lines": [
+      "ฟูจิแปดมุม ทะเลสองฝั่ง วัดเก่า และเมืองใหญ่",
+      "เตรียมกล้อง เตรียมขา แล้วเจอกันที่ดอนเมือง!"
+    ] }
+  ]
+}

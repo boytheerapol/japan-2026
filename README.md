@@ -17,6 +17,7 @@ source/itinerary.xlsx        ไฟล์ Excel ของคุณ — ไม่
 scripts/build_data.py        แปลง Excel → site/data/trip.json (ตัดข้อมูลส่วนตัวออก)
 site/                        ตัวเว็บที่ deploy
 site/story/                  หน้าเรื่องเล่าทริป (ดูหัวข้อ Story)
+site/original/                ฉบับก่อน v8 (snapshot ตายตัว ไม่มีลิงก์ไปหา, noindex, service worker ไม่ cache) — ห้ามแก้
 site/img/days/               รูปไฮไลท์รายวัน (WebP 600/1200px) จาก Wikimedia Commons — เครดิตและลิขสิทธิ์อยู่ใน day_meta.json
 .github/workflows/pages.yml  push เข้า main แล้ว deploy อัตโนมัติ
 ```
