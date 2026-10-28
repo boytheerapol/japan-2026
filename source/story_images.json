@@ -179,27 +179,37 @@
     {
       "key": "d2-nagaike",
       "spot": "Nagaike Water Park / Lake Yamanaka swans",
-      "url": "https://cdn.buymeacoffee.com/uploads/project_updates/6260391/2025/06/11/155919_1749657558313__DSC5383.jpg.jpeg"
+      "url": "https://cdn.buymeacoffee.com/uploads/project_updates/6260391/2025/06/11/155919_1749657558313__DSC5383.jpg.jpeg",
+      "source": "https://cdn.buymeacoffee.com/uploads/project_updates/6260391/2025/06/11/155919_1749657558313__DSC5383.jpg.jpeg",
+      "fetched": "https://cdn.buymeacoffee.com/uploads/project_updates/6260391/2025/06/11/155919_1749657558313__DSC5383.jpg.jpeg"
     },
     {
       "key": "d4-kashinoichi",
       "spot": "Shimizu Fish Market Kashi no Ichi",
-      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/86/b8/20/caption.jpg?w=1200&h=-1&s=1"
+      "url": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/86/b8/20/caption.jpg?w=1200&h=-1&s=1",
+      "source": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/86/b8/20/caption.jpg?w=1200&h=-1&s=1",
+      "fetched": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/86/b8/20/caption.jpg?w=1200&h=-1&s=1"
     },
     {
       "key": "d5-yumenoohashi",
       "spot": "Fujisan Yume no Ohashi",
-      "url": "https://res.cloudinary.com/dbeud0a7k/image/upload/c_fill,w_1200,h_800,q_auto:good,f_jpg/v1752627348/locations/shizuoka/155-fujisan-yume-no-ohashi-bridge/155-fujisan-yume-no-ohashi-bridge_1752627347_JxViSOU5.jpg"
+      "url": "https://res.cloudinary.com/dbeud0a7k/image/upload/c_fill,w_1200,h_800,q_auto:good,f_jpg/v1752627348/locations/shizuoka/155-fujisan-yume-no-ohashi-bridge/155-fujisan-yume-no-ohashi-bridge_1752627347_JxViSOU5.jpg",
+      "source": "https://res.cloudinary.com/dbeud0a7k/image/upload/c_fill,w_1200,h_800,q_auto:good,f_jpg/v1752627348/locations/shizuoka/155-fujisan-yume-no-ohashi-bridge/155-fujisan-yume-no-ohashi-bridge_1752627347_JxViSOU5.jpg",
+      "fetched": "https://res.cloudinary.com/dbeud0a7k/image/upload/c_fill,w_1200,h_800,q_auto:good,f_jpg/v1752627348/locations/shizuoka/155-fujisan-yume-no-ohashi-bridge/155-fujisan-yume-no-ohashi-bridge_1752627347_JxViSOU5.jpg"
     },
     {
       "key": "d9-koami",
       "spot": "Koami Shrine",
-      "url": "https://static.gltjp.com/glt/data/directory/14000/13972/20221104_134844_107f17cc_w1920.webp"
+      "url": "https://static.gltjp.com/glt/data/directory/14000/13972/20221104_134844_107f17cc_w1920.webp",
+      "source": "https://static.gltjp.com/glt/data/directory/14000/13972/20221104_134844_107f17cc_w1920.webp",
+      "fetched": "https://static.gltjp.com/glt/data/directory/14000/13972/20221104_134844_107f17cc_w1920.webp"
     },
     {
       "key": "d9-keyakizaka",
       "spot": "Keyakizaka Illumination",
-      "url": "https://media.timeout.com/images/105831511/image.jpg"
+      "url": "https://media.timeout.com/images/105831511/image.jpg",
+      "source": "https://media.timeout.com/images/105831511/image.jpg",
+      "fetched": "https://media.timeout.com/images/105831511/image.jpg"
     }
   ]
 }

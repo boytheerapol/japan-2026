@@ -49,7 +49,7 @@
       "intro": "แวะสตาร์บัคส์วิวฟูจิที่ Fujikawa SA และสะพาน Yume no Ohashi ก่อนไปกินซีฟู้ดที่ท่าเรือนุมะซุ ขึ้นกระเช้าสู่ Ao Terrace แล้วพักในเมืองออนเซ็นเก่าแก่ชูเซ็นจิ",
       "photos": [
         {"src": "img/days/d5-katsuragi", "w": 1200, "h": 800, "caption": "Izu Panorama Park", "alt": "ภูเขาไฟฟูจิมองจากยอดเขาคัตสึรางิ ที่ตั้งของ Izu Panorama Park", "credit": "Alpsdake · CC BY-SA 4.0", "url": "https://commons.wikimedia.org/wiki/File:Mount_Fuji_from_Mount_Katsuragi.jpg"},
-        {"src": "img/days/d5-numazu", "w": 1200, "h": 900, "caption": "ท่าเรือนุมะซุ", "alt": "เรือประมงจอดเรียงกันที่ท่าเรือนุมะซุ", "credit": "Syced · CC0", "url": "https://commons.wikimedia.org/wiki/File:Numazu_port_(75199).jpg"},
+        {"src": "img/story/d5-yumenoohashi", "w": 1200, "h": 800, "caption": "Fujisan Yume no Ohashi", "alt": "บันไดกลางสะพานยุเมะโนะโอฮาชิ มีภูเขาไฟฟูจิอยู่ด้านหลัง"},
         {"src": "img/days/d5-chikurin", "w": 1200, "h": 900, "caption": "Chikurin no Komichi", "alt": "ทางเดินปูหินผ่านป่าไผ่ในเมืองออนเซ็นชูเซ็นจิ", "credit": "Batholith · Public domain", "url": "https://commons.wikimedia.org/wiki/File:Chikurin-no-komichi_20110919.jpg"}
       ]
     },
@@ -90,7 +90,7 @@
       "photos": [
         {"src": "img/days/d9-scramble", "w": 1200, "h": 800, "caption": "Shibuya Scramble", "alt": "ทางม้าลายชิบุยะตอนค่ำกับป้ายไฟ", "credit": "Benh LIEU SONG (Flickr) · CC BY-SA 2.0", "url": "https://commons.wikimedia.org/wiki/File:Tokyo_Shibuya_Scramble_Crossing_2018-10-09.jpg"},
         {"src": "img/days/d9-tsukiji", "w": 1200, "h": 900, "caption": "Tsukiji Outer Market", "alt": "แผงอาหารทะเลสดในตลาดนอกซึกิจิ", "credit": "Aw1805 · CC BY-SA 3.0", "url": "https://commons.wikimedia.org/wiki/File:Tsukiji_Outer_Market_2.jpg"},
-        {"src": "img/story/d9-ginza", "w": 1200, "h": 901, "caption": "Ginza", "alt": "ย่านกินซ่า"}
+        {"src": "img/story/d9-keyakizaka", "w": 1200, "h": 800, "caption": "Keyakizaka Illumination", "alt": "ถนนเคยากิซากะประดับไฟสีฟ้า มีโตเกียวทาวเวอร์อยู่ปลายถนน"}
       ]
     },
     "10": {
