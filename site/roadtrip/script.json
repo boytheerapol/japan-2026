@@ -22,9 +22,9 @@
       "วันแรก {d1.dateLabel} เครื่องลง {{09:45}} ทุกคนตาโหลมาก แต่ฉันพร้อมซิ่งแล้ว",
       "ทางขึ้นเขาชันจัง… แต่ไม่เป็นไร ข้างหน้ามี[[ฟูจิ]]รออยู่!"
     ] },
-    { "kind": "stop", "day": 1, "chapter": "fuji", "biome": "fuji", "tod": "day", "prop": "ropeway",
-      "photo": "story/d1-ropeway", "cap": "天上山", "stamp": "天上山", "lines": [
-      "ถึง [[Kawaguchiko]] แล้ว! สี่คนนี้วิ่งไปขึ้นกระเช้า [[Tenjo-yama]] ฉันรอข้างล่างนะ"
+    { "kind": "stop", "day": 1, "chapter": "fuji", "biome": "fuji", "tod": "day",
+      "photo": "story/d2-honcho", "cap": "本町通り", "stamp": "富士吉田", "lines": [
+      "ถึง [[Fujiyoshida]] แล้ว! สี่คนนี้วิ่งไปถ่ายรูปถนน [[Honcho-dori]] ที่ฟูจิตั้งอยู่ปลายถนน ฉันรอในลานจอดนะ"
     ] },
     { "kind": "sunset", "day": 1, "chapter": "fuji", "biome": "fuji",
       "photo": "story/d1-ubuyagasaki", "cap": "産屋ヶ崎", "stamp": "河口湖", "lines": [
@@ -83,9 +83,9 @@
       "photo": "story/d4-sakuraebi", "cap": "桜えび", "stamp": "由比", "lines": [
       "กลางวัน[[กุ้งซากุระ]]ที่ Yui จับได้ที่อ่าวนี้ที่เดียวในญี่ปุ่น"
     ] },
-    { "kind": "sunset", "day": 4, "chapter": "suruga", "biome": "suruga",
+    { "kind": "stop", "day": 4, "chapter": "suruga", "biome": "suruga", "tod": "day",
       "photo": "story/d4-nihondaira", "cap": "日本平", "stamp": "日本平", "lines": [
-      "เดินหาดสน [[Miho]] แล้วขึ้น [[Nihondaira]] เห็นทั้งอ่าวและฟูจิ"
+      "ชิมทูน่าที่ตลาดปลา [[Shimizu]] แล้วขึ้น [[Nihondaira]] เห็นทั้งอ่าวและฟูจิ"
     ] },
     { "kind": "night", "day": 4, "chapter": "suruga", "biome": "suruga",
       "photo": "story/d4-sawayaka", "cap": "さわやか", "lines": [
@@ -95,7 +95,7 @@
     { "kind": "chapter", "chapter": "izu", "day": 5 },
     { "kind": "drive", "day": 5, "chapter": "izu", "biome": "izu", "tod": "morning",
       "sign": { "k": "沼津", "r": "Numazu", "d": "42", "tag": "R1" }, "lines": [
-      "วันที่ห้า เข้าคาบสมุทร [[Izu]] แวะกินซีฟู้ดสดๆ ที่ท่าเรือ Numazu"
+      "วันที่ห้า แวะสะพาน [[Yume no Ohashi]] ดูฟูจิ แล้วเข้าคาบสมุทร [[Izu]] กินซีฟู้ดสดๆ ที่ท่าเรือ Numazu"
     ] },
     { "kind": "sunset", "day": 5, "chapter": "izu", "biome": "izu", "prop": "ropeway",
       "photo": "days/d5-katsuragi", "cap": "伊豆パノラマ", "stamp": "葛城山", "lines": [
@@ -157,15 +157,15 @@
     { "kind": "drive", "day": 9, "chapter": "tokyo", "biome": "tokyo", "tod": "morning", "veh": "train", "radio": true,
       "sign": { "k": "築地", "r": "Tsukiji · 次は 銀座", "d": "H11", "station": true }, "lines": [
       "ฮัลโหล~ [[ชิโระ]]เองจ้า ได้ยินไหม ต่อจากนี้ฝากรถไฟพาไปแทนนะ",
-      "วันที่เก้า มื้อเช้าตลาด [[Tsukiji]] เดิน [[Ginza]] บ่ายเข้า teamLab"
+      "วันที่เก้า มื้อเช้าตลาด [[Tsukiji]] เดิน [[Ginza]] บ่ายไหว้ศาลเจ้า [[Koami]] ขอโชคลาภ"
     ] },
     { "kind": "sunset", "day": 9, "chapter": "tokyo", "biome": "tokyo", "veh": "train", "radio": true,
-      "photo": "days/d9-shibuyasky", "cap": "渋谷スカイ", "stamp": "渋谷", "lines": [
-      "{{{d9.sunset}}} ขึ้น [[Shibuya Sky]] สูง 229 เมตร โบกมือมาทาง Narita ด้วยนะ"
+      "photo": "days/d9-scramble", "cap": "スクランブル", "stamp": "渋谷", "lines": [
+      "{{{d9.sunset}}} ข้ามสี่แยก [[Scramble]] แล้วขึ้นดูวิวฟรีที่ Hikarie โบกมือมาทาง Narita ด้วยนะ"
     ] },
     { "kind": "night", "day": 9, "chapter": "tokyo", "biome": "tokyoNight", "veh": "train", "radio": true,
-      "photo": "days/d9-scramble", "cap": "スクランブル", "lines": [
-      "ลงมาข้ามสี่แยก [[Scramble]] แล้วนั่งรถไฟไปกิน monjayaki ที่ Tsukishima"
+      "photo": "story/d9-keyakizaka", "cap": "けやき坂", "lines": [
+      "ค่ำนี้ไฟประดับ [[Keyakizaka]] ที่ Roppongi สวยมาก แล้วไปกิน monjayaki ที่ Tsukishima"
     ] },
     { "kind": "stop", "day": 10, "chapter": "tokyo", "biome": "tokyo", "tod": "morning", "veh": "train", "radio": true, "prop": "lantern",
       "photo": "days/d10-kaminarimon", "cap": "雷門", "stamp": "浅草寺", "lines": [

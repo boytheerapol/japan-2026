@@ -80,14 +80,14 @@
       "open": "วันแรก ลงเครื่อง 09:45 รับรถตอนเที่ยง แล้วซิ่งขึ้น Chuo Expressway ไปหาฟูจิ",
       "spots": [
         {
-          "name": "Mt. Fuji Panoramic Ropeway",
-          "jp": "河口湖天上山公園",
-          "lat": 35.502,
-          "lng": 138.769,
-          "img": "story/d1-ropeway",
+          "name": "Honcho-dori, Fujiyoshida",
+          "jp": "本町通り",
+          "lat": 35.487,
+          "lng": 138.803,
+          "img": "story/d2-honcho",
           "lines": [
-            "ถึง Kawaguchiko ก็ขึ้นกระเช้า Tenjo-yama ก่อนเลย",
-            "จากข้างบนจะเห็นฟูจิตั้งอยู่เหนือทะเลสาบเต็มตัว"
+            "ลงทางด่วนแล้วแวะถนนเมืองเก่า Fujiyoshida ที่มีฟูจิตั้งอยู่ปลายถนนก่อนเลย",
+            "แสงบ่ายส่องหน้าภูเขาพอดี ถ่ายจากเกาะกลางเท่านั้นนะ ห้ามลงไปยืนบนถนน"
           ]
         },
         {
@@ -117,7 +117,7 @@
     },
     {
       "n": 2,
-      "open": "วันที่สอง วนรอบฟูจิทั้งวัน นัดรวมพลที่ล็อบบี้ Mifujien {d2.depart}",
+      "open": "วันที่สอง วนรอบฟูจิ ออกจาก Mifujien {d2.depart} รีบเก็บจุดชมวิวก่อนเที่ยงตอนฟ้ายังเปิด",
       "spots": [
         {
           "name": "Fujiyama Twin Terrace",
@@ -142,14 +142,14 @@
           ]
         },
         {
-          "name": "Honcho-dori, Fujiyoshida",
-          "jp": "本町通り",
-          "lat": 35.487,
-          "lng": 138.803,
-          "img": "story/d2-honcho",
+          "name": "Nagaike Water Park",
+          "jp": "長池親水公園",
+          "lat": 35.413,
+          "lng": 138.866,
+          "img": "story/d2-nagaike",
           "lines": [
-            "แล้วไปถ่ายรูปถนนเมืองเก่า Fujiyoshida ที่มีฟูจิตั้งอยู่ปลายถนน",
-            "ถ่ายจากเกาะกลางเท่านั้นนะ ห้ามลงไปยืนบนถนน"
+            "บ่ายเลาะทะเลสาบ Yamanaka แวะ Nagaike ริมน้ำที่ฟูจิสะท้อนผิวน้ำ",
+            "แล้วไปหาดฝั่ง Hirano ดูฝูงหงส์ขาวว่ายอยู่หน้าภูเขา"
           ]
         },
         {
@@ -170,7 +170,7 @@
           "img": "story/d2-panoramadai",
           "golden": true,
           "lines": [
-            "บ่ายเลาะทะเลสาบ Yamanaka แล้วขึ้นเขาไปรอพระอาทิตย์ตกที่ Panorama-dai",
+            "เย็นขึ้นเขาไปรอพระอาทิตย์ตกที่ Panorama-dai",
             "ฟูจิเต็มตัวลอยอยู่เหนือทะเลสาบ ตะวันตก {d2.sunset}"
           ]
         }
@@ -200,7 +200,8 @@
           "img": "days/d3-motosu",
           "lines": [
             "ต่อที่ทะเลสาบ Motosu มุมเดียวกับฟูจิบนแบงก์ 1,000 เยนรุ่นก่อน",
-            "ใครไหวเดินขึ้น Nakanokura Pass ไปอีกหน่อย วิวจะยิ่งกว้าง"
+            "ใครไหวเดินขึ้น Nakanokura Pass ไปอีกหน่อย วิวจะยิ่งกว้าง",
+            "แล้วลง R139 ผ่านทุ่ง Asagiri แวะลานจอด Asagiri Sawayaka ดูฟูจิฝั่งใต้"
           ]
         },
         {
@@ -242,7 +243,7 @@
     },
     {
       "n": 4,
-      "open": "วันที่สี่ ฟูจิกับทะเล ออก {d4.depart} ไปตลาดปลา Shimizu ก่อน",
+      "open": "วันที่สี่ ฟูจิกับทะเล ออก {d4.depart} เลียบชายฝั่งไปช่องเขา Satta ตอนเช้า",
       "spots": [
         {
           "name": "Satta Pass",
@@ -251,7 +252,7 @@
           "lng": 138.555,
           "img": "story/d4-satta",
           "lines": [
-            "ไฮไลต์ของวันคือ Satta Pass มุมเดียวกับภาพพิมพ์ของ Hiroshige",
+            "ไฮไลต์ของวันคือ Satta Pass ช่วงเช้า มุมเดียวกับภาพพิมพ์ของ Hiroshige",
             "ทะเล ทางด่วน และฟูจิ อยู่ในเฟรมเดียว"
           ]
         },
@@ -266,14 +267,14 @@
           ]
         },
         {
-          "name": "Miho no Matsubara",
-          "jp": "三保松原",
-          "lat": 34.993,
-          "lng": 138.524,
-          "img": "days/d4-miho",
+          "name": "Shimizu Fish Market",
+          "jp": "河岸の市",
+          "lat": 35.013,
+          "lng": 138.493,
+          "img": "story/d4-kashinoichi",
           "lines": [
-            "บ่ายเดินชายหาดสนเก่าแก่ Miho no Matsubara",
-            "ที่นี่เป็นมรดกโลกร่วมกับภูเขาไฟฟูจิ"
+            "ต่อที่ตลาดปลา Shimizu Kashi no Ichi เมืองท่าทูน่าที่ใหญ่ที่สุดของญี่ปุ่น",
+            "เดินชิมซาชิมิทูน่าสดๆ จากท่าเรือ"
           ]
         },
         {
@@ -282,10 +283,9 @@
           "lat": 34.973,
           "lng": 138.463,
           "img": "story/d4-nihondaira",
-          "golden": true,
           "lines": [
-            "แล้วขึ้น Nihondaira Yume Terrace ระเบียงไม้บนเขา",
-            "มองเห็นอ่าว Suruga กับฟูจิพร้อมกัน ตะวันตก {d4.sunset}"
+            "บ่ายขึ้น Nihondaira Yume Terrace ระเบียงไม้บนเขา มองเห็นอ่าว Suruga กับฟูจิพร้อมกัน",
+            "ใครยังไหวต่อกระเช้าลงไปศาลเจ้า Kunozan Toshogu ไม่งั้นกลับไปพักที่โรงแรมก่อน"
           ]
         },
         {
@@ -303,8 +303,19 @@
     },
     {
       "n": 5,
-      "open": "วันที่ห้า เช็คเอาท์ {d5.depart} ขับเลียบอ่าวไปทางตะวันออก สู่คาบสมุทร Izu",
+      "open": "วันที่ห้า เช็คเอาท์ {d5.depart} แวะกาแฟวิวฟูจิที่ Fujikawa SA แล้วค่อยมุ่งสู่คาบสมุทร Izu",
       "spots": [
+        {
+          "name": "Fujisan Yume no Ohashi",
+          "jp": "富士山夢の大橋",
+          "lat": 35.158,
+          "lng": 138.676,
+          "img": "story/d5-yumenoohashi",
+          "lines": [
+            "สายๆ แวะสะพาน Yume no Ohashi ใน Fuji City",
+            "ขึ้นบันไดกลางสะพานแล้วจะเห็นฟูจิตั้งตรงหน้าเต็มตา"
+          ]
+        },
         {
           "name": "Numazu Port",
           "jp": "沼津港",
@@ -554,26 +565,37 @@
           ]
         },
         {
-          "name": "teamLab Borderless",
-          "jp": "チームラボボーダレス",
-          "lat": 35.66,
-          "lng": 139.74,
-          "img": "story/d9-teamlab",
+          "name": "Koami Shrine",
+          "jp": "小網神社",
+          "lat": 35.683,
+          "lng": 139.78,
+          "img": "story/d9-koami",
           "lines": [
-            "บ่ายเข้า teamLab Borderless ที่ Azabudai Hills",
-            "ห้องแสงที่ไม่มีขอบเขต เดินหลงได้เป็นชั่วโมง"
+            "บ่ายไปไหว้ศาลเจ้า Koami ศาลเจ้าเล็กๆ กลางตึกที่คนญี่ปุ่นมาขอโชคลาภ",
+            "อย่าลืมล้างเหรียญในบ่อน้ำมังกร แล้วเดินต่อไป Nihonbashi กับสถานี Tokyo"
           ]
         },
         {
-          "name": "Shibuya Sky",
-          "jp": "渋谷スカイ",
-          "lat": 35.658,
-          "lng": 139.702,
-          "img": "days/d9-shibuyasky",
+          "name": "Shibuya Scramble",
+          "jp": "渋谷スクランブル交差点",
+          "lat": 35.659,
+          "lng": 139.7,
+          "img": "days/d9-scramble",
           "golden": true,
           "lines": [
-            "แล้วขึ้นดาดฟ้า Shibuya Sky สูง 229 เมตร ดูพระอาทิตย์ตกทั้งเมือง",
-            "วันที่อากาศดีจะเห็นฟูจิอยู่ไกลๆ ตะวันตก {d9.sunset}"
+            "เย็นข้ามแยก Shibuya Scramble แล้วขึ้นจุดชมวิวฟรีของ Shibuya Hikarie",
+            "ดูแยกที่คนข้ามมากที่สุดในโลกตอนตะวันตก {d9.sunset}"
+          ]
+        },
+        {
+          "name": "Keyakizaka Illumination",
+          "jp": "けやき坂イルミネーション",
+          "lat": 35.66,
+          "lng": 139.729,
+          "img": "story/d9-keyakizaka",
+          "lines": [
+            "ต่อไป Roppongi Hills ถนน Keyakizaka เปิดไฟประดับต้นไม้ทั้งสาย",
+            "มี Tokyo Tower ตั้งอยู่ปลายถนน เป็นมุมถ่ายรูปที่สวยที่สุดของคืนนี้"
           ]
         },
         {
@@ -583,7 +605,7 @@
           "lng": 139.784,
           "img": "story/d9-monja",
           "lines": [
-            "ลงมาข้าม Scramble Crossing แล้วนั่งรถไฟไปกิน monjayaki ที่ Tsukishima"
+            "ปิดท้ายด้วยการนั่งรถไฟไปกิน monjayaki ที่ Tsukishima"
           ]
         }
       ],
