@@ -1,0 +1,22 @@
+{
+  "_comment": "Pronunciation fixes for Shiro (scripts/build_story_voice.py --page roadtrip). Written form -> how the TTS should say it. Affects the audio only; the dialog box keeps the written form.",
+  "words": {
+    "29 ต.ค. (พฤ)": "ยี่สิบเก้า ตุลาคม วันพฤหัส",
+    "กม.": "กิโล",
+    "teamLab": "ทีมแล็บ",
+    "วี้~": "วี้",
+    "ได้ยินไหม~": "ได้ยินไหม",
+    "ฮัลโหล~": "ฮัลโหล",
+    "เขา": "เขา",
+    "Nenba": "เน็นบะ",
+    "Fujinomiya": "ฟูจิโนมิยะ",
+    "Yui": "ยูอิ",
+    "Sawayaka": "ซาวายากะ",
+    "Shizuoka": "ชิซุโอกะ",
+    "Shimizu": "ชิมิซุ",
+    "Izu": "อิซุ",
+    "Ginza": "กินซ่า",
+    "Izu Panorama Park": "อิซุ พาโนรามา พาร์ค",
+    "Nishi-Izu Skyline": "นิชิอิซุ สกายไลน์"
+  }
+}

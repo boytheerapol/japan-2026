@@ -1,6 +1,6 @@
 /* Offline support: app shell is stale-while-revalidate, trip data + narrator index are network-first,
  * narrator clips (content-hashed, never change) are cache-first. */
-const VERSION = "jp26-v8";
+const VERSION = "jp26-v9";
 const SHELL = [
   "./", "index.html", "styles.css", "app.js", "manifest.webmanifest",
   "data/trip.json", "icons/icon.svg",
@@ -29,6 +29,7 @@ self.addEventListener("fetch", (e) => {
   const sameOrigin = url.origin === self.location.origin;
   const isFont = /fonts\.(googleapis|gstatic)\.com$/.test(url.hostname);
   if (!sameOrigin && !isFont) return; // Google Maps links etc. go straight to the network
+  if (sameOrigin && url.pathname.includes("/original/")) return; // frozen snapshot: never cached
 
   if (sameOrigin && (url.pathname.includes("/audio/story/") || url.pathname.includes("/audio/roadtrip/"))) {
     e.respondWith(
